@@ -24,10 +24,8 @@ public class FazerCasa : MonoBehaviour
 
     public void Construir()
     {
-        if(moedas >= 10)
-        {
-            Casa.SetActive(true);
-        }
+        if(moedas >= 10) Casa.SetActive(true);
+        //isso te da trigger é? ↑ ↑ ↑
         else
         {
             Casa.SetActive(false);
