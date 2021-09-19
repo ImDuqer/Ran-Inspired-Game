@@ -17,6 +17,11 @@ public class FazerCasa : MonoBehaviour
         Construir();
     }
 
+    private void OnTriggerEnter(Collider other) 
+    {
+        
+    }
+
     public void Construir()
     {
         if(moedas >= 10)
