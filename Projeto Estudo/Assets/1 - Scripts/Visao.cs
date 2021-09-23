@@ -12,7 +12,7 @@ public class Visao : MonoBehaviour
     public LayerMask alvosVisao;
     public GameObject textoItem;
     public bool testeItem;
-
+    public bool gizmos;
     void Start()
     {
         testeItem = false;
@@ -21,7 +21,7 @@ public class Visao : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, distanciaVisao);
+        if(gizmos) Gizmos.DrawWireSphere(transform.position, distanciaVisao);
     }
 
     void Update()
