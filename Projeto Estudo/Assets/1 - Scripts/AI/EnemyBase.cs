@@ -27,18 +27,18 @@ public class EnemyBase : MonoBehaviour {
     void OnCollisionEnter(Collision other) {
         if (other.transform.CompareTag("Arrow")) {
             HP -= 1;
-            if (HP <= 0) EnemyReset();
+            if (HP <= 0) EnemyReset(true);
             //other.gameObject;
         }
     }
 
     void OnTriggerEnter(Collider other) {
         if (other.transform.CompareTag("Castle")) {
-            EnemyReset();
+            EnemyReset(false);
         }
     }
-    void EnemyReset() {
-        ResourceTracker.POINTS++;
+    void EnemyReset(bool points) {
+        if(points) ResourceTracker.POINTS++;
         transform.SetParent(GameObject.Find("EnemiesPool").transform);
         gameObject.SetActive(false);
     }
