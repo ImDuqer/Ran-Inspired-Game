@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FazerCasa : MonoBehaviour
-{
+{/*
     public int moedas = 10;
     public GameObject Casa;
 
@@ -30,5 +30,5 @@ public class FazerCasa : MonoBehaviour
         {
             Casa.SetActive(false);
         }
-    }
+    }*/
 }

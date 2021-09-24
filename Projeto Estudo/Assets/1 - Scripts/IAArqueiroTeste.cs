@@ -6,52 +6,115 @@ using UnityEngine.AI;
 public class IAArqueiroTeste : MonoBehaviour
 {
     public float range = 5f;
-    public GameObject[] inimigo;
     public GameObject flechaPrefab;
-    private GameObject flecha;
-    public Transform target;
+    private GameObject arrow; 
+    Transform target = null;
     public Transform arco;
     public float arcoCD;
+    float tempoPassado;
+    [SerializeField] bool gizmos;
+    [SerializeField] bool debugTarget;
+    [SerializeField] Material[] myMaterials;
+    MeshRenderer myMR;
+    public static List<GameObject> ArrowPool = new List<GameObject>();
+    public static bool filledPool;
 
-    void Start()
-    {
-        inimigo = GameObject.FindGameObjectsWithTag("Enemy");
+
+
+    Transform dynamicObjects;
+
+
+
+    void OnEnable() {
+        dynamicObjects = GameObject.Find("DynamicObjects").transform;
+        if (!filledPool) {
+            filledPool = true;
+            foreach (Transform arrow in GameObject.Find("ArrowPool").transform) {
+                ArrowPool.Add(arrow.gameObject);
+            }
+        }
+        myMR = GetComponent<MeshRenderer>();
     }
 
-    private void OnDrawGizmos()
-    {
+    private void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        if(gizmos)Gizmos.DrawWireSphere(transform.position, range);
     }
 
-    void Update()
-    {
-        if(Vector3.Distance(transform.position, target.position) <= 5)
-        {
-            Ray raio = new Ray(transform.position, target.position - transform.position);
-            Debug.DrawRay(raio.origin, raio.direction * 5, Color.red);
+    void Update() {
+        if (debugTarget) Debug.Log(target);
+        NullTargetCheck();
+        FoundTargetCheck();
+    }
 
-            RaycastHit hit;
-
-            if(Physics.Raycast(raio, out hit, 5))
-            {
-                if(hit.transform == target)
-                {
-                    transform.LookAt(target);
-
-                    if(arcoCD < Time.time)
-                    {
-                        arcoCD = Time.time + 0.5f;
-
-                        Vector3 posicaoAlvo = arco.position;
-                        Quaternion rotacaoAlvo = Quaternion.FromToRotation(Vector3.up, arco.forward);
-
-                        flecha = Instantiate(flechaPrefab, posicaoAlvo, rotacaoAlvo);
-                        flecha.GetComponent<Rigidbody>().AddForce(arco.forward * 500);
-                        Destroy(flecha, 2);
-                    }
+    void NullTargetCheck() {
+        if (target == null) {
+            myMR.material = myMaterials[0];
+            Collider[] hits = Physics.OverlapSphere(transform.position, range);
+            foreach (Collider hitted in hits) {
+                if (hitted.transform.CompareTag("Enemy")) {
+                    target = hitted.transform;
+                    break;
                 }
             }
         }
     }
+
+    void FoundTargetCheck() {
+        if (target != null) {
+            if (Vector3.Distance(target.position, transform.position) > range) target = null;
+            myMR.material = myMaterials[1];
+
+            if (tempoPassado >= arcoCD) {
+                tempoPassado = 0;
+
+                GameObject tempArrow = ArrowPool[0];
+                tempArrow.SetActive(true);
+                tempArrow.transform.position = transform.position;
+                tempArrow.transform.SetParent(dynamicObjects);
+                ArrowPool.Remove(tempArrow);
+
+                tempArrow.transform.LookAt(target.position);
+                tempArrow.GetComponent<Rigidbody>().AddForce(tempArrow.transform.forward * 1000);
+                StartCoroutine(ReturnArrows(tempArrow));
+            }
+
+            tempoPassado += Time.deltaTime;
+        }
+    }
+
+    IEnumerator ReturnArrows(GameObject arrow) {
+        yield return new WaitForSeconds(3);
+        arrow.transform.SetParent(GameObject.Find("ArrowPool").transform);
+        arrow.gameObject.SetActive(false);
+    }
+
+    #region ULTRA-IMPORTANT J2 - PARA O CALIFE
+    /*
+                                     Z             
+                               Z                   
+                .,.,        z           
+              (((((())    z             
+             ((('_  _`) '               
+             ((G   \ |)                 
+            (((`   " ,                  
+             .((\.:~:          .--------------.    
+             __.| `"'.__      | \              |     
+            .~~   `---'   ~.    |  .             :     
+            /                `   |   `-.__________)     
+            |             ~       |  :             :   
+            |                     |  :  |              
+            |    _                |     |   [ ##   :   
+            \    ~~-.            |  ,   oo_______.'   
+            `_   ( \) _____/~~~~ `--___              
+            | ~`-)  ) `-.   `---   ( - a:f -         
+            |   '///`  | `-.                         
+            |     | |  |    `-.                      
+            |     | |  |       `-.                   
+            |     | |\ |                             
+            |     | | \|                             
+            `-.  | |  |                             
+              `-| '
+ */
+    #endregion
 }
