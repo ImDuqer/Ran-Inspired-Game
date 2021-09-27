@@ -109,7 +109,7 @@ public class IAArqueiroTeste : MonoBehaviour
     IEnumerator ReturnArrows(GameObject arrow) {
         yield return new WaitForSeconds(3);
         arrow.transform.SetParent(GameObject.Find("ArrowPool").transform);
-        arrow.gameObject.SetActive(false);
+        arrow.SetActive(false);
         ArrowPool.Add(arrow);
 
     }
