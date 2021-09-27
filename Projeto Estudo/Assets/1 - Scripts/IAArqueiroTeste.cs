@@ -19,7 +19,7 @@ public class IAArqueiroTeste : MonoBehaviour
     public static List<GameObject> ArrowPool = new List<GameObject>();
     public static bool filledPool;
 
-
+    bool enemyCheck;
 
     Transform dynamicObjects;
 
@@ -62,6 +62,10 @@ public class IAArqueiroTeste : MonoBehaviour
 
     void FoundTargetCheck() {
         if (target != null) {
+
+            
+
+
             if (Vector3.Distance(target.position, transform.position) > range) target = null;
             myMR.material = myMaterials[1];
 
@@ -79,6 +83,25 @@ public class IAArqueiroTeste : MonoBehaviour
                 StartCoroutine(ReturnArrows(tempArrow));
             }
 
+
+            #region 
+            enemyCheck = false;
+
+
+            Collider[] hits = Physics.OverlapSphere(transform.position, range);
+            foreach (Collider hitted in hits) {
+                if (hitted.transform.CompareTag("Enemy")) {
+                    enemyCheck = true;
+                    break;
+                }
+            }
+
+            if (!enemyCheck) target = null;
+
+            #endregion
+
+
+
             tempoPassado += Time.deltaTime;
         }
     }
@@ -87,6 +110,8 @@ public class IAArqueiroTeste : MonoBehaviour
         yield return new WaitForSeconds(3);
         arrow.transform.SetParent(GameObject.Find("ArrowPool").transform);
         arrow.gameObject.SetActive(false);
+        ArrowPool.Add(arrow);
+
     }
 
     #region ULTRA-IMPORTANT J2 - PARA O CALIFE

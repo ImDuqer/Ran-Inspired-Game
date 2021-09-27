@@ -18,6 +18,7 @@ public class EnemySpawner : MonoBehaviour {
     bool aboutToEnd;
     Transform EnemiesPool;
     [SerializeField] GameObject rewardPanel;
+    int enemiesPoolSize;
     
     void Awake() {
         EnemiesPool = GameObject.Find("EnemiesPool").transform;
@@ -25,6 +26,7 @@ public class EnemySpawner : MonoBehaviour {
         foreach (Transform enemy in EnemiesPool) {
             EnemyPool.Add(enemy.gameObject);
         }
+        enemiesPoolSize = EnemyPool.Count;
     }
 
     void Update() {
@@ -32,7 +34,7 @@ public class EnemySpawner : MonoBehaviour {
             startedSpawning = true;
             StartCoroutine(Spawning());
         }
-        if (aboutToEnd && EnemiesPool.childCount >= 11) {
+        if (aboutToEnd && EnemiesPool.childCount >= enemiesPoolSize) {
             currentWave++;
             currentGamePhase = GamePhase.REWARD_PHASE;
             rewardPanel.SetActive(true);
