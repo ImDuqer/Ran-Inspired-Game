@@ -19,7 +19,9 @@ public class EnemySpawner : MonoBehaviour {
     Transform EnemiesPool;
     [SerializeField] GameObject rewardPanel;
     int enemiesPoolSize;
-    
+    public GameObject GameplayCanvas;
+    public GameObject DialogueCanvas;
+
     void Awake() {
         EnemiesPool = GameObject.Find("EnemiesPool").transform;
         currentGamePhase = GamePhase.SETUP_PHASE;
@@ -47,8 +49,17 @@ public class EnemySpawner : MonoBehaviour {
 
     public void EndReward() {
         currentGamePhase = GamePhase.SETUP_PHASE;
+        StartDialogue();
         ResourceTracker.POINTS += 5;
     }
+
+    void StartDialogue() {
+        GameplayCanvas.SetActive(false);
+        DialogueCanvas.SetActive(true);
+        CameraPanning.shouldPanCamera = false;
+    }
+
+
 
     IEnumerator Spawning() {
         yield return new WaitForSeconds(1);
