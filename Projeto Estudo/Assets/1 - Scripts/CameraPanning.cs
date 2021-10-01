@@ -7,7 +7,10 @@ public class CameraPanning : MonoBehaviour
     [SerializeField] float panSpeed;
     [SerializeField] float panBorderThickness;
     [SerializeField] Vector2 panLimit;
+    [SerializeField] Transform CamHighPos;
+    [SerializeField] Transform CamLowPos;
     public static bool shouldPanCamera;
+    bool zoom = false;
     Vector3 pos;
     void Start() {
         shouldPanCamera = true;
@@ -31,6 +34,34 @@ public class CameraPanning : MonoBehaviour
 
             transform.position = pos;
         }
+        if (Input.GetKeyDown(KeyCode.F12)) {
+            ChangeZoom();
+        }
+
+        if (zoom) {
+            if (shouldPanCamera) {
+                CamLowPos.position = transform.position;
+                CamLowPos.rotation = transform.rotation;
+            }
+
+            shouldPanCamera = false;
+            
+            Zoom(CamHighPos);
+        }
+        else if (!shouldPanCamera) {
+            Zoom(CamLowPos);
+            if(Vector3.Distance(transform.position, CamLowPos.position) <= 0.08f) {
+                transform.position = CamLowPos.position;
+                shouldPanCamera = true;
+            }
+        }
     }
-    
+    public void ChangeZoom() {
+
+        zoom = !zoom;
+    }
+    void Zoom(Transform destination) {
+        transform.position = Vector3.Lerp(transform.position, destination.position, Time.deltaTime * 4);
+        transform.rotation = Quaternion.Lerp(transform.rotation, destination.rotation, Time.deltaTime * 4);
+    }
 }
