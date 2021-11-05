@@ -20,7 +20,7 @@ public class CameraPanning : MonoBehaviour
 
     
     void Update() {
-        Debug.Log("panPercent (" + panPercent + ") = posX (" + Mathf.Abs(pos.x + 1140) + ") * 100 / 70");
+        //Debug.Log("panPercent (" + panPercent + ") = posX (" + Mathf.Abs(pos.x + 1140) + ") * 100 / 70");
         if (shouldPanCamera) {
             if (Input.mousePosition.y >= Screen.height - panBorderThickness) {
                 pos.x -= panSpeed * Time.deltaTime;

@@ -1,0 +1,874 @@
+fileFormatVersion: 2
+guid: 6cc365e603d6f6248851667375e91ce6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 692948541368645935
+    second: Scroll_Green_Base
+  - first:
+      213: -5876011785750969272
+    second: Scroll_Green_Paper
+  - first:
+      213: 1070741629603420301
+    second: Scroll_Pink_Paper
+  - first:
+      213: -6273777605553010411
+    second: Page_Scroll_Base
+  - first:
+      213: -4359072183509322738
+    second: Range_Minus
+  - first:
+      213: -8476488231167466382
+    second: Range_Base
+  - first:
+      213: -78819904795943841
+    second: Nob_Blue
+  - first:
+      213: 1427916921134520132
+    second: Nob_Red
+  - first:
+      213: -7676962969813963253
+    second: Nob_Green
+  - first:
+      213: -5542343463638412191
+    second: Range_Plus
+  - first:
+      213: -6778585381444721427
+    second: Arrow_Blue
+  - first:
+      213: -5820592473489639733
+    second: Arrow_Green
+  - first:
+      213: 3905643846897637460
+    second: Arrow_Red
+  - first:
+      213: -8071058399312422728
+    second: Page_Scroll_Dot
+  - first:
+      213: 7068372800787675671
+    second: Button_Red
+  - first:
+      213: -4764753657896350841
+    second: Button_Green
+  - first:
+      213: -5294134041227998081
+    second: Checkmark_Empty
+  - first:
+      213: 6736312636930056181
+    second: Checkmark_mark
+  - first:
+      213: -7371156327972280243
+    second: Button_Inscroll_2
+  - first:
+      213: 5315593109371472538
+    second: Scroll_Blue_Base
+  - first:
+      213: -623330193342331959
+    second: Scroll_Blue_Paper
+  - first:
+      213: -1986975517405949011
+    second: Scroll_Blue_Fancy
+  - first:
+      213: 7473523250748012527
+    second: Ui_elements_63
+  - first:
+      213: -994348408184025164
+    second: Scroll_Green_Fancy
+  - first:
+      213: -8029059278230931800
+    second: Ui_elements_65
+  - first:
+      213: -295463524398497208
+    second: Ui_elements_66
+  - first:
+      213: 2460474803316736047
+    second: Settings_Portrait
+  - first:
+      213: -3065647391313081145
+    second: Ui_elements_68
+  - first:
+      213: -1545517573343760769
+    second: Button_Inscroll_1
+  - first:
+      213: 3604493769089210969
+    second: Scroll_Pink_Fancy
+  - first:
+      213: -8800320550895981851
+    second: Scroll_Pink_Base
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Scroll_Green_Base
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 2139
+        width: 80
+        height: 340
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2937e7e609dd9900800000000000000
+      internalID: 692948541368645935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scroll_Green_Paper
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 2170
+        width: 639
+        height: 275
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8440e4ec966347ea0800000000000000
+      internalID: -5876011785750969272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scroll_Pink_Paper
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 2166
+        width: 634
+        height: 277
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d881cbec6d90cde00800000000000000
+      internalID: 1070741629603420301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Page_Scroll_Base
+      rect:
+        serializedVersion: 2
+        x: 1822
+        y: 1576
+        width: 61
+        height: 825
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5194635f1801fe8a0800000000000000
+      internalID: -6273777605553010411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Range_Minus
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 2042
+        width: 63
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e04f3a7c1f67183c0800000000000000
+      internalID: -4359072183509322738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Range_Base
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 2012
+        width: 1083
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -541.5, y: -40}
+        - {x: -541.5, y: 40}
+        - {x: -503.5, y: 40}
+        - {x: -501.5, y: 4}
+        - {x: -93.5, y: 0}
+        - {x: 172.5, y: 0}
+        - {x: 496.5, y: 12}
+        - {x: 497.5, y: 40}
+        - {x: 541.5, y: 40}
+        - {x: 541.5, y: -40}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 274eb763dd67d5a80800000000000000
+      internalID: -8476488231167466382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nob_Blue
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 2056
+        width: 63
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5c5865d6b9f7eef0800000000000000
+      internalID: -78819904795943841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nob_Red
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 2055
+        width: 63
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4471ef4dfdaf0d310800000000000000
+      internalID: 1427916921134520132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nob_Green
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 2056
+        width: 63
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0e296e6ad2f57590800000000000000
+      internalID: -7676962969813963253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Range_Plus
+      rect:
+        serializedVersion: 2
+        x: 1535
+        y: 2016
+        width: 66
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 164df920cf3a513b0800000000000000
+      internalID: -5542343463638412191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrow_Blue
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 1982
+        width: 77
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de4e4539280ade1a0800000000000000
+      internalID: -6778585381444721427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrow_Green
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 1982
+        width: 80
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc67653fbf9193fa0800000000000000
+      internalID: -5820592473489639733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrow_Red
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 1979
+        width: 77
+        height: 79
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4581681c262a33630800000000000000
+      internalID: 3905643846897637460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Page_Scroll_Dot
+      rect:
+        serializedVersion: 2
+        x: 1733
+        y: 1973
+        width: 70
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b8dc8be527ddff80800000000000000
+      internalID: -8071058399312422728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Red
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 1780
+        width: 416
+        height: 202
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71a7bfacc97e71260800000000000000
+      internalID: 7068372800787675671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Green
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 1777
+        width: 420
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78b48dafac130edb0800000000000000
+      internalID: -4764753657896350841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkmark_Empty
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1822
+        width: 109
+        height: 117
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7c4d4793257786b0800000000000000
+      internalID: -5294134041227998081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Checkmark_mark
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1831
+        width: 85
+        height: 133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ffd03c17a03c7d50800000000000000
+      internalID: 6736312636930056181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Inscroll_2
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1664
+        width: 503
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d48e65faf5464b990800000000000000
+      internalID: -7371156327972280243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scroll_Blue_Base
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 1448
+        width: 78
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9ac99e05c7c4c940800000000000000
+      internalID: 5315593109371472538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scroll_Blue_Paper
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 1475
+        width: 634
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c30e00ed7c7957f0800000000000000
+      internalID: -623330193342331959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scroll_Blue_Fancy
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 1064
+        width: 78
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da3de9b5b48dc64e0800000000000000
+      internalID: -1986975517405949011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ui_elements_63
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 1091
+        width: 634
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe73575dcc947b760800000000000000
+      internalID: 7473523250748012527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scroll_Green_Fancy
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 1058
+        width: 79
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bf473b146d5332f0800000000000000
+      internalID: -994348408184025164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ui_elements_65
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 1083
+        width: 639
+        height: 278
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a6bd70502d039090800000000000000
+      internalID: -8029059278230931800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ui_elements_66
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 681
+        width: 638
+        height: 343
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84284207d7d46ebf0800000000000000
+      internalID: -295463524398497208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Settings_Portrait
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 17
+        width: 1487
+        height: 1025
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f204e762ccc552220800000000000000
+      internalID: 2460474803316736047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ui_elements_68
+      rect:
+        serializedVersion: 2
+        x: 2291
+        y: 82
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cc4e2aa0f1a475d0800000000000000
+      internalID: -3065647391313081145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Button_Inscroll_1
+      rect:
+        serializedVersion: 2
+        x: 1177
+        y: 1814
+        width: 533
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7ea8be94f73d8ae0800000000000000
+      internalID: -1545517573343760769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scroll_Pink_Fancy
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 682
+        width: 75
+        height: 342
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95adbad4cfbb50230800000000000000
+      internalID: 3604493769089210969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scroll_Pink_Base
+      rect:
+        serializedVersion: 2
+        x: 761
+        y: 2134
+        width: 76
+        height: 345
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ea6646c51bfed580800000000000000
+      internalID: -8800320550895981851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
