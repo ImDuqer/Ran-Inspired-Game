@@ -5,11 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyBase : MonoBehaviour {
 
-    [HideInInspector] public byte currentWalkPoint;
     FSMWalkPath myFP;
     int HP = 3;
     void Start() {
-        currentWalkPoint = 0;
         FSMSequence myPath = new FSMSequence();
         myFP = new FSMWalkPath();
         myPath.sequence.Add(myFP);
