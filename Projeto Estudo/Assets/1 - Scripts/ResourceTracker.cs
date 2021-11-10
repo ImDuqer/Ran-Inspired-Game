@@ -9,6 +9,8 @@ public class ResourceTracker : MonoBehaviour {
     public static int CURRENT_POPULATION;
     public static int MAX_POPULATION;
     public static int POINTS;
+    public static int WAVE;
+    public static int WEEK;
 
     [SerializeField] TextMeshProUGUI populationTMP;
     [SerializeField] TextMeshProUGUI pointsTMP;
