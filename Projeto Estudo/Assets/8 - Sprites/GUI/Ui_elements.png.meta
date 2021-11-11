@@ -95,6 +95,18 @@ TextureImporter:
   - first:
       213: -8800320550895981851
     second: Scroll_Pink_Base
+  - first:
+      213: 1429224050446125526
+    second: Scroll_Pink_Down
+  - first:
+      213: 2022744773215476789
+    second: Scroll_Pin_Fancy
+  - first:
+      213: -3139869065985255641
+    second: Scroll_Green_Drop
+  - first:
+      213: -9106898806103278324
+    second: Scroll_Green_Down
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -735,9 +747,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 121
-        y: 681
+        y: 715
         width: 638
-        height: 343
+        height: 275
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -852,6 +864,90 @@ TextureImporter:
       bones: []
       spriteID: 5ea6646c51bfed580800000000000000
       internalID: -8800320550895981851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scroll_Pink_Down
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 0
+        width: 276
+        height: 631
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9494793bf95d310800000000000000
+      internalID: 1429224050446125526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scroll_Pin_Fancy
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 631
+        width: 341
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53c59ce77ab321c10800000000000000
+      internalID: 2022744773215476789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scroll_Green_Drop
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 636
+        width: 341
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72716b068b1fc64d0800000000000000
+      internalID: -3139869065985255641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scroll_Green_Down
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 0
+        width: 274
+        height: 634
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0df8c849cbcd9180800000000000000
+      internalID: -9106898806103278324
       vertices: []
       indices: 
       edges: []
