@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
     [SerializeField] ScrollButtonController ContinueButton;
-    bool desicionMade = false;
+    [SerializeField] GameObject loadingPanel;
+    [SerializeField] GameObject settingsPanel;
+    public static bool desicionMade = false;
     private void Awake() {
         ResourceTracker.WEEK = 1;
         ResourceTracker.WAVE = 1;
@@ -22,30 +24,35 @@ public class MenuController : MonoBehaviour {
         desicionMade = true;
     }
     public void Continue() {
-        StartCoroutine(LoadSceneMethod(1));
+        if (!desicionMade) StartCoroutine(LoadSceneMethod(1));
         desicionMade = true;
     }
     public void Settings() {
+        settingsPanel.SetActive(true);
+        desicionMade = true;
+    }
+    public void SettingsBack() {
+        settingsPanel.SetActive(false);
         desicionMade = true;
     }
     public void Credits() {
-        StartCoroutine(LoadSceneMethod("credits"));
+        if (!desicionMade) StartCoroutine(LoadSceneMethod("credits"));
         desicionMade = true;
     }
     public void Quit() {
-        Application.Quit();
+        if (!desicionMade) Application.Quit();
         desicionMade = true;
     }
     IEnumerator LoadSceneMethod(string sceneString) {
-        if (!desicionMade) {
-            yield return new WaitForSeconds(0.5f);
-            SceneManager.LoadScene(sceneString);
-        }
+        yield return new WaitForSeconds(0.7f);
+        loadingPanel.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        SceneManager.LoadScene(sceneString);
     }
     IEnumerator LoadSceneMethod(int sceneIndex) {
-        if (!desicionMade) {
-            yield return new WaitForSeconds(0.5f);
-            SceneManager.LoadScene(sceneIndex);
-        }
+        yield return new WaitForSeconds(0.7f);
+        loadingPanel.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        SceneManager.LoadScene(sceneIndex);
     }
 }

@@ -14,15 +14,15 @@ public class ScrollButtonController : MonoBehaviour {
     }
 
     public void Hover() {
-        if (!blocked) myAnim.SetTrigger("hover");
+        if (!blocked && !MenuController.desicionMade) myAnim.SetTrigger("hover");
     }
 
     public void Unhover() {
-        if (!blocked) myAnim.SetTrigger("unhover");
+        if (!blocked && !MenuController.desicionMade) myAnim.SetTrigger("unhover");
     }
 
     public void Click() {
-        if (!blocked) myAnim.SetTrigger("click");
+        if (!blocked && !MenuController.desicionMade) myAnim.SetTrigger("click");
     }
 
 }
