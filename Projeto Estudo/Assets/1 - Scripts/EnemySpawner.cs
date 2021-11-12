@@ -2,25 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
 public enum GamePhase{SETUP_PHASE, ACTION_PHASE, REWARD_PHASE}
-
-
-
 public class EnemySpawner : MonoBehaviour {
+
     public static GamePhase currentGamePhase;
-    [SerializeField] Transform startPosition;
     public static int currentWave = 0;
+
+    public static int currentWeek = 0;
+
+    [SerializeField] Transform startPosition;
     [SerializeField] int[] WaveAmmount;
     [SerializeField] float timeBetweenSpawns = .5f;
-    List<GameObject> EnemyPool = new List<GameObject>();
-    bool startedSpawning;
-    bool aboutToEnd;
-    Transform EnemiesPool;
     [SerializeField] GameObject rewardPanel;
-    int enemiesPoolSize;
+
     public GameObject GameplayCanvas;
     public GameObject DialogueCanvas;
+
+    bool startedSpawning;
+    bool aboutToEnd;
+
+    List<GameObject> EnemyPool = new List<GameObject>();
+
+    Transform EnemiesPool;
+
+    int enemiesPoolSize;
+
+
 
     void Awake() {
         EnemiesPool = GameObject.Find("EnemiesPool").transform;
@@ -31,8 +38,14 @@ public class EnemySpawner : MonoBehaviour {
         enemiesPoolSize = EnemyPool.Count;
     }
 
+    void EndTutorial() {
+
+    }
+
     void Update() {
-        if(!startedSpawning && currentGamePhase == GamePhase.ACTION_PHASE) {
+        Debug.Log("currentwave" + currentWave);
+        Debug.Log("waveammount length" +  WaveAmmount.Length);
+        if (!startedSpawning && currentGamePhase == GamePhase.ACTION_PHASE) {
             startedSpawning = true;
             StartCoroutine(Spawning());
         }
@@ -44,12 +57,16 @@ public class EnemySpawner : MonoBehaviour {
         }
         if(currentGamePhase == GamePhase.REWARD_PHASE) {
             startedSpawning = false;
+            EndReward();
         }
     }
 
     public void EndReward() {
         currentGamePhase = GamePhase.SETUP_PHASE;
-        StartDialogue();
+        if (currentWave == WaveAmmount.Length) {
+            StartDialogue();
+            currentWave = 0;
+        }
         ResourceTracker.POINTS += 5;
     }
 

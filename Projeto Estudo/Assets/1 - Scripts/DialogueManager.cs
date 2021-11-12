@@ -26,12 +26,14 @@ public class DialogueManager : MonoBehaviour {
     bool skip = false;
     Coroutine writingCoroutine;
     string currentSentence;
+
+    [SerializeField] TextMeshProUGUI myWC;
     void Start() {
         
     }
 
     void OnEnable() {
-        story = new Story(inkFiles[EnemySpawner.currentWave - 1].text);
+        story = new Story(inkFiles[EnemySpawner.currentWeek].text);
         nametag = textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         message = textBox.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
         tags = new List<string>();
@@ -73,6 +75,8 @@ public class DialogueManager : MonoBehaviour {
         gameCanvas.SetActive(true);
         gameObject.SetActive(false);
         CameraPanning.shouldPanCamera = true;
+        myWC.text = "Week " + EnemySpawner.currentWeek;
+        myWC.GetComponent<Animator>().SetTrigger("showup");
     }
 
     
@@ -109,18 +113,23 @@ public class DialogueManager : MonoBehaviour {
         while (typing) {
             yield return null;
         }
+        if (story.currentChoices.Count == 2) {
+            List<Choice> _choices = story.currentChoices;
 
-        List<Choice> _choices = story.currentChoices;
+            for (int i = 0; i < _choices.Count; i++) {
+                choiceButtons[i].SetActive(true);
+                choiceButtons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _choices[i].text;
+                choiceButtons[i].GetComponent<Selectable>().element = _choices[i];
+                choiceButtons[i].GetComponent<Button>().onClick.AddListener(() => { choiceButtons[i].GetComponent<Selectable>().Decide(); });
+            }
 
-        for (int i = 0; i < _choices.Count; i++) {
-            choiceButtons[i].SetActive(true);
-            choiceButtons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _choices[i].text;
-            choiceButtons[i].GetComponent<Selectable>().element = _choices[i];
-            //choiceButtons[i].GetComponent<Button>().onClick.AddListener(() => { choiceButtons[i].GetComponent<Selectable>().Decide(); });
+            optionPanel.SetActive(true);
         }
-
-        optionPanel.SetActive(true);
-
+        else {
+            if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
+                story.ChooseChoiceIndex(0);
+            }
+        }
         yield return new WaitUntil(() => { return choiceSelected != null; });
 
         AdvanceFromDecision();

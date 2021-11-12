@@ -33,5 +33,9 @@ public class ResourceTracker : MonoBehaviour {
         MenuMessage.text = "Not enough points...";
         MenuMessageAnimator.SetTrigger("MessageTrigger");
     }
+    public void NotEnoughSpace() {
+        MenuMessage.text = "Not enough Population...";
+        MenuMessageAnimator.SetTrigger("MessageTrigger");
+    }
 
 }

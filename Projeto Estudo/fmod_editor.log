@@ -18,3 +18,41 @@
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSound                     : setdata soundi = 000001AF963FC248 : node = 000001B08973D0E0
+[LOG] SystemI::createSound                     : add node to async list : head = 000001B088CFA4F8.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001AF963FC248
+[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3447392
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 49184
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001B08973D1F0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Tutorial & Post Combat & Dialog', format=5, channels=2, frequency=48000, lengthbytes=531136, lengthpcm=2175200, pcmblocksize=0, loopstart=0, loopend=1843199, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.062744.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001AF963FC248
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001B0722CB488
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001B0722CB488
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001B0722CB488
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001B0722CB488
+[LOG] SoundI::release                          : Tutorial & Post Combat & Dialog (000001AFA795CAA8)
+[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (000001B085B88DC8)
+[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (000001AF9FC55778)
+[LOG] SoundI::release                          : Tutorial & Post Combat & Dialog (000001AF963FC248)
+[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (000001B085B888E8)
+[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (000001B0722CB488)
+[LOG] SoundI::release                          :  (000001AFA70AB558)
+[LOG] SoundI::release                          :     combat phase_TAIKO BASE (000001B085B87708)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.

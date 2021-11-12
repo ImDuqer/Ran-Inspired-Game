@@ -5,6 +5,7 @@ using TMPro;
 public class WaveCounter : MonoBehaviour {
 
     TextMeshProUGUI WaveText;
+    TextMeshProUGUI WeekText;
     bool updated;
     void Start() {
         WaveText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();

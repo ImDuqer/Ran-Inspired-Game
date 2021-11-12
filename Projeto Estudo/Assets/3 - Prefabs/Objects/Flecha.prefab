@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2687055022337869380}
   - component: {fileID: 7304864527090150564}
   - component: {fileID: 2327040447846036744}
+  - component: {fileID: 2843939613320472578}
   m_Layer: 11
   m_Name: Flecha
   m_TagString: Arrow
@@ -113,3 +114,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2843939613320472578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5306340946367731864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a5013e80bff25d46be2dccc8f289610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

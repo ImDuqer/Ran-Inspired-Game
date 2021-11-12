@@ -26,14 +26,14 @@ public class IAArqueiroTeste : MonoBehaviour
 
 
     void OnEnable() {
-        dynamicObjects = GameObject.Find("DynamicObjects").transform;
+        dynamicObjects = GameObject.Find("Dynamic Objects").transform;
         if (!filledPool) {
             filledPool = true;
             foreach (Transform arrow in GameObject.Find("ArrowPool").transform) {
                 ArrowPool.Add(arrow.gameObject);
             }
         }
-        myMR = GetComponent<MeshRenderer>();
+        myMR = transform.GetChild(3).GetComponent<MeshRenderer>();
     }
 
     private void OnDrawGizmos() {
@@ -76,10 +76,12 @@ public class IAArqueiroTeste : MonoBehaviour
                 tempArrow.SetActive(true);
                 tempArrow.transform.position = transform.position;
                 tempArrow.transform.SetParent(dynamicObjects);
-                ArrowPool.Remove(tempArrow);
 
-                tempArrow.transform.LookAt(target.position);
-                tempArrow.GetComponent<Rigidbody>().AddForce(tempArrow.transform.forward * 1000);
+                ArrowPool.Remove(tempArrow);
+                tempArrow.GetComponent<Arrow>().SetTarget(target.gameObject, this);
+                //tempArrow.transform.LookAt(target.position);
+                //tempArrow.GetComponent<Rigidbody>().AddForce(tempArrow.transform.forward * 1000);
+                target = null;
                 StartCoroutine(ReturnArrows(tempArrow));
             }
 
@@ -108,10 +110,14 @@ public class IAArqueiroTeste : MonoBehaviour
 
     IEnumerator ReturnArrows(GameObject arrow) {
         yield return new WaitForSeconds(3);
+        ReturnArrow(arrow);
+
+    }
+
+    public void ReturnArrow(GameObject arrow) {
         arrow.transform.SetParent(GameObject.Find("ArrowPool").transform);
         arrow.SetActive(false);
         ArrowPool.Add(arrow);
-
     }
 
     #region ULTRA-IMPORTANT J2 - PARA O CALIFE

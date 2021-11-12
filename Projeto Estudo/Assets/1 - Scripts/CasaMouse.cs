@@ -10,7 +10,7 @@ public class CasaMouse : MonoBehaviour
 
     private void Start()
     {
-        MenuConstrucao.SetActive(false);
+        //MenuConstrucao.SetActive(false);
     }
     void Update()
     {

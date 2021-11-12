@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ConstructionMode : MonoBehaviour {
 
-    [SerializeField] GameObject[] ArcherStands;
+    GameObject[] ArcherStands;
     [SerializeField] GameObject[] ShooterStands;
     [SerializeField] GameObject[] ConstructionStands;
     bool onConstruction = false;
     bool CC = false;
     bool AC = false;
-    void Start() {
-        
+    void Awake() {
+        ArcherStands = GameObject.FindGameObjectsWithTag("Archer");
     }
 
     void Update() {

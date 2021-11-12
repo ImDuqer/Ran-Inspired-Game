@@ -8,12 +8,13 @@ public class ArcherStand : MonoBehaviour {
 
     ResourceTracker myRT;
 
-    MeshRenderer myMR;
-    Collider myC;
+    [SerializeField] MeshRenderer myMR;
+    [SerializeField] Collider myC;
     Transform spawnParent;
     void Start() {
         myRT = GameObject.Find("ResourcesBox").GetComponent<ResourceTracker>();
-        spawnParent = GameObject.Find("DynamicObjects").transform;
+        spawnParent = GameObject.Find("Dynamic Objects").transform;
+        gameObject.SetActive(false);
     }
 
     void OnEnable() {
@@ -24,18 +25,21 @@ public class ArcherStand : MonoBehaviour {
     void OnMouseOver() {
         transform.GetChild(0).transform.gameObject.SetActive(true);
         if (Input.GetMouseButtonDown(0)) {
-            if(ResourceTracker.POINTS >= archerCost) {
-                ResourceTracker.POINTS -= archerCost;
-                myMR.enabled = false;
-                myC.enabled = false;
-                transform.GetChild(1).gameObject.SetActive(true);
-                transform.GetChild(0).gameObject.SetActive(false);
-                transform.GetChild(1).SetParent(spawnParent);
-                ResourceTracker.CURRENT_POPULATION++;
+            if (ResourceTracker.MAX_POPULATION >= ResourceTracker.CURRENT_POPULATION + 1) {
+                if (ResourceTracker.POINTS >= archerCost) {
+                    ResourceTracker.POINTS -= archerCost;
+                    myMR.enabled = false;
+                    myC.enabled = false;
+                    transform.GetChild(2).gameObject.SetActive(true);
+                    transform.GetChild(0).gameObject.SetActive(false);
+                    transform.GetChild(2).SetParent(spawnParent);
+                    ResourceTracker.CURRENT_POPULATION++;
+                }
+                else {
+                    myRT.NotEnoughPoints();
+                }
             }
-            else {
-                myRT.NotEnoughPoints();
-            }
+            else myRT.NotEnoughSpace();
         }
     }
     
