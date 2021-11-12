@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{378ed93f-0fad-4aca-a919-7b44bfda5757}">
+		<property name="name">
+			<value>Restart Loop</value>
+		</property>
+		<relationship name="folder">
+			<destination>{41d356af-27d9-4889-bf27-5c6c2d84bea6}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{e3dad721-4400-4cad-8b46-d31ed65895e4}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{e3dad721-4400-4cad-8b46-d31ed65895e4}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
