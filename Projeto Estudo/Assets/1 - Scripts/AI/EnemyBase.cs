@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+//Adicionei
+using UnityEngine.UI;
 
 public class EnemyBase : MonoBehaviour {
 
     FSMWalkPath myFP;
+
+    //Adicionei
+    public Slider vidaCastelo;
     int HP = 3;
     void Start() {
         FSMSequence myPath = new FSMSequence();
@@ -33,6 +38,8 @@ public class EnemyBase : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
         if (other.transform.CompareTag("Castle")) {
             EnemyReset(false);
+            //Adicionei
+            vidaCastelo.value -= 2;
         }
     }
     void EnemyReset(bool points) {
