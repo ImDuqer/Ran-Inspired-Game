@@ -21,44 +21,63 @@ public class DialogueManager : MonoBehaviour {
     TextMeshProUGUI nametag;
     string _nameTag = " ";
     TextMeshProUGUI message;
-    List<string> tags;
+    string spriteTags;
+    string charTags;
     static Choice choiceSelected;
     bool skip = false;
     Coroutine writingCoroutine;
     string currentSentence;
+    bool waitingForContinue = false;
 
     [SerializeField] TextMeshProUGUI myWC;
-    void Start() {
-        
-    }
+
+    bool[] Shown = new bool[9];
+
+
 
     void OnEnable() {
+        //Debug.Log(EnemySpawner.currentWeek);
+        for (int i = 0; i < Shown.Length; i++) {
+            Shown[i] = false;
+        }
         story = new Story(inkFiles[EnemySpawner.currentWeek].text);
         nametag = textBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         message = textBox.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-        tags = new List<string>();
         choiceSelected = null;
+        //ParseTags();
         DoDialog();
     }
 
-    private void Update() {
+    void Update() {
+        if (waitingForContinue) {
+
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
+                //Debug.Log("ShouldHaveContinued");
+                choiceSelected = story.currentChoices[0];
+                story.ChooseChoiceIndex(0);
+                waitingForContinue = false;
+            }
+        }
         if (typing && Input.GetMouseButtonDown(0) && writingCoroutine != null) {
+
+            Debug.Log("Bbb-");
             typing = false;
             StopCoroutine(writingCoroutine);
             writingCoroutine = null;
             message.text = currentSentence;
-            typing = false;
         }
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !typing) {
+        else if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !typing) {
+            Debug.Log("Ccc-");
             DoDialog();
         }
-
+        //Debug.Log("waiting? " + waitingForContinue);
     }
+
+
 
     void DoDialog() {
         //Is there more to the story?
         if (story.canContinue) {
-            nametag.text = _nameTag;
             AdvanceDialogue();
 
             //Are there any choices?
@@ -71,69 +90,96 @@ public class DialogueManager : MonoBehaviour {
         }
     }
 
-    private void FinishDialogue() {
+    void FinishDialogue() {
+        for (int i = 0; i < Shown.Length; i++) {
+            Shown[i] = false;
+        }
         gameCanvas.SetActive(true);
         gameObject.SetActive(false);
         CameraPanning.shouldPanCamera = true;
         myWC.text = "Week " + EnemySpawner.currentWeek;
-        myWC.GetComponent<Animator>().SetTrigger("showup");
+        myWC.transform.parent.GetComponent<Animator>().SetTrigger("showup");
+
     }
 
     
     void AdvanceDialogue() {
-        currentSentence = story.Continue();
-        ParseTags();
-        StopAllCoroutines();
-        writingCoroutine = StartCoroutine(TypeSentence(currentSentence));
+        choiceSelected = null;
+        if (story.canContinue) {
+            currentSentence = story.Continue();
+            if(story.currentTags.Count != 0) ParseTags();
+            StopAllCoroutines();
+            writingCoroutine = StartCoroutine(TypeSentence(currentSentence));
+        }
+        else { 
+            FinishDialogue();
+        }
+    }
+
+    void SkipAnwser() {
+        //Debug.Log("Can story continue? " + story.canContinue);
+        if (story.canContinue) {
+            currentSentence = story.Continue();
+        }
+        AdvanceDialogue();
+        if (story.currentChoices.Count != 0) {
+            StartCoroutine(ShowChoices());
+        }
     }
 
 
     IEnumerator TypeSentence(string sentence) {
+        
         typing = true;
         message.text = "";
         yield return null;
 
         foreach (char letter in sentence.ToCharArray()) {
+            Debug.Log("Aaa-");
             message.text += letter;
             yield return new WaitForSeconds(0.08f);
         }
 
-        //SpriteControllerScript tempSpeaker = GameObject.FindObjectOfType<SpriteControllerScript>();
-        //if (tempSpeaker.isTalking) {
-        //    SetAnimation("idle");
-        //}
+
         typing = false;
         yield return null;
     }
 
 
     IEnumerator ShowChoices() {
-        Debug.Log("There are choices need to be made here!");
+        //Debug.Log("story.currentChoices.Count == 2? " + story.currentChoices.Count);
 
+        choiceSelected = null;
         while (typing) {
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
         if (story.currentChoices.Count == 2) {
+
+            //Debug.Log("Should have showed options");
+
             List<Choice> _choices = story.currentChoices;
 
+            optionPanel.SetActive(true);
             for (int i = 0; i < _choices.Count; i++) {
                 choiceButtons[i].SetActive(true);
                 choiceButtons[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _choices[i].text;
                 choiceButtons[i].GetComponent<Selectable>().element = _choices[i];
-                choiceButtons[i].GetComponent<Button>().onClick.AddListener(() => { choiceButtons[i].GetComponent<Selectable>().Decide(); });
+                //choiceButtons[i].GetComponent<Button>().onClick.AddListener(() => { choiceButtons[i].GetComponent<Selectable>().Decide(); });
             }
 
-            optionPanel.SetActive(true);
         }
         else {
-            if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
-                story.ChooseChoiceIndex(0);
-            }
+            //Debug.Log("Should have updated bool");
+
+            Debug.Log("Ddd-");
+            waitingForContinue = true;
         }
         yield return new WaitUntil(() => { return choiceSelected != null; });
 
         AdvanceFromDecision();
     }
+
+
 
     // Tells the story which branch to go to
     public static void SetDecision(object element) {
@@ -143,51 +189,150 @@ public class DialogueManager : MonoBehaviour {
 
     // After a choice was made, turn off the panel and advance from that choice
     void AdvanceFromDecision() {
-        for (int i = 0; i < optionPanel.transform.childCount; i++) {
-            choiceButtons[i].SetActive(false);
+        if (optionPanel.activeSelf) {
+            for (int i = 0; i < optionPanel.transform.childCount; i++) {
+                choiceButtons[i].SetActive(false);
+            }
+            optionPanel.SetActive(false);
+            choiceSelected = null;
+            SkipAnwser();
         }
-        optionPanel.SetActive(false);
-        choiceSelected = null; // Forgot to reset the choiceSelected. Otherwise, it would select an option without player intervention.
-        AdvanceDialogue();
+        else {
+            choiceSelected = null;
+
+            AdvanceDialogue();
+        }
     }
 
     /*** Tag Parser ***/
     /// In Inky, you can use tags which can be used to cue stuff in a game.
     /// This is just one way of doing it. Not the only method on how to trigger events. 
     void ParseTags() {
-        tags = story.currentTags;
-        foreach (string t in tags) {
-            string prefix = t.Split(' ')[0];
-            string param = t.Split(' ')[1];
-            foreach(GameObject character in characters) {
-                if (character.activeSelf) {
-                    Animator animator = character.GetComponent<Animator>();
-                    if (CheckAnim("TurnOnSprite", animator) || CheckAnim("FirstPopUp1", animator) || CheckAnim("FirstPopUp2", animator)) animator.SetTrigger("TurnOff");
-                }
-            }
-            switch (prefix.ToLower()) {
-                case "char":
-                    SetChar(param);
-                    break;
-            }
-        }
-    }
+        charTags = story.currentTags[0];
+        spriteTags = story.currentTags[1];
 
-    bool CheckAnim(string name, Animator animator) {
-        return animator.GetCurrentAnimatorStateInfo(0).IsName(name);
-    }
+        string spriteParam = spriteTags.Split(' ')[1];
+        string charParam = charTags.Split(' ')[1];
 
+
+        SetChar(charParam); 
+        SetSprite(spriteParam);
+
+    }
 
     void SetChar(string _char) {
         switch (_char) {
-            case "Mae":
-                _nameTag = "Mãe da Kaede";
-                UpdateAnimation(characters[0]);
+            case "Sato":
+                _nameTag = "Minsei Sato";
                 break;
 
-            case "Conselheiro":
+            case "conselheiro":
                 _nameTag = "Conselheiro";
+                break;
+
+            case "Takashi":
+                _nameTag = "Minsei Takashi";
+                break;
+
+            case "soldado":
+                _nameTag = "Soldado do clã Minsei";
+                break;
+
+            case "soldado1":
+                _nameTag = "2° Soldado do clã Minsei";
+                break;
+
+            case "soldado2":
+                _nameTag = "3° Soldado do clã Minsei";
+                break;
+
+            case "Kaede":
+                _nameTag = "Kaede";
+                break;
+
+            case "nada":
+                _nameTag = " ";
+                break;
+
+            case "Hidetora":
+                _nameTag = "Ichimonji Hidetora";
+                break;
+
+            case "soldadoInimigo":
+                _nameTag = "Soldado do clã Ichimonji";
+                break;
+
+            case "conselheiroHidetora":
+                _nameTag = "Conselheiro de Hidetora";
+                break;
+
+            default:
+                Debug.Log("Problema ao settar o char.");
+                break;
+        }
+
+        nametag.text = _nameTag;
+    }
+
+    void SetSprite(string _sprite) {
+        switch (_sprite) {
+            case "Sato":
+                UpdateAnimation(characters[0]);
+                Shown[0] = true;
+                break;
+
+            case "conselheiro":
                 UpdateAnimation(characters[1]);
+                Shown[1] = true;
+                break;
+
+            case "Takashi":
+                Animator animator = characters[2].GetComponent<Animator>();
+                if (Shown[2]) {
+                    animator.SetTrigger("TurnOn");
+                }
+                else {
+                    characters[2].SetActive(true);
+                    Shown[2] = true;
+                }
+                int i = -1;
+                foreach (bool b in Shown) {
+                    i++;
+                    if (b && i != 2 && (CheckAnim("TurnOnSprite", characters[i].GetComponent<Animator>()) || CheckAnim("FirstPopUp1", characters[i].GetComponent<Animator>()))) {
+                        Animator _animator = characters[i].GetComponent<Animator>();
+                        _animator.SetTrigger("TurnOff");
+                    }
+                }
+                break;
+
+            case "soldado":
+                UpdateAnimation(characters[3]);
+                Shown[3] = true;
+                break;
+
+            case "Kaede":
+                UpdateAnimation(characters[4]);
+                Shown[4] = true;
+                break;
+
+            case "nada":
+                UpdateAnimation(characters[5]);
+                Shown[5] = true;
+                break;
+
+            case "Hidetora":
+                UpdateAnimation(characters[6]);
+                Shown[6] = true;
+                break;
+
+            case "soldadoInimigo":
+                UpdateAnimation(characters[7]);
+                Shown[7] = true;
+                break;
+
+            case "conselheiroHidetora":
+                UpdateAnimation(characters[8]);
+                Shown[8] = true;
                 break;
 
             default:
@@ -204,8 +349,23 @@ public class DialogueManager : MonoBehaviour {
         else {
             animator.SetTrigger("TurnOn");
         }
+        int i = -1;
+        foreach (bool b in Shown) {
+            i++;
+            if (b && characters[i] != character && i != 2 && !CheckAnim("TurnFullOffSprite", characters[i].GetComponent<Animator>())) {
+                Animator _animator = characters[i].GetComponent<Animator>();
+                _animator.SetTrigger("TurnFullOff");
+            }
+            if(i == 2 && characters[2].GetComponent<Animator>().isActiveAndEnabled && !CheckAnim("TurnOffSprite", characters[i].GetComponent<Animator>())) {
+                characters[2].GetComponent<Animator>().SetTrigger("TurnOff");
+            }
+        }
     }
 
+
+    bool CheckAnim(string name, Animator animator) {
+        return animator.GetCurrentAnimatorStateInfo(0).IsName(name);
+    }
     #region
     void SetAnimation(string _name) {
         SpriteControllerScript cs = GameObject.FindObjectOfType<SpriteControllerScript>();

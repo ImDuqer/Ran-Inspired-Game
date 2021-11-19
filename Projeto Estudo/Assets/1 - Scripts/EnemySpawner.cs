@@ -43,8 +43,8 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     void Update() {
-        Debug.Log("currentwave" + currentWave);
-        Debug.Log("waveammount length" +  WaveAmmount.Length);
+        //Debug.Log("currentwave" + currentWave);
+        //Debug.Log("waveammount length" +  WaveAmmount.Length);
         if (!startedSpawning && currentGamePhase == GamePhase.ACTION_PHASE) {
             startedSpawning = true;
             StartCoroutine(Spawning());

@@ -19,7 +19,7 @@ public class FSMWalkPath : FSMNode{
         //Debug.Log("i: " + i);
         
         myNMA = fsm.transform.GetComponent<NavMeshAgent>();
-        Debug.Log("hasPath" + myNMA.hasPath);
+        //Debug.Log("hasPath" + myNMA.hasPath);
         //Debug.Log("PATH: " + Path.PATH);
         status = Status.RUNNING;
         destination = Path.PATH[i];

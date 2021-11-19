@@ -64,13 +64,16 @@ public class CameraPanning : MonoBehaviour
             }
         }
     }
+
     public void ChangeZoom() {
 
         zoom = !zoom;
     }
+
     void Zoom(Transform destination) {
         transform.SetPositionAndRotation(Vector3.Lerp(transform.position, destination.position, Time.deltaTime * 4), Quaternion.Lerp(transform.rotation, destination.rotation, Time.deltaTime * 4));
     }
+
     void CorrectHeight() {
 
         panPercent = (Mathf.Abs(pos.x + 1140) * 100) / 70;
