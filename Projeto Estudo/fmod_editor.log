@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x8000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 00000274AE989638 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 00000274AE9889A8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,32 +18,11 @@
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 000002749EB19F88 : node = 000002749DFE1C20
-[LOG] SystemI::createSound                     : add node to async list : head = 0000027498E29018.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000002749EB19F88
-[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3447392
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 49184
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000002749DFE1D30
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Tutorial & Post Combat & Dialog', format=5, channels=2, frequency=48000, lengthbytes=531136, lengthpcm=2175200, pcmblocksize=0, loopstart=0, loopend=1843199, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.062744.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000002749EB19F88
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 00000275747B14C8
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 00000275747B14C8
-[LOG] SoundI::release                          : Tutorial & Post Combat & Dialog (00000274BFE5CEE8)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (000002744B2129A8)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (00000274AFB38988)
-[LOG] SoundI::release                          : Tutorial & Post Combat & Dialog (000002749EB19F88)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (00000274AFA123E8)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (00000275747B14C8)
-[LOG] SoundI::release                          :  (00000274A1849388)
-[LOG] SoundI::release                          :     combat phase_TAIKO BASE (000002749D73A228)
+[LOG] SoundI::release                          : Tutorial & Post Combat & Dialog (0000027574ACFE18)
+[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000027574B38278)
+[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (00000274B8CB4B68)
+[LOG] SoundI::release                          :  (00000272824294A8)
+[LOG] SoundI::release                          :     combat phase_TAIKO BASE (00000275DBD52628)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients

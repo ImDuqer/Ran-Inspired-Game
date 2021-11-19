@@ -7,6 +7,9 @@ public class CameraPanning : MonoBehaviour
     [SerializeField] float panSpeed;
     [SerializeField] float panBorderThickness;
     [SerializeField] Vector2 panLimit;
+    [SerializeField] Vector2 xLimits;
+    [SerializeField] Vector2 yLimits;
+    [SerializeField] Vector2 zLimits;
     [SerializeField] Transform CamHighPos;
     [SerializeField] Transform CamLowPos;
     public static bool shouldPanCamera;
@@ -24,12 +27,28 @@ public class CameraPanning : MonoBehaviour
         if (shouldPanCamera) {
             if (Input.mousePosition.y >= Screen.height - panBorderThickness) {
                 pos.x -= panSpeed * Time.deltaTime;
-                CorrectHeight();
+                float MAXX = Mathf.Abs(xLimits.y) - Mathf.Abs(xLimits.x);
+                float CURX = Mathf.Abs(pos.x) - Mathf.Abs(xLimits.x);
+                float MAXY = Mathf.Abs(yLimits.y) - Mathf.Abs(yLimits.x);
+
+                pos.y = ((CURX * MAXY) / MAXX) + yLimits.x;
             }
 
             if (Input.mousePosition.y <= panBorderThickness) {
+
                 pos.x += panSpeed * Time.deltaTime;
-                CorrectHeight();
+                float MAXX = Mathf.Abs(xLimits.y) - Mathf.Abs(xLimits.x);
+                float CURX = Mathf.Abs(pos.x) - Mathf.Abs(xLimits.x);
+                float MAXY = Mathf.Abs(yLimits.y) - Mathf.Abs(yLimits.x);
+
+                pos.y = ((CURX * MAXY) / MAXX) + yLimits.x;
+
+
+
+                //pos.y = -((((xLimits.x - pos.x) * (yLimits.x - yLimits.y)) / xLimits.x - xLimits.y) - yLimits.x);
+
+
+                //Debug.Log(pos.y + " = " + (yLimits.y - yLimits.x) + " * " + Mathf.Abs(pos.x) + " / " + (Mathf.Abs(xLimits.y) + " - " + Mathf.Abs(xLimits.x)));
             }
 
             if (Input.mousePosition.x >= Screen.width - panBorderThickness) pos.z += panSpeed * Time.deltaTime;
@@ -37,8 +56,9 @@ public class CameraPanning : MonoBehaviour
             if (Input.mousePosition.x <= panBorderThickness) pos.z -= panSpeed * Time.deltaTime;
 
             //numeros subtraindo temporarios, referente ao centro do mapa na posição global
-            pos.x = Mathf.Clamp(pos.x, -1175 - panLimit.x, -1175 + panLimit.x);
-            pos.z = Mathf.Clamp(pos.z, 380 - panLimit.y, 380 + panLimit.y);
+            pos.x = Mathf.Clamp(pos.x, xLimits.y, xLimits.x);
+            pos.y = Mathf.Clamp(pos.y, yLimits.x, yLimits.y);
+            pos.z = Mathf.Clamp(pos.z, zLimits.x, zLimits.y);
 
             transform.position = pos;
         }
