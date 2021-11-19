@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 public enum GamePhase{SETUP_PHASE, ACTION_PHASE, REWARD_PHASE}
 public class EnemySpawner : MonoBehaviour {
 
@@ -10,13 +11,19 @@ public class EnemySpawner : MonoBehaviour {
 
     public static int currentWeek = 0;
 
+    [SerializeField] TextMeshProUGUI buttonPhase;
+    [SerializeField] GameObject waitPhase;
+
     [SerializeField] Transform startPosition;
     [SerializeField] int[] WaveAmmount;
     [SerializeField] float timeBetweenSpawns = .5f;
     [SerializeField] GameObject rewardPanel;
+    [SerializeField] Animator weekText;
 
     public GameObject GameplayCanvas;
     public GameObject DialogueCanvas;
+
+    float countdown = 61;
 
     bool startedSpawning;
     bool aboutToEnd;
@@ -43,9 +50,11 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     void Update() {
+        Debug.Log("Wait Phase:" + waitPhase);
         //Debug.Log("currentwave" + currentWave);
         //Debug.Log("waveammount length" +  WaveAmmount.Length);
         if (!startedSpawning && currentGamePhase == GamePhase.ACTION_PHASE) {
+            countdown = 61f;
             startedSpawning = true;
             StartCoroutine(Spawning());
         }
@@ -59,24 +68,48 @@ public class EnemySpawner : MonoBehaviour {
             startedSpawning = false;
             EndReward();
         }
+        if(currentGamePhase == GamePhase.SETUP_PHASE) {
+            
+            
+            countdown -= Time.deltaTime;
+            buttonPhase.text = "Start Next Wave (" + ((int)countdown).ToString() + "s)";
+            if (countdown <= 0) {
+                ActivateActionPhase();
+                countdown = 61f;
+            }
+
+        }
     }
 
     public void EndReward() {
-        currentGamePhase = GamePhase.SETUP_PHASE;
         if (currentWave == WaveAmmount.Length) {
-            StartDialogue();
             currentWave = 0;
+            currentWeek++;
+            CameraPanning.inDialogue = true;
+            StartDialogue();
+        }
+    }
+
+    public static int ReturnWave() {
+        return currentWave;
+    }
+
+    public void StartSetupPhase() {
+
+        currentGamePhase = GamePhase.SETUP_PHASE;
+        CameraPanning.inDialogue = false;
+        if (waitPhase.activeSelf) {
+            waitPhase.SetActive(false);
+            buttonPhase.transform.parent.gameObject.SetActive(true);
         }
         ResourceTracker.POINTS += 5;
     }
 
     void StartDialogue() {
+        CameraPanning.shouldPanCamera = false;
         GameplayCanvas.SetActive(false);
         DialogueCanvas.SetActive(true);
-        CameraPanning.shouldPanCamera = false;
     }
-
-
 
     IEnumerator Spawning() {
         yield return new WaitForSeconds(1);
@@ -94,5 +127,4 @@ public class EnemySpawner : MonoBehaviour {
     public static void ActivateActionPhase() {
         currentGamePhase = GamePhase.ACTION_PHASE;
     }
-
 }

@@ -5,25 +5,30 @@ using UnityEngine;
 public class ConstructionMode : MonoBehaviour {
 
     GameObject[] ArcherStands;
-    [SerializeField] GameObject[] ShooterStands;
-    [SerializeField] GameObject[] ConstructionStands;
+    GameObject[] TowerStands;
+    GameObject[] ConstructionStands;
     bool onConstruction = false;
     bool CC = false;
     bool AC = false;
+    bool TC = false;
     void Awake() {
         ArcherStands = GameObject.FindGameObjectsWithTag("Archer");
+        ConstructionStands = GameObject.FindGameObjectsWithTag("Construction");
+        TowerStands = GameObject.FindGameObjectsWithTag("Tower");
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.F10)) {
+        if (Input.GetKeyDown(KeyCode.F8)) {
             ToggleFastForward();
         }
         if (EnemySpawner.currentGamePhase == GamePhase.SETUP_PHASE) {
-            if (Input.GetKeyDown(KeyCode.F8)) {
-                if (CC) {
+            if (Input.GetKeyDown(KeyCode.F5)) {
+                if (CC || TC) {
                     TurnObj(ConstructionStands, false);
+                    TurnObj(TowerStands, false);
                     AC = true;
                     CC = false;
+                    TC = false;
                     TurnObj(ArcherStands, true);
                     onConstruction = true;
                     return;
@@ -37,10 +42,12 @@ public class ConstructionMode : MonoBehaviour {
                 TurnObj(ArcherStands, true);
                 onConstruction = true;
             }
-            if (Input.GetKeyDown(KeyCode.F9)) {
-                if (AC) {
+            if (Input.GetKeyDown(KeyCode.F6)) {
+                if (AC || TC) {
                     TurnObj(ArcherStands, false);
+                    TurnObj(TowerStands, false);
                     AC = false;
+                    TC = false;
                     CC = true;
                     TurnObj(ConstructionStands, true);
                     onConstruction = true;
@@ -55,13 +62,36 @@ public class ConstructionMode : MonoBehaviour {
                 TurnObj(ConstructionStands, true);
                 onConstruction = true;
             }
+            if (Input.GetKeyDown(KeyCode.F7)) {
+                if (AC || CC) {
+                    TurnObj(ConstructionStands, false);
+                    TurnObj(ArcherStands, false);
+                    TC = true;
+                    AC = false;
+                    CC = false;
+                    TurnObj(TowerStands, true);
+                    onConstruction = true;
+                    return;
+                }
+                if (onConstruction) {
+                    onConstruction = false;
+                    TurnObj(TowerStands, false);
+                    return;
+                }
+                CC = true;
+                TurnObj(TowerStands, true);
+                onConstruction = true;
+            }
+
         }
         else {
             AC = false;
             CC = false;
+            TC = false;
             onConstruction = false;
             TurnObj(ArcherStands, false);
             TurnObj(ConstructionStands, false);
+            TurnObj(TowerStands, false);
         }
     }
 

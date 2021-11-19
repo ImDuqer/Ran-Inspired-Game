@@ -13,7 +13,7 @@ public class CardsButton : MonoBehaviour {
 
     GameObject displayCard;
 
-    Transform[] cards = new Transform[8];
+    [HideInInspector] public Transform[] cards = new Transform[8];
     [SerializeField] int[] cardsAmmount = new int[8];
     GameObject firstCard;
     bool multipleCards = false;
@@ -29,7 +29,7 @@ public class CardsButton : MonoBehaviour {
     public static bool DAMAGEBUFF = false;
     public static bool PRICEBUFF = false;
     #endregion
-    void Start() {
+    void Awake() {
         cards = new Transform[8];
         cardsAmmount = new int[8];
         for (int j = 0; j < cardsHolder.childCount; j++) {
@@ -192,6 +192,14 @@ public class CardsButton : MonoBehaviour {
             if (playerCards[i] == displayCard) break;
         }
         displayCard.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = i.ToString();
+    }
+
+
+    public void BuyCard(GameObject go) {
+        int i;
+        i = go.GetComponent<CardChoice>().index;
+        cardsAmmount[i]++;
+        if (cardsAmmount[i] == 1) playerCards[i] = cards[i].gameObject;
     }
 
 

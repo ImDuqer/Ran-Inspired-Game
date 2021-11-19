@@ -60,14 +60,14 @@ public class DialogueManager : MonoBehaviour {
         }
         if (typing && Input.GetMouseButtonDown(0) && writingCoroutine != null) {
 
-            Debug.Log("Bbb-");
+            //Debug.Log("Bbb-");
             typing = false;
             StopCoroutine(writingCoroutine);
             writingCoroutine = null;
             message.text = currentSentence;
         }
         else if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !typing) {
-            Debug.Log("Ccc-");
+            //Debug.Log("Ccc-");
             DoDialog();
         }
         //Debug.Log("waiting? " + waitingForContinue);
@@ -97,8 +97,8 @@ public class DialogueManager : MonoBehaviour {
         gameCanvas.SetActive(true);
         gameObject.SetActive(false);
         CameraPanning.shouldPanCamera = true;
-        myWC.text = "Week " + EnemySpawner.currentWeek;
-        myWC.transform.parent.GetComponent<Animator>().SetTrigger("showup");
+        myWC.text = "Week " + (EnemySpawner.currentWeek+1);
+        //myWC.transform.parent.GetComponent<Animator>().SetTrigger("showup");
 
     }
 
@@ -135,7 +135,7 @@ public class DialogueManager : MonoBehaviour {
         yield return null;
 
         foreach (char letter in sentence.ToCharArray()) {
-            Debug.Log("Aaa-");
+            //.Log("Aaa-");
             message.text += letter;
             yield return new WaitForSeconds(0.08f);
         }
@@ -171,7 +171,7 @@ public class DialogueManager : MonoBehaviour {
         else {
             //Debug.Log("Should have updated bool");
 
-            Debug.Log("Ddd-");
+            // Debug.Log("Ddd-");
             waitingForContinue = true;
         }
         yield return new WaitUntil(() => { return choiceSelected != null; });

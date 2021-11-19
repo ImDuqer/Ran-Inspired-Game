@@ -13,7 +13,7 @@ public class ConstructionStand : MonoBehaviour {
     Transform spawnParent;
     void Start() {
         myRT = GameObject.Find("ResourcesBox").GetComponent<ResourceTracker>();
-        spawnParent = GameObject.Find("DynamicObjects").transform;
+        spawnParent = GameObject.Find("Dynamic Objects").transform;
     }
 
     void OnEnable() {
@@ -28,9 +28,9 @@ public class ConstructionStand : MonoBehaviour {
                 ResourceTracker.POINTS -= ConstructionCost;
                 myMR.enabled = false;
                 myC.enabled = false;
-                transform.GetChild(1).gameObject.SetActive(true);
+                transform.GetChild(2).gameObject.SetActive(true);
                 transform.GetChild(0).gameObject.SetActive(false);
-                transform.GetChild(1).SetParent(spawnParent);
+                transform.GetChild(2).SetParent(spawnParent);
                 ResourceTracker.MAX_POPULATION += 3;
             }
             else {

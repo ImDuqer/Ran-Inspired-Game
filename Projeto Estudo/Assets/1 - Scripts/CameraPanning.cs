@@ -13,6 +13,7 @@ public class CameraPanning : MonoBehaviour
     [SerializeField] Transform CamHighPos;
     [SerializeField] Transform CamLowPos;
     public static bool shouldPanCamera;
+    public static bool inDialogue = false;
     bool zoom = false;
     float panPercent;
     Vector3 pos;
@@ -42,20 +43,12 @@ public class CameraPanning : MonoBehaviour
                 float MAXY = Mathf.Abs(yLimits.y) - Mathf.Abs(yLimits.x);
 
                 pos.y = ((CURX * MAXY) / MAXX) + yLimits.x;
-
-
-
-                //pos.y = -((((xLimits.x - pos.x) * (yLimits.x - yLimits.y)) / xLimits.x - xLimits.y) - yLimits.x);
-
-
-                //Debug.Log(pos.y + " = " + (yLimits.y - yLimits.x) + " * " + Mathf.Abs(pos.x) + " / " + (Mathf.Abs(xLimits.y) + " - " + Mathf.Abs(xLimits.x)));
             }
 
             if (Input.mousePosition.x >= Screen.width - panBorderThickness) pos.z += panSpeed * Time.deltaTime;
 
             if (Input.mousePosition.x <= panBorderThickness) pos.z -= panSpeed * Time.deltaTime;
 
-            //numeros subtraindo temporarios, referente ao centro do mapa na posição global
             pos.x = Mathf.Clamp(pos.x, xLimits.y, xLimits.x);
             pos.y = Mathf.Clamp(pos.y, yLimits.x, yLimits.y);
             pos.z = Mathf.Clamp(pos.z, zLimits.x, zLimits.y);
@@ -76,7 +69,7 @@ public class CameraPanning : MonoBehaviour
             
             Zoom(CamHighPos);
         }
-        else if (!shouldPanCamera) {
+        else if (!shouldPanCamera && !inDialogue) {
             Zoom(CamLowPos);
             if(Vector3.Distance(transform.position, CamLowPos.position) <= 0.08f) {
                 transform.position = CamLowPos.position;
@@ -94,10 +87,4 @@ public class CameraPanning : MonoBehaviour
         transform.SetPositionAndRotation(Vector3.Lerp(transform.position, destination.position, Time.deltaTime * 4), Quaternion.Lerp(transform.rotation, destination.rotation, Time.deltaTime * 4));
     }
 
-    void CorrectHeight() {
-
-        panPercent = (Mathf.Abs(pos.x + 1140) * 100) / 70;
-        panPercent = Mathf.Clamp(panPercent, 1, 100);
-        pos.y = (panPercent * 31 / 100) + 27;
-    }
 }
