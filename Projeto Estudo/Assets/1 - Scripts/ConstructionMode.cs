@@ -23,64 +23,13 @@ public class ConstructionMode : MonoBehaviour {
         }
         if (EnemySpawner.currentGamePhase == GamePhase.SETUP_PHASE) {
             if (Input.GetKeyDown(KeyCode.F5)) {
-                if (CC || TC) {
-                    TurnObj(ConstructionStands, false);
-                    TurnObj(TowerStands, false);
-                    AC = true;
-                    CC = false;
-                    TC = false;
-                    TurnObj(ArcherStands, true);
-                    onConstruction = true;
-                    return;
-                }
-                if (onConstruction) {
-                    onConstruction = false;
-                    TurnObj(ArcherStands, false);
-                    return;
-                }
-                AC = true;
-                TurnObj(ArcherStands, true);
-                onConstruction = true;
+                ArcherButton();
             }
             if (Input.GetKeyDown(KeyCode.F6)) {
-                if (AC || TC) {
-                    TurnObj(ArcherStands, false);
-                    TurnObj(TowerStands, false);
-                    AC = false;
-                    TC = false;
-                    CC = true;
-                    TurnObj(ConstructionStands, true);
-                    onConstruction = true;
-                    return;
-                }
-                if (onConstruction) {
-                    onConstruction = false;
-                    TurnObj(ConstructionStands, false);
-                    return;
-                }
-                CC = true;
-                TurnObj(ConstructionStands, true);
-                onConstruction = true;
+                ConstructionButton();
             }
             if (Input.GetKeyDown(KeyCode.F7)) {
-                if (AC || CC) {
-                    TurnObj(ConstructionStands, false);
-                    TurnObj(ArcherStands, false);
-                    TC = true;
-                    AC = false;
-                    CC = false;
-                    TurnObj(TowerStands, true);
-                    onConstruction = true;
-                    return;
-                }
-                if (onConstruction) {
-                    onConstruction = false;
-                    TurnObj(TowerStands, false);
-                    return;
-                }
-                CC = true;
-                TurnObj(TowerStands, true);
-                onConstruction = true;
+                TowerButton();
             }
 
         }
@@ -104,4 +53,68 @@ public class ConstructionMode : MonoBehaviour {
             obj.SetActive(state);
         }
     }
+
+
+    public void ArcherButton() {
+        if (CC || TC) {
+            TurnObj(ConstructionStands, false);
+            TurnObj(TowerStands, false);
+            AC = true;
+            CC = false;
+            TC = false;
+            TurnObj(ArcherStands, true);
+            onConstruction = true;
+            return;
+        }
+        if (onConstruction) {
+            onConstruction = false;
+            TurnObj(ArcherStands, false);
+            return;
+        }
+        AC = true;
+        TurnObj(ArcherStands, true);
+        onConstruction = true;
+    }
+    public void ConstructionButton() {
+        if (AC || TC) {
+            TurnObj(ArcherStands, false);
+            TurnObj(TowerStands, false);
+            AC = false;
+            TC = false;
+            CC = true;
+            TurnObj(ConstructionStands, true);
+            onConstruction = true;
+            return;
+        }
+        if (onConstruction) {
+            onConstruction = false;
+            TurnObj(ConstructionStands, false);
+            return;
+        }
+        CC = true;
+        TurnObj(ConstructionStands, true);
+        onConstruction = true;
+    }
+    public void TowerButton() {
+        if (AC || CC) {
+            TurnObj(ConstructionStands, false);
+            TurnObj(ArcherStands, false);
+            TC = true;
+            AC = false;
+            CC = false;
+            TurnObj(TowerStands, true);
+            onConstruction = true;
+            return;
+        }
+        if (onConstruction) {
+            onConstruction = false;
+            TurnObj(TowerStands, false);
+            return;
+        }
+        CC = true;
+        TurnObj(TowerStands, true);
+        onConstruction = true;
+    }
+
+
 }

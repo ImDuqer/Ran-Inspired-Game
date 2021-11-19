@@ -10,9 +10,10 @@ public class EnemyBase : MonoBehaviour {
     FSMWalkPath myFP;
 
     //Adicionei
-    public Slider vidaCastelo;
+    Slider vidaCastelo;
     int HP = 3;
     void Start() {
+        vidaCastelo = GameObject.Find("VidadoCastelo").GetComponent<Slider>();
         FSMSequence myPath = new FSMSequence();
         myFP = new FSMWalkPath();
         myPath.sequence.Add(myFP);
