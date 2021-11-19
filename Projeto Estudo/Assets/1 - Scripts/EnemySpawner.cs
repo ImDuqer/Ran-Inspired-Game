@@ -84,9 +84,10 @@ public class EnemySpawner : MonoBehaviour {
     public void EndReward() {
         if (currentWave == WaveAmmount.Length) {
             currentWave = 0;
+            StartDialogue();
             currentWeek++;
             CameraPanning.inDialogue = true;
-            StartDialogue();
+            
         }
     }
 

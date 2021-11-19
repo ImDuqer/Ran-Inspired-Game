@@ -14,6 +14,7 @@ public class TowerStand : MonoBehaviour
     void Start() {
         myRT = GameObject.Find("ResourcesBox").GetComponent<ResourceTracker>();
         spawnParent = GameObject.Find("Dynamic Objects").transform;
+        gameObject.SetActive(false);
     }
 
     void OnEnable() {

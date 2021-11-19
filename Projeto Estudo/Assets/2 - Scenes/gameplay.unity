@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7703147, g: 0.77337736, b: 0.75401694, a: 1}
+  m_IndirectSpecularColor: {r: 0.77028745, g: 0.7734031, b: 0.7540793, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1000,7 +1000,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 808970667}
         m_TargetAssemblyTypeName: ConstructionMode, Assembly-CSharp
-        m_MethodName: ArcherButton
+        m_MethodName: ConstructionButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5042,7 +5042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7141169040356282671, guid: 02296ed38558d324e8e4f864ff9df2ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8155262613437444508, guid: 02296ed38558d324e8e4f864ff9df2ba, type: 3}
       propertyPath: copyFrom
@@ -31791,7 +31791,7 @@ MonoBehaviour:
   buttonPhase: {fileID: 2099504432}
   waitPhase: {fileID: 1785200357}
   startPosition: {fileID: 1838068035}
-  WaveAmmount: 01000000
+  WaveAmmount: 0300000005000000
   timeBetweenSpawns: 1
   rewardPanel: {fileID: 573863485}
   weekText: {fileID: 639710180}
@@ -45038,7 +45038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7141169040356282671, guid: 02296ed38558d324e8e4f864ff9df2ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8155262613437444508, guid: 02296ed38558d324e8e4f864ff9df2ba, type: 3}
       propertyPath: copyFrom
@@ -46987,7 +46987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1177005580
 RectTransform:
   m_ObjectHideFlags: 0
@@ -84581,7 +84581,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 808970667}
         m_TargetAssemblyTypeName: ConstructionMode, Assembly-CSharp
-        m_MethodName: ConstructionButton
+        m_MethodName: ArcherButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -87260,7 +87260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6789472476000178758, guid: 957ae9d3c056fbd4f8f842a0a348412e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 957ae9d3c056fbd4f8f842a0a348412e, type: 3}
@@ -89935,7 +89935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7141169040356282671, guid: 02296ed38558d324e8e4f864ff9df2ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8155262613437444508, guid: 02296ed38558d324e8e4f864ff9df2ba, type: 3}
       propertyPath: copyFrom
@@ -90136,7 +90136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6037269225186877726, guid: 361828c804adfa94dab99a22e2529ce4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 361828c804adfa94dab99a22e2529ce4, type: 3}
