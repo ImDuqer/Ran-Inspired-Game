@@ -14,6 +14,7 @@ public class TowerStand : MonoBehaviour
     void Start() {
         myRT = GameObject.Find("ResourcesBox").GetComponent<ResourceTracker>();
         spawnParent = GameObject.Find("Dynamic Objects").transform;
+        transform.GetChild(2).gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 
@@ -32,6 +33,7 @@ public class TowerStand : MonoBehaviour
                 transform.GetChild(2).gameObject.SetActive(true);
                 transform.GetChild(0).gameObject.SetActive(false);
                 transform.GetChild(2).SetParent(spawnParent);
+                gameObject.SetActive(false);
             }
             else {
                 myRT.NotEnoughPoints();

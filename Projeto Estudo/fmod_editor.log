@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x8000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000019B67B83FB8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000001856041BD98 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,172 +18,11 @@
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000019B67F97FC8 : node = 0000019B63FEA360
-[LOG] SystemI::createSound                     : add node to async list : head = 0000019AAE6F64E8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F97FC8
-[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3447392
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 49184
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000019B63FEA470
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Tutorial & Post Combat & Dialog', format=5, channels=2, frequency=48000, lengthbytes=531136, lengthpcm=2175200, pcmblocksize=0, loopstart=0, loopend=1843199, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.062744.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F97FC8
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F98178
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F98178
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F98178
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F98178
-[LOG] SoundI::release                          : Tutorial & Post Combat & Dialog (0000019B67F995B8)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019AB2E3A168)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019B67F99AC8)
-[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000019B67F97908 : node = 0000019AB133EF80
-[LOG] SystemI::createSound                     : add node to async list : head = 0000019AAE6F64E8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F97908
-[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3447392
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 49184
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000019AB133F090
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Tutorial & Post Combat & Dialog', format=5, channels=2, frequency=48000, lengthbytes=531136, lengthpcm=2175200, pcmblocksize=0, loopstart=0, loopend=1843199, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.062744.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F97908
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F99AC8
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F99AC8
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F99AC8
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F99AC8
-[LOG] SoundI::release                          : Tutorial & Post Combat & Dialog (0000019B67F97FC8)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019AB2E3B4E8)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019B67F98178)
-[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000019B67F97FC8 : node = 0000019BB553AA30
-[LOG] SystemI::createSound                     : add node to async list : head = 0000019AAE6F64E8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F97FC8
-[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3447392
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 49184
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000019BB553AB40
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Tutorial & Post Combat & Dialog', format=5, channels=2, frequency=48000, lengthbytes=531136, lengthpcm=2175200, pcmblocksize=0, loopstart=0, loopend=1843199, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.062744.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F97FC8
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F9AD58
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F9AD58
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F9AD58
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F9AD58
-[LOG] SoundI::release                          : Tutorial & Post Combat & Dialog (0000019B67F97908)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019AB2E3B688)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019B67F99AC8)
-[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000019B67F9B418 : node = 00000198DD8A0660
-[LOG] SystemI::createSound                     : add node to async list : head = 0000019AAE6F64E8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F9B418
-[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3447392
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 49184
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 00000198DD8A0770
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Tutorial & Post Combat & Dialog', format=5, channels=2, frequency=48000, lengthbytes=531136, lengthpcm=2175200, pcmblocksize=0, loopstart=0, loopend=1843199, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.062744.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F9B418
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F97908
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F97908
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F97908
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F97908
-[LOG] SoundI::release                          : Tutorial & Post Combat & Dialog (0000019B67F97FC8)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019AB2E39948)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019B67F9AD58)
-[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000019B67F9BE38 : node = 0000019BB553A030
-[LOG] SystemI::createSound                     : add node to async list : head = 0000019AAE6F64E8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F9BE38
-[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3447392
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 49184
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000019BB553A140
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Tutorial & Post Combat & Dialog', format=5, channels=2, frequency=48000, lengthbytes=531136, lengthpcm=2175200, pcmblocksize=0, loopstart=0, loopend=1843199, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.062744.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F9BE38
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F97FC8
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F97FC8
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F97FC8
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F97FC8
-[LOG] SoundI::release                          : Tutorial & Post Combat & Dialog (0000019B67F9B418)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019AB2E3B348)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019B67F97908)
-[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000019B67F97908 : node = 0000019BB553ADF0
-[LOG] SystemI::createSound                     : add node to async list : head = 0000019AAE6F64E8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F97908
-[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3447392
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 49184
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000019BB553AF00
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Tutorial & Post Combat & Dialog', format=5, channels=2, frequency=48000, lengthbytes=531136, lengthpcm=2175200, pcmblocksize=0, loopstart=0, loopend=1843199, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.062744.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F97908
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F98178
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F98178
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F98178
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F98178
-[LOG] SoundI::release                          : Tutorial & Post Combat & Dialog (0000019B67F9BE38)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019AB2E39948)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019B67F97FC8)
-[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000019B67F9B418 : node = 0000019B63FEA5E0
-[LOG] SystemI::createSound                     : add node to async list : head = 0000019AAE6F64E8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F9B418
-[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 3447392
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 49184
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000019B63FEA6F0
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Tutorial & Post Combat & Dialog', format=5, channels=2, frequency=48000, lengthbytes=531136, lengthpcm=2175200, pcmblocksize=0, loopstart=0, loopend=1843199, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.062744.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F9B418
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F9BE38
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F9BE38
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000019B67F9BE38
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000019B67F9BE38
-[LOG] SoundI::release                          : Tutorial & Post Combat & Dialog (0000019B67F97908)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019AB2E3BEA8)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019B67F98178)
-[LOG] SoundI::release                          : Tutorial & Post Combat & Dialog (0000019B67F9B418)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019AB2E3B688)
-[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (0000019B67F9BE38)
-[LOG] SoundI::release                          :  (0000019BB4CDACA8)
-[LOG] SoundI::release                          :     combat phase_TAIKO BASE (0000019B684EC608)
+[LOG] SoundI::release                          : Tutorial & Post Combat & Dialog (00000185B9D37668)
+[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (00000184B67E77D8)
+[LOG] SoundI::release                          :     Tutorial & Post Combat & Dialog (00000185B9D3C768)
+[LOG] SoundI::release                          :  (0000018560233838)
+[LOG] SoundI::release                          :     combat phase_TAIKO BASE (00000184B67E6C78)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients

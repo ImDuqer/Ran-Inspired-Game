@@ -34,6 +34,7 @@ public class ArcherStand : MonoBehaviour {
                     transform.GetChild(0).gameObject.SetActive(false);
                     transform.GetChild(2).SetParent(spawnParent);
                     ResourceTracker.CURRENT_POPULATION++;
+                    gameObject.SetActive(false);
                 }
                 else {
                     myRT.NotEnoughPoints();

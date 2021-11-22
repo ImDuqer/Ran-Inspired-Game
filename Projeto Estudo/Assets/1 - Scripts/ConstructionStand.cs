@@ -14,6 +14,7 @@ public class ConstructionStand : MonoBehaviour {
     void Start() {
         myRT = GameObject.Find("ResourcesBox").GetComponent<ResourceTracker>();
         spawnParent = GameObject.Find("Dynamic Objects").transform;
+        transform.GetChild(2).gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 
@@ -33,6 +34,7 @@ public class ConstructionStand : MonoBehaviour {
                 transform.GetChild(0).gameObject.SetActive(false);
                 transform.GetChild(2).SetParent(spawnParent);
                 ResourceTracker.MAX_POPULATION += 3;
+                gameObject.SetActive(false);
             }
             else {
                 myRT.NotEnoughPoints();
