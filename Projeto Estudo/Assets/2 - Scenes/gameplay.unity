@@ -21537,7 +21537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &496725688
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32627,7 +32627,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &731123566
 RectTransform:
   m_ObjectHideFlags: 0
@@ -59390,7 +59390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1303987425
 RectTransform:
   m_ObjectHideFlags: 0
@@ -61541,8 +61541,8 @@ RectTransform:
   m_Father: {fileID: 1219631582}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000045776367, y: 0}
   m_SizeDelta: {x: 63, y: 85.006454}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -78505,7 +78505,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -99704,7 +99704,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Texto Default do Bot\xE3o 1"
+  m_text: "Texto Default do Bot\xE3o 1 Texto Default do Bot\xE3o 1"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 79506881bb3c9124ab372492210e6213, type: 2}
   m_sharedMaterial: {fileID: -3907581977802277205, guid: 79506881bb3c9124ab372492210e6213, type: 2}
@@ -100376,7 +100376,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Texto Default do Bot\xE3o 2"
+  m_text: "Texto Default do Bot\xE3o 2 Texto Default do Bot\xE3o 2"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 79506881bb3c9124ab372492210e6213, type: 2}
   m_sharedMaterial: {fileID: -3907581977802277205, guid: 79506881bb3c9124ab372492210e6213, type: 2}

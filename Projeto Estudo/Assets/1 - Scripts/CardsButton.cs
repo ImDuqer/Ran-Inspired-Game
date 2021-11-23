@@ -44,6 +44,12 @@ public class CardsButton : MonoBehaviour {
         }
     }
 
+    void Update() {
+        //foreach (GameObject card in playerCards) {
+        //    Debug.Log("card: " + card);
+        //}
+    }
+
     public void ShowCards() {
         if (RemaingCard()) {
             firstCard.SetActive(true);
@@ -53,7 +59,9 @@ public class CardsButton : MonoBehaviour {
 
 
         foreach (GameObject card in playerCards) {
+            Debug.Log("card: " + card);
             if (card != null && displayCard != card) multipleCards = true;
+            else multipleCards = false;
         }
         if (multipleCards) {
             buttonRight.SetActive(true);
@@ -77,7 +85,7 @@ public class CardsButton : MonoBehaviour {
         }
 
         int _index = 0;
-        if (index == 7) index = -1;
+        if (index == playerCards.Count-1) index = -1;
 
         for (int i = 0; i < playerCards.Count; i++) {
             GameObject card = playerCards[i];
@@ -106,7 +114,7 @@ public class CardsButton : MonoBehaviour {
             index++;
         }
         int _index = 7;
-        if (index == 0) index = 8;
+        if (index == 0) index = playerCards.Count;
 
         for (int i = playerCards.Count-1; i >= 0; i-- ) {
             GameObject card = playerCards[i];
@@ -117,7 +125,7 @@ public class CardsButton : MonoBehaviour {
             }
             _index--;
             if (i == 0 && previousCard == null) {
-                index = 8;
+                index = playerCards.Count;
                 i = playerCards.Count - 1;
             }
         }
@@ -133,99 +141,35 @@ public class CardsButton : MonoBehaviour {
     public void ActivateEffect(int index) {
         switch (index) {
             case 0:
-                if (cardsAmmount[0] > 0) {
-                    GLOBALDAMAGE = true;
-                    cardsAmmount[0]--;
-                    if (cardsAmmount[0] == 0) {
-                        playerCards[0].SetActive(false);
-                        playerCards[0] = null;
-                        ShowCards();
-                    }
-                }
+                GLOBALDAMAGE = UseEffect(0);
                 break;
 
             case 1:
-                if (cardsAmmount[1] > 0) {
-                    ATTACKSPEEDBUFF = true;
-                    cardsAmmount[1]--;
-                    if (cardsAmmount[1] == 0) {
-                        playerCards[1].SetActive(false);
-                        playerCards[1] = null;
-                        ShowCards();
-                    }
-                }
+                ATTACKSPEEDBUFF = UseEffect(1);
                 break;
 
             case 2:
-                if (cardsAmmount[2] > 0) {
-                    DAMAGEDEBUFF = true;
-                    cardsAmmount[2]--;
-                    if (cardsAmmount[2] == 0) {
-                        playerCards[2].SetActive(false);
-                        playerCards[2] = null;
-                        ShowCards();
-                    }
-                }
+                DAMAGEDEBUFF = UseEffect(2);
                 break;
 
             case 3:
-                if (cardsAmmount[3] > 0) {
-                    ATTACKSPEEDDEBUFF = true;
-                    cardsAmmount[3]--;
-                    if (cardsAmmount[3] == 0) {
-                        playerCards[3].SetActive(false);
-                        playerCards[3] = null;
-                        ShowCards();
-                    }
-                }
+                ATTACKSPEEDDEBUFF = UseEffect(3);
                 break;
 
             case 4:
-                if (cardsAmmount[4] > 0) {
-                    PRICEBUFF = true;
-                    cardsAmmount[4]--;
-                    if (cardsAmmount[4] == 0) {
-                        playerCards[4].SetActive(false);
-                        playerCards[4] = null;
-                        ShowCards();
-                    }
-                }
+                PRICEBUFF = UseEffect(4);
                 break;
 
             case 5:
-                if (cardsAmmount[5] > 0) {
-                    MOVSPEEDDEBUFF = true;
-                    cardsAmmount[5]--;
-                    if (cardsAmmount[5] == 0) {
-                        playerCards[5].SetActive(false);
-                        playerCards[5] = null;
-                        ShowCards();
-                    }
-                }
+                MOVSPEEDDEBUFF = UseEffect(5);
                 break;
 
             case 6:
-                if (cardsAmmount[6] > 0) {
-                    MOVSPEEDBUFF = true;
-                    cardsAmmount[6]--;
-                    if (cardsAmmount[6] == 0) {
-                        playerCards[6].SetActive(false);
-                        playerCards[6] = null;
-                        ShowCards();
-                    }
-                }
+                MOVSPEEDBUFF = UseEffect(6);
                 break;
 
             case 7:
-                if (cardsAmmount[7] > 0) {
-                    DAMAGEBUFF = true;
-                    cardsAmmount[7]--;
-                    if (cardsAmmount[7] == 0) {
-                        playerCards[7].SetActive(false);
-                        playerCards[7] = null;
-                        ShowCards();
-                    }
-                }
+                DAMAGEBUFF = UseEffect(7);
                 break;
         }
         UpdateAmmount();
@@ -233,6 +177,26 @@ public class CardsButton : MonoBehaviour {
             hasCards = false;
         }
     }
+
+    bool UseEffect(int index) {
+        if (cardsAmmount[index] > 0) {
+            cardsAmmount[index]--;
+            if (cardsAmmount[index] == 0) {
+                int i = 0;
+                foreach (GameObject card in playerCards) {
+                    if (card == cards[index].gameObject) break;
+                    i++;
+                }
+                playerCards[i].SetActive(false);
+                playerCards[i] = null;
+                playerCards.Remove(playerCards[i]);
+                ShowCards();
+            }
+            return true;
+        }
+        return false;
+    }
+
 
     void UpdateAmmount() {
         int i;

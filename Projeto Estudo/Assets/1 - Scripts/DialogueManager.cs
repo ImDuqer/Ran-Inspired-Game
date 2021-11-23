@@ -94,6 +94,9 @@ public class DialogueManager : MonoBehaviour {
         for (int i = 0; i < Shown.Length; i++) {
             Shown[i] = false;
         }
+        foreach(GameObject character in characters) {
+            character.SetActive(false);
+        }
         gameCanvas.SetActive(true);
         gameObject.SetActive(false);
         CameraPanning.shouldPanCamera = true;
@@ -267,7 +270,7 @@ public class DialogueManager : MonoBehaviour {
                 break;
 
             default:
-                Debug.Log("Problema ao settar o char.");
+                _nameTag = "";
                 break;
         }
 
@@ -336,7 +339,7 @@ public class DialogueManager : MonoBehaviour {
                 break;
 
             default:
-                Debug.Log("Problema ao settar o char.");
+
                 break;
         }
     }

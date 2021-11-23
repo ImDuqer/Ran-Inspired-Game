@@ -58,7 +58,7 @@ public class EnemySpawner : MonoBehaviour {
             startedSpawning = true;
             StartCoroutine(Spawning());
         }
-        if (Input.GetKeyDown(KeyCode.F10) && currentGamePhase == GamePhase.ACTION_PHASE) {
+        if (Input.GetKeyDown(KeyCode.F9) && currentGamePhase == GamePhase.ACTION_PHASE) {
             StopAllCoroutines();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach(GameObject enemy in enemies) {
@@ -66,9 +66,10 @@ public class EnemySpawner : MonoBehaviour {
             }
             aboutToEnd = true;
         }
-        if (Input.GetKeyDown(KeyCode.F9) && currentGamePhase == GamePhase.ACTION_PHASE) {
+        if (Input.GetKeyDown(KeyCode.F10) && currentGamePhase == GamePhase.ACTION_PHASE) {
             StopAllCoroutines();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            currentWave = WaveAmmount.Length;
             foreach (GameObject enemy in enemies) {
                 enemy.GetComponent<EnemyBase>().EnemyReset(false);
             }
@@ -98,7 +99,7 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     public void EndReward() {
-        if (currentWave == WaveAmmount.Length) {
+        if (currentWave >= WaveAmmount.Length) {
             currentWave = 0;
             StartDialogue();
             currentWeek++;
