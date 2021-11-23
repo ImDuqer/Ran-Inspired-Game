@@ -21,7 +21,7 @@ public class Arrow : MonoBehaviour {
 
         if(target != null) {
             transform.LookAt(target.transform.position);
-            transform.position = Vector3.MoveTowards(transform.position, target.gameObject.transform.position, 2);
+            transform.position = Vector3.MoveTowards(transform.position, target.gameObject.transform.position, 1);
         }
     }
 

@@ -58,6 +58,22 @@ public class EnemySpawner : MonoBehaviour {
             startedSpawning = true;
             StartCoroutine(Spawning());
         }
+        if (Input.GetKeyDown(KeyCode.F10) && currentGamePhase == GamePhase.ACTION_PHASE) {
+            StopAllCoroutines();
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach(GameObject enemy in enemies) {
+                enemy.GetComponent<EnemyBase>().EnemyReset(false);
+            }
+            aboutToEnd = true;
+        }
+        if (Input.GetKeyDown(KeyCode.F9) && currentGamePhase == GamePhase.ACTION_PHASE) {
+            StopAllCoroutines();
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies) {
+                enemy.GetComponent<EnemyBase>().EnemyReset(false);
+            }
+            aboutToEnd = true;
+        }
         if (aboutToEnd && EnemiesPool.childCount >= enemiesPoolSize) {
             currentWave++;
             currentGamePhase = GamePhase.REWARD_PHASE;

@@ -18,19 +18,13 @@ public class ConstructionMode : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.F8)) {
+        if (Input.GetKeyDown(KeyCode.F)) {
             ToggleFastForward();
         }
         if (EnemySpawner.currentGamePhase == GamePhase.SETUP_PHASE) {
-            if (Input.GetKeyDown(KeyCode.F5)) {
-                ArcherButton();
-            }
-            if (Input.GetKeyDown(KeyCode.F6)) {
-                ConstructionButton();
-            }
-            if (Input.GetKeyDown(KeyCode.F7)) {
-                TowerButton();
-            }
+            if (Input.GetKeyDown(KeyCode.W)) ArcherButton();
+            if (Input.GetKeyDown(KeyCode.E)) ConstructionButton();
+            if (Input.GetKeyDown(KeyCode.R)) TowerButton();
 
         }
         else {

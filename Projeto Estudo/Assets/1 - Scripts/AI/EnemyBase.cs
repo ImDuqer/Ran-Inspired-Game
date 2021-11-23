@@ -43,7 +43,7 @@ public class EnemyBase : MonoBehaviour {
             vidaCastelo.value -= 2;
         }
     }
-    void EnemyReset(bool points) {
+    public void EnemyReset(bool points) {
         if(points) ResourceTracker.POINTS++;
         transform.SetParent(GameObject.Find("EnemiesPool").transform);
         gameObject.SetActive(false);

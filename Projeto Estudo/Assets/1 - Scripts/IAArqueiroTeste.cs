@@ -18,6 +18,7 @@ public class IAArqueiroTeste : MonoBehaviour
     MeshRenderer myMR;
     public static List<GameObject> ArrowPool = new List<GameObject>();
     public static bool filledPool;
+    GameObject shotStart;
 
     bool enemyCheck;
 
@@ -26,6 +27,7 @@ public class IAArqueiroTeste : MonoBehaviour
 
 
     void OnEnable() {
+        shotStart = transform.GetChild(transform.childCount-1).gameObject;
         dynamicObjects = GameObject.Find("Dynamic Objects").transform;
         if (!filledPool) {
             filledPool = true;
@@ -74,7 +76,7 @@ public class IAArqueiroTeste : MonoBehaviour
 
                 GameObject tempArrow = ArrowPool[0];
                 tempArrow.SetActive(true);
-                tempArrow.transform.position = transform.position;
+                tempArrow.transform.position = shotStart.transform.position;
                 tempArrow.transform.SetParent(dynamicObjects);
 
                 ArrowPool.Remove(tempArrow);
