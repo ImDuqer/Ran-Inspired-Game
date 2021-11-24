@@ -917,8 +917,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1630100314843873083, guid: 13bbe8b0d0082ba45b0a5a1c86c26c3e, type: 3}
-  - {fileID: -3562619895459460427, guid: 13bbe8b0d0082ba45b0a5a1c86c26c3e, type: 3}
+  - {fileID: 2100000, guid: 4a54b4e8fd6f715498221cb0a50d1a65, type: 2}
+  - {fileID: 2100000, guid: 4a54b4e8fd6f715498221cb0a50d1a65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1184,8 +1184,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2639928675030865374}
+  - component: {fileID: 6434651483006942053}
   m_Layer: 0
-  m_Name: Samurai_Yellow
+  m_Name: Samurai_Yellow.v1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1210,6 +1211,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6434651483006942053
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3452353845653753700}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0bf2f09143cc5184aab21e2d8ca4c81c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3581350746696961034
 GameObject:
   m_ObjectHideFlags: 0

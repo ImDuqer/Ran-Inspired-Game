@@ -11,8 +11,12 @@ public class EnemyBase : MonoBehaviour {
 
     //Adicionei
     Slider vidaCastelo;
-    int HP = 3;
+    int HP = 5;
+    List<GameObject> lifes = new List<GameObject>();
     void Start() {
+        foreach(Transform child in transform) {
+            lifes.Add(child.gameObject);
+        }
         vidaCastelo = GameObject.Find("VidadoCastelo").GetComponent<Slider>();
         FSMSequence myPath = new FSMSequence();
         myFP = new FSMWalkPath();
@@ -31,6 +35,9 @@ public class EnemyBase : MonoBehaviour {
     void OnCollisionEnter(Collision other) {
         if (other.transform.CompareTag("Arrow")) {
             HP -= 1;
+            lifes[lifes.Count - 1].SetActive(false);
+
+            lifes.Remove(lifes[lifes.Count - 1]);
             if (HP <= 0) EnemyReset(true);
             //other.gameObject;
         }
@@ -44,7 +51,10 @@ public class EnemyBase : MonoBehaviour {
         }
     }
     public void EnemyReset(bool points) {
-        if(points) ResourceTracker.POINTS++;
+        foreach (Transform child in transform) {
+            if(!lifes.Contains(child.gameObject)) lifes.Add(child.gameObject);
+        }
+        if (points) ResourceTracker.POINTS++;
         transform.SetParent(GameObject.Find("EnemiesPool").transform);
         gameObject.SetActive(false);
     }

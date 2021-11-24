@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 0f0e61c61c4f14c44a9670cbcae535f6
+guid: 08302793bb1288049af7092478536eb8
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: Idle
+    second: Take 001
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: Take 001
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 137
+      lastFrame: 82
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -66,7 +66,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 22
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -117,7 +117,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 22
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
