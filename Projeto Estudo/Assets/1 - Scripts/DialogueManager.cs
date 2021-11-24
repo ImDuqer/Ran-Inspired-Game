@@ -34,7 +34,6 @@ public class DialogueManager : MonoBehaviour {
     bool[] Shown = new bool[9];
 
 
-
     void OnEnable() {
         //Debug.Log(EnemySpawner.currentWeek);
         for (int i = 0; i < Shown.Length; i++) {
@@ -52,7 +51,7 @@ public class DialogueManager : MonoBehaviour {
         if (waitingForContinue) {
 
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
-                //Debug.Log("ShouldHaveContinued");
+                Debug.Log("Aaa-");
                 choiceSelected = story.currentChoices[0];
                 story.ChooseChoiceIndex(0);
                 waitingForContinue = false;
@@ -60,17 +59,47 @@ public class DialogueManager : MonoBehaviour {
         }
         if (typing && Input.GetMouseButtonDown(0) && writingCoroutine != null) {
 
-            //Debug.Log("Bbb-");
+            Debug.Log("Bbb-");
             typing = false;
             StopCoroutine(writingCoroutine);
             writingCoroutine = null;
             message.text = currentSentence;
         }
         else if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && !typing) {
-            //Debug.Log("Ccc-");
+            Debug.Log("Fff-");
+            Debug.Log("Can Continue? " + story.canContinue); 
+            Debug.Log("Current Choices: " + story.currentChoices.Count);
             DoDialog();
         }
         //Debug.Log("waiting? " + waitingForContinue);
+
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            EnemySpawner.currentWeek = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            EnemySpawner.currentWeek = 2;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            EnemySpawner.currentWeek = 3;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            EnemySpawner.currentWeek = 4;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5)) {
+            EnemySpawner.currentWeek = 5;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6)) {
+            EnemySpawner.currentWeek = 6;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7)) {
+            EnemySpawner.currentWeek = 7;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8)) {
+            EnemySpawner.currentWeek = 8;
+        }
+
+        //Debug.Log("current text: " + story.currentText);
     }
 
 
@@ -88,6 +117,7 @@ public class DialogueManager : MonoBehaviour {
         else if (story.currentChoices.Count <= 0) {
             FinishDialogue();
         }
+
     }
 
     void FinishDialogue() {
@@ -97,6 +127,7 @@ public class DialogueManager : MonoBehaviour {
         foreach(GameObject character in characters) {
             character.SetActive(false);
         }
+        optionPanel.SetActive(false);
         gameCanvas.SetActive(true);
         gameObject.SetActive(false);
         CameraPanning.shouldPanCamera = true;
@@ -108,21 +139,27 @@ public class DialogueManager : MonoBehaviour {
     
     void AdvanceDialogue() {
         choiceSelected = null;
+        Debug.Log("Can story continue? " + story.canContinue);
         if (story.canContinue) {
             currentSentence = story.Continue();
-            if(story.currentTags.Count != 0) ParseTags();
+            Debug.Log("Current Sentence Held (Advance Dialogue): " + currentSentence);
+            if (story.currentTags.Count != 0) ParseTags();
             StopAllCoroutines();
             writingCoroutine = StartCoroutine(TypeSentence(currentSentence));
+            if (currentSentence == "" && EnemySpawner.currentWeek == 6) FinishDialogue();
         }
-        else { 
+        else if (story.currentChoices.Count <= 0) { 
             FinishDialogue();
         }
     }
 
+
+
     void SkipAnwser() {
-        //Debug.Log("Can story continue? " + story.canContinue);
+        Debug.Log("Can story continue? " + story.canContinue);
         if (story.canContinue) {
             currentSentence = story.Continue();
+            Debug.Log("Current Sentence Held (Skip Dialogue): " + currentSentence);
         }
         AdvanceDialogue();
         if (story.currentChoices.Count != 0) {
@@ -156,10 +193,12 @@ public class DialogueManager : MonoBehaviour {
         while (typing) {
             yield return new WaitForEndOfFrame();
         }
+
         if (story.currentChoices.Count == 2) {
 
             //Debug.Log("Should have showed options");
 
+            Debug.Log("CCC-");
             List<Choice> _choices = story.currentChoices;
 
             optionPanel.SetActive(true);
@@ -174,7 +213,7 @@ public class DialogueManager : MonoBehaviour {
         else {
             //Debug.Log("Should have updated bool");
 
-            // Debug.Log("Ddd-");
+            Debug.Log("Ddd-");
             waitingForContinue = true;
         }
         yield return new WaitUntil(() => { return choiceSelected != null; });
@@ -184,21 +223,28 @@ public class DialogueManager : MonoBehaviour {
 
 
 
-    // Tells the story which branch to go to
+
     public static void SetDecision(object element) {
+        
         choiceSelected = (Choice)element;
         story.ChooseChoiceIndex(choiceSelected.index);
     }
 
-    // After a choice was made, turn off the panel and advance from that choice
+
     void AdvanceFromDecision() {
         if (optionPanel.activeSelf) {
+
             for (int i = 0; i < optionPanel.transform.childCount; i++) {
                 choiceButtons[i].SetActive(false);
             }
             optionPanel.SetActive(false);
             choiceSelected = null;
-            SkipAnwser();
+            //SkipAnwser();
+            if (EnemySpawner.currentWeek != 6) SkipAnwser();
+            else {
+                waitingForContinue = true;
+                AdvanceDialogue();
+            }
         }
         else {
             choiceSelected = null;
@@ -238,15 +284,19 @@ public class DialogueManager : MonoBehaviour {
                 break;
 
             case "soldado":
-                _nameTag = "Soldado do clã Minsei";
+                _nameTag = "Soldado Minsei";
                 break;
 
             case "soldado1":
-                _nameTag = "2° Soldado do clã Minsei";
+                _nameTag = "Soldado Minsei 1";
                 break;
 
             case "soldado2":
-                _nameTag = "3° Soldado do clã Minsei";
+                _nameTag = "Soldado Minsei 2";
+                break;
+
+            case "soldado3":
+                _nameTag = "Soldado Minsei 3";
                 break;
 
             case "Kaede":
@@ -365,10 +415,10 @@ public class DialogueManager : MonoBehaviour {
         }
     }
 
-
     bool CheckAnim(string name, Animator animator) {
         return animator.GetCurrentAnimatorStateInfo(0).IsName(name);
     }
+
     #region
     void SetAnimation(string _name) {
         SpriteControllerScript cs = GameObject.FindObjectOfType<SpriteControllerScript>();
@@ -394,5 +444,4 @@ public class DialogueManager : MonoBehaviour {
         }
     }
     #endregion
-
 }

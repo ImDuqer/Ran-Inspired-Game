@@ -375,6 +375,7 @@ namespace Ink.Runtime
         /// are we mid story rather than at a choice point or at the end.
         /// </summary>
         /// <value><c>true</c> if it's possible to call <c>Continue()</c>.</value>
+
         public bool canContinue {
         	get {
                 return state.canContinue;

@@ -13,7 +13,6 @@ public class EnemySpawner : MonoBehaviour {
 
     [SerializeField] TextMeshProUGUI buttonPhase;
     [SerializeField] GameObject waitPhase;
-
     [SerializeField] Transform startPosition;
     [SerializeField] int[] WaveAmmount;
     [SerializeField] float timeBetweenSpawns = .5f;
@@ -50,7 +49,7 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     void Update() {
-        Debug.Log("Wait Phase:" + waitPhase);
+        //Debug.Log("Wait Phase:" + waitPhase);
         //Debug.Log("currentwave" + currentWave);
         //Debug.Log("waveammount length" +  WaveAmmount.Length);
         if (!startedSpawning && currentGamePhase == GamePhase.ACTION_PHASE) {

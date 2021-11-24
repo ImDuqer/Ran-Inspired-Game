@@ -14,7 +14,7 @@ public class WaveCounter : MonoBehaviour {
         }
         if (!updated && EnemySpawner.currentGamePhase == GamePhase.REWARD_PHASE) {
             WaveText.text = "Wave " + (EnemySpawner.ReturnWave() + 1).ToString();
-            Debug.Log("currentWave" + EnemySpawner.currentWave);
+            //Debug.Log("currentWave" + EnemySpawner.currentWave);
             updated = true;
         }
     }
