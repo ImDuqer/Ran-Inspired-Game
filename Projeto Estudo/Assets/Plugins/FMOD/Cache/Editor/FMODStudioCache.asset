@@ -7128,6 +7128,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 0
   Exists: 0
+--- !u!114 &-6682185755582783580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Soundtrack Ingame/Intensity
+  m_EditorClassIdentifier: 
+  Name: Intensity
+  Min: 0
+  Max: 3
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &-6656157176050574855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7370,6 +7392,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 0
   Exists: 0
+--- !u!114 &-6574812279437682208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Soundtrack Ingame/Dialog
+  m_EditorClassIdentifier: 
+  Name: Dialog
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &-6565385273470364429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9765,7 +9809,7 @@ MonoBehaviour:
     data2: 0
   Type: 1
   IsGlobal: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-5532578039326858000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20021,9 +20065,9 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -5557393065560573076}
-  - {fileID: -383293362222114019}
-  - {fileID: 8464672064701658559}
+  - {fileID: -6574812279437682208}
+  - {fileID: -6682185755582783580}
+  - {fileID: 7665052958891934059}
   MinDistance: 0
   MaxDistance: 0
   Length: 216000
@@ -23612,7 +23656,7 @@ MonoBehaviour:
     data2: 0
   Type: 1
   IsGlobal: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &-371716578530245443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44995,6 +45039,28 @@ MonoBehaviour:
   Type: 1
   IsGlobal: 0
   Exists: 1
+--- !u!114 &7665052958891934059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Soundtrack Ingame/Restart Loop
+  m_EditorClassIdentifier: 
+  Name: Restart Loop
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 1
+  IsGlobal: 0
+  Exists: 1
 --- !u!114 &7682377646975624380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47392,7 +47458,7 @@ MonoBehaviour:
     data2: 0
   Type: 1
   IsGlobal: 0
-  Exists: 1
+  Exists: 0
 --- !u!114 &8476156777437098167
 MonoBehaviour:
   m_ObjectHideFlags: 0
