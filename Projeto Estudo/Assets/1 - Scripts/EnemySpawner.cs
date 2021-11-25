@@ -59,6 +59,11 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     void Update() {
+        if (Input.GetKeyDown(KeyCode.F1)) {
+
+            PlayerPrefs.SetInt("CurrentWeek", 0);
+            currentWeek = 0;
+        }
         if (Input.GetKeyDown(KeyCode.F3) || (health.value <= 0)) {
 
             PlayerPrefs.SetInt("CurrentWeek", 0);
@@ -125,12 +130,23 @@ public class EnemySpawner : MonoBehaviour {
 
     public void EndReward() {
         if (currentWave >= WaveAmmount.Length) {
+            
+            
             currentWave = 0;
-            StartDialogue();
+            if (currentWeek < 8) {
+                StartDialogue();
+                CameraPanning.inDialogue = true;
+            }
+            else {
+
+                weekText.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Semana " + (EnemySpawner.currentWeek + 1);
+                weekText.transform.parent.GetComponent<Animator>().SetTrigger("showup");
+                CameraPanning.shouldPanCamera = true;
+            }
             currentWeek++;
             PlayerPrefs.SetInt("CurrentWeek", currentWeek);
             if (currentWeek > PlayerPrefs.GetInt("HighWeek")) PlayerPrefs.SetInt("HighWeek", currentWeek);
-            CameraPanning.inDialogue = true;
+            
             
         }
     }

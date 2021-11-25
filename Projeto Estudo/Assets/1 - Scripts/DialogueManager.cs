@@ -136,7 +136,7 @@ public class DialogueManager : MonoBehaviour {
         gameObject.SetActive(false);
         CameraPanning.shouldPanCamera = true;
         myWC.text = "Semana " + (EnemySpawner.currentWeek+1);
-        //myWC.transform.parent.GetComponent<Animator>().SetTrigger("showup");
+        myWC.transform.parent.GetComponent<Animator>().SetTrigger("showup");
 
     }
 
