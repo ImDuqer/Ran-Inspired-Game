@@ -88,6 +88,7 @@ public class EnemyBase : MonoBehaviour {
     public void EnemyReset(bool points) {
         foreach (Transform child in transform) {
             if(!lifes.Contains(child.gameObject)) lifes.Add(child.gameObject);
+            child.gameObject.SetActive(true);
         }
         if (points) ResourceTracker.POINTS++;
         myES.EnemyPool.Add(this.gameObject);
