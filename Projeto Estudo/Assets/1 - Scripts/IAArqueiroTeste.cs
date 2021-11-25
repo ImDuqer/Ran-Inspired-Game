@@ -11,6 +11,8 @@ public class IAArqueiroTeste : MonoBehaviour
     Transform target = null;
     public Transform arco;
     public float arcoCD;
+    float originalCD;
+    float arcoCDBuff;
     float tempoPassado;
     [SerializeField] bool gizmos;
     [SerializeField] bool debugTarget;
@@ -19,14 +21,16 @@ public class IAArqueiroTeste : MonoBehaviour
     public static List<GameObject> ArrowPool = new List<GameObject>();
     public static bool filledPool;
     GameObject shotStart;
-
+    int HP = 2;
     bool enemyCheck;
 
     Transform dynamicObjects;
 
-
+    public GameObject originalParent;
 
     void OnEnable() {
+        arcoCDBuff = arcoCD * 0.8f;
+        originalCD = arcoCD;
         shotStart = transform.GetChild(transform.childCount-1).gameObject;
         dynamicObjects = GameObject.Find("Dynamic Objects").transform;
         if (!filledPool) {
@@ -70,6 +74,11 @@ public class IAArqueiroTeste : MonoBehaviour
 
             if (Vector3.Distance(target.position, transform.position) > range) target = null;
             myMR.material = myMaterials[1];
+
+
+
+
+            arcoCD = CardsButton.ATTACKSPEEDBUFF ? arcoCDBuff : originalCD;
 
             if (tempoPassado >= arcoCD) {
                 tempoPassado = 0;
@@ -115,6 +124,24 @@ public class IAArqueiroTeste : MonoBehaviour
         ReturnArrow(arrow);
 
     }
+
+    public void TakeDamage() {
+        if (CardsButton.DAMAGEDEBUFF) {
+            HP -= 1;
+        }
+        else HP -= 2;
+
+        if (HP <= 0) EnemyReset();
+    }
+
+
+    public void EnemyReset() {
+        originalParent.GetComponent<ArcherStand>().bought = false;
+        transform.SetParent(originalParent.transform);
+        gameObject.SetActive(false);
+        HP = 2;
+    }
+
 
     public void ReturnArrow(GameObject arrow) {
         arrow.transform.SetParent(GameObject.Find("ArrowPool").transform);

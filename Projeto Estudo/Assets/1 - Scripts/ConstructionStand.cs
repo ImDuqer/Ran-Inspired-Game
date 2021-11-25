@@ -33,7 +33,7 @@ public class ConstructionStand : MonoBehaviour {
     }
     void OnMouseOver() {
         transform.GetChild(0).transform.gameObject.SetActive(true);
-        if (CardsButton.PRICEBUFF) ConstructionCost = originalCost + 1;
+        if (CardsButton.PRICEBUFF) ConstructionCost = originalCost - 1;
         else ConstructionCost = originalCost;
         tmp.text = ConstructionCost.ToString() + " pontos\n+2 população";
         if (Input.GetMouseButtonDown(0)) {

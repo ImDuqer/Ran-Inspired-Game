@@ -18,6 +18,7 @@ public class MenuController : MonoBehaviour {
     Resolution[] resolutions;
     [SerializeField] TMP_Dropdown ResolutionDropdown;
 
+
     private void Awake() {
         ResourceTracker.WEEK = 1;
         ResourceTracker.WAVE = 1;

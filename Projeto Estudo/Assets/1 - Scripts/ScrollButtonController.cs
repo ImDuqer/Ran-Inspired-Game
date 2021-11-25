@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using FMODUnity;
+
 public class ScrollButtonController : MonoBehaviour {
 
 
@@ -13,9 +15,14 @@ public class ScrollButtonController : MonoBehaviour {
     Animator myAnim;
     public bool blocked = false;
 
+    StudioEventEmitter som1;
+    StudioEventEmitter som2;
 
 
     void Start() {
+
+        som1 = Camera.main.transform.GetChild(0).GetComponent<StudioEventEmitter>();
+        som2 = Camera.main.transform.GetChild(1).GetComponent<StudioEventEmitter>();
         myAnim = GetComponent<Animator>();
         
         if (blocked) myAnim.SetTrigger("blocked");
@@ -34,6 +41,7 @@ public class ScrollButtonController : MonoBehaviour {
     
 
     public void Hover() {
+        som2.Play();
         if (!blocked && !MenuController.desicionMade) myAnim.SetTrigger("hover");
     }
 
@@ -42,6 +50,7 @@ public class ScrollButtonController : MonoBehaviour {
     }
 
     public void Click() {
+        som1.Play();
         if (!blocked && !MenuController.desicionMade) myAnim.SetTrigger("click");
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
+using FMODUnity;
 
 public class DialogueManager : MonoBehaviour {
 
@@ -16,6 +17,7 @@ public class DialogueManager : MonoBehaviour {
     public GameObject optionPanel;
     public bool isTalking = false;
     bool typing = false;
+    StudioEventEmitter mySEE;
 
     static Story story;
     TextMeshProUGUI nametag;
@@ -35,6 +37,7 @@ public class DialogueManager : MonoBehaviour {
 
 
     void OnEnable() {
+        mySEE = GetComponent<StudioEventEmitter>();
         //Debug.Log(EnemySpawner.currentWeek);
         for (int i = 0; i < Shown.Length; i++) {
             Shown[i] = false;
@@ -274,50 +277,63 @@ public class DialogueManager : MonoBehaviour {
         switch (_char) {
             case "Sato":
                 _nameTag = "Minsei Sato";
+                mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
             case "conselheiro":
                 _nameTag = "Conselheiro";
+                mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
             case "Takashi":
                 _nameTag = "Minsei Takashi";
+                mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
             case "soldado":
                 _nameTag = "Soldado Minsei";
+                mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
             case "soldado1":
                 _nameTag = "Soldado Minsei 1";
+                mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
             case "soldado2":
                 _nameTag = "Soldado Minsei 2";
+                mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
             case "soldado3":
                 _nameTag = "Soldado Minsei 3";
+                mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
             case "Kaede":
                 _nameTag = "Kaede";
+                mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
             case "nada":
                 _nameTag = " ";
+                mySEE.Play();
+                mySEE.SetParameter("StopWarScreams", 0);
                 break;
 
             case "Hidetora":
                 _nameTag = "Ichimonji Hidetora";
+                mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
             case "soldadoInimigo":
                 _nameTag = "Soldado do clã Ichimonji";
+                mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
             case "conselheiroHidetora":
                 _nameTag = "Conselheiro de Hidetora";
+                mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
             default:

@@ -154,11 +154,18 @@ public class CardsButton : MonoBehaviour {
                 break;
 
             case 1:
-                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) ATTACKSPEEDBUFF = UseEffect(1);
+                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) {
+                    ATTACKSPEEDBUFF = UseEffect(1);
+                    StartCoroutine(EffectTimer(ATTACKSPEEDBUFF, 10));
+
+                }
                 break;
 
             case 2:
-                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) DAMAGEDEBUFF = UseEffect(2);
+                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) {
+                    DAMAGEDEBUFF = UseEffect(2);
+                    StartCoroutine(EffectTimer(DAMAGEDEBUFF, 10));
+                }
                 break;
 
             case 3:
@@ -178,14 +185,30 @@ public class CardsButton : MonoBehaviour {
                 break;
 
             case 7:
-                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) DAMAGEBUFF = UseEffect(7);
-                break;
+                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) {
+                    DAMAGEBUFF = UseEffect(7);
+                    StartCoroutine(EffectTimer(DAMAGEBUFF, 10));
+                }
+                    break;
         }
         UpdateAmmount();
         if (!RemaingCard()) {
             hasCards = false;
         }
     }
+
+
+
+
+    IEnumerator EffectTimer(bool change, int timer) {
+
+        yield return new WaitForSeconds(30);
+    }
+
+
+
+
+
 
     bool UseEffect(int index) {
         if (cardsAmmount[index] > 0) {

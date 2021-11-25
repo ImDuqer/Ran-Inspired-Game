@@ -14,11 +14,13 @@ public class EnemyBase : MonoBehaviour {
     //Adicionei
     Slider vidaCastelo;
     int HP = 5;
+    int originalHP = 5;
     List<GameObject> lifes = new List<GameObject>();
 
     NavMeshAgent myNMA;
-
+    Coroutine speedCoroutine;
     void Start() {
+        speedCoroutine = null;
         myNMA = GetComponent<NavMeshAgent>();
         myNMA.speed = speed;
         foreach (Transform child in transform) {
@@ -36,7 +38,7 @@ public class EnemyBase : MonoBehaviour {
     }
 
     void Update() {
-        //Debug.Log("Vida: " + HP);
+        if (CardsButton.MOVSPEEDDEBUFF) SpeedDebuff();
     }
 
     void OnCollisionEnter(Collision other) {
@@ -54,7 +56,7 @@ public class EnemyBase : MonoBehaviour {
 
 
     void SpeedDebuff() {
-        StartCoroutine(SpeedDebuffCoroutine());
+        if(speedCoroutine == null) speedCoroutine = StartCoroutine(SpeedDebuffCoroutine());
     }
 
     IEnumerator SpeedDebuffCoroutine() {
@@ -62,6 +64,8 @@ public class EnemyBase : MonoBehaviour {
         yield return new WaitForSeconds(5);
 
         myNMA.speed = speed;
+        speedCoroutine = null;
+        CardsButton.MOVSPEEDDEBUFF = false;
     }
 
     public void GlobalDamage() {
@@ -86,6 +90,7 @@ public class EnemyBase : MonoBehaviour {
         }
         if (points) ResourceTracker.POINTS++;
         transform.SetParent(GameObject.Find("EnemiesPool").transform);
+        HP = originalHP;
         gameObject.SetActive(false);
     }
 }

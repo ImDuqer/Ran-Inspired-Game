@@ -33,7 +33,7 @@ public class TowerStand : MonoBehaviour
     }
     void OnMouseOver() {
         transform.GetChild(0).transform.gameObject.SetActive(true);
-        if (CardsButton.PRICEBUFF) TowerCost = originalCost + 1;
+        if (CardsButton.PRICEBUFF) TowerCost = originalCost - 1;
         else TowerCost = originalCost;
         tmp.text = TowerCost.ToString() + " pontos\nLocal de arqueiro";
         if (Input.GetMouseButtonDown(0)) {

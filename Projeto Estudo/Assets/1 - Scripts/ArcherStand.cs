@@ -12,7 +12,7 @@ public class ArcherStand : MonoBehaviour {
     [SerializeField] MeshRenderer myMR;
     [SerializeField] Collider myC;
     Transform spawnParent;
-    bool bought = false;
+    [HideInInspector] public bool bought = false;
     TextMeshPro tmp;
     int originalCost;
 
@@ -34,7 +34,7 @@ public class ArcherStand : MonoBehaviour {
     }
     void OnMouseOver() {
         transform.GetChild(0).transform.gameObject.SetActive(true);
-        if (CardsButton.PRICEBUFF) archerCost = originalCost + 1;
+        if (CardsButton.PRICEBUFF) archerCost = originalCost - 1;
         else archerCost = originalCost;
         tmp.text = archerCost.ToString() + " pontos\n1 população";
         if (Input.GetMouseButtonDown(0)) {
@@ -45,6 +45,7 @@ public class ArcherStand : MonoBehaviour {
                     myC.enabled = false;
                     transform.GetChild(2).gameObject.SetActive(true);
                     transform.GetChild(0).gameObject.SetActive(false);
+                    transform.GetChild(2).GetComponent<IAArqueiroTeste>().originalParent = gameObject;
                     transform.GetChild(2).SetParent(spawnParent);
                     ResourceTracker.CURRENT_POPULATION++;
                     bought = true;
