@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour {
     int[] WaveAmmount;
     float timeBetweenSpawns = .5f;
     [SerializeField] GameObject rewardPanel;
-    [SerializeField] Animator weekText;
+    [SerializeField] TextMeshProUGUI weekText;
     [SerializeField] GameObject defeat;
     [SerializeField] Slider health;
     public GameObject GameplayCanvas;
@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour {
     bool startedSpawning;
     bool aboutToEnd;
     [SerializeField] GameObject byobu2Panel;
-    List<GameObject> EnemyPool = new List<GameObject>();
+    public List<GameObject> EnemyPool = new List<GameObject>();
 
     Transform EnemiesPool;
 
@@ -110,7 +110,7 @@ public class EnemySpawner : MonoBehaviour {
         if (aboutToEnd && EnemiesPool.childCount >= enemiesPoolSize) {
             currentWave++;
             currentGamePhase = GamePhase.REWARD_PHASE;
-            if (currentWeek != 8) rewardPanel.SetActive(true);
+            if (currentWeek != 7) rewardPanel.SetActive(true);
             else byobu2Panel.SetActive(true);
             aboutToEnd = false;
         }
@@ -136,10 +136,15 @@ public class EnemySpawner : MonoBehaviour {
             if (currentWeek < 8) {
                 StartDialogue();
                 CameraPanning.inDialogue = true;
-            }
+            }/*
+            else if (currentWeek == 8) {
+
+                StartDialogue();
+                CameraPanning.inDialogue = true;
+            }*/
             else {
 
-                weekText.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Semana " + (EnemySpawner.currentWeek + 1);
+                weekText.text = "Semana " + (EnemySpawner.currentWeek + 1);
                 weekText.transform.parent.GetComponent<Animator>().SetTrigger("showup");
                 CameraPanning.shouldPanCamera = true;
             }

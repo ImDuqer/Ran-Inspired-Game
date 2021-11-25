@@ -77,7 +77,7 @@ public class MenuController : MonoBehaviour {
         desicionMade = true;
     }
     public void Continue() {
-        if (!desicionMade) StartCoroutine(LoadSceneMethod(1));
+        if (!desicionMade) StartCoroutine(LoadSceneMethod("Gameplay"));
         desicionMade = true;
     }
     public void Settings() {

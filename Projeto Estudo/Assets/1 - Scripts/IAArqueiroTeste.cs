@@ -22,6 +22,7 @@ public class IAArqueiroTeste : MonoBehaviour
     public static bool filledPool;
     GameObject shotStart;
     int HP = 2;
+    Animator myAnim;
     bool enemyCheck;
 
     Transform dynamicObjects;
@@ -29,6 +30,7 @@ public class IAArqueiroTeste : MonoBehaviour
     public GameObject originalParent;
 
     void OnEnable() {
+        myAnim = GetComponent<Animator>();
         arcoCDBuff = arcoCD * 0.8f;
         originalCD = arcoCD;
         shotStart = transform.GetChild(transform.childCount-1).gameObject;
@@ -39,7 +41,7 @@ public class IAArqueiroTeste : MonoBehaviour
                 ArrowPool.Add(arrow.gameObject);
             }
         }
-        myMR = transform.GetChild(3).GetComponent<MeshRenderer>();
+        myMR = transform.GetChild(6).GetComponent<MeshRenderer>();
     }
 
     private void OnDrawGizmos() {
@@ -55,7 +57,7 @@ public class IAArqueiroTeste : MonoBehaviour
 
     void NullTargetCheck() {
         if (target == null) {
-            myMR.material = myMaterials[0];
+            //myMR.material = myMaterials[0];
             Collider[] hits = Physics.OverlapSphere(transform.position, range);
             foreach (Collider hitted in hits) {
                 if (hitted.transform.CompareTag("Enemy")) {
@@ -73,16 +75,16 @@ public class IAArqueiroTeste : MonoBehaviour
 
 
             if (Vector3.Distance(target.position, transform.position) > range) target = null;
-            myMR.material = myMaterials[1];
+            //myMR.material = myMaterials[1];
 
 
 
 
             arcoCD = CardsButton.ATTACKSPEEDBUFF ? arcoCDBuff : originalCD;
 
-            if (tempoPassado >= arcoCD) {
+            if (tempoPassado >= arcoCD && target != null) {
                 tempoPassado = 0;
-
+                myAnim.SetTrigger("Shoot");
                 GameObject tempArrow = ArrowPool[0];
                 tempArrow.SetActive(true);
                 tempArrow.transform.position = shotStart.transform.position;

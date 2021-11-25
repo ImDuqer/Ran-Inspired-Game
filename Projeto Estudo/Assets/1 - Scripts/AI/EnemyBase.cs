@@ -16,10 +16,11 @@ public class EnemyBase : MonoBehaviour {
     int HP = 5;
     int originalHP = 5;
     List<GameObject> lifes = new List<GameObject>();
-
+    EnemySpawner myES;
     NavMeshAgent myNMA;
     Coroutine speedCoroutine;
     void Start() {
+        myES = GameObject.Find("Dynamic Objects").GetComponent<EnemySpawner>();
         speedCoroutine = null;
         myNMA = GetComponent<NavMeshAgent>();
         myNMA.speed = speed;
@@ -89,6 +90,7 @@ public class EnemyBase : MonoBehaviour {
             if(!lifes.Contains(child.gameObject)) lifes.Add(child.gameObject);
         }
         if (points) ResourceTracker.POINTS++;
+        myES.EnemyPool.Add(this.gameObject);
         transform.SetParent(GameObject.Find("EnemiesPool").transform);
         HP = originalHP;
         gameObject.SetActive(false);

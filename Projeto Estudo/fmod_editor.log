@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x8000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001D48BF27A18 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000001D48BF29FC8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,126 +18,10 @@
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 000001D50AED2418 : node = 000001D3B9C3D2E0
-[LOG] SystemI::createSound                     : add node to async list : head = 000001D3C8A59BB8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D50AED2418
-[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9166688
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 87520
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D3B9C3D3F0
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='desenvolvimento prep', format=5, channels=2, frequency=48000, lengthbytes=682016, lengthpcm=2813600, pcmblocksize=0, loopstart=0, loopend=2614399, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.063751.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D50AED2418
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D3C841B318
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D3C841B318
-[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 000001D3DE9E3C68 : node = 000001D4D918B110
-[LOG] SystemI::createSound                     : add node to async list : head = 000001D3C8A59BB8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D3DE9E3C68
-[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9166688
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 87520
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D4D918B220
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='combat phase part_Shakuhachi', format=5, channels=2, frequency=48000, lengthbytes=378688, lengthpcm=1545600, pcmblocksize=0, loopstart=0, loopend=1228799, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.024719.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D3DE9E3C68
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D50ABDDB18
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D50ABDDB18
-[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 000001D50AEDA2A8 : node = 000001D3B9C3D420
-[LOG] SystemI::createSound                     : add node to async list : head = 000001D3C8A59BB8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D50AEDA2A8
-[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9166688
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 87520
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D3B9C3D530
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 13500
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 01 SND64095', format=5, channels=2, frequency=48000, lengthbytes=390048, lengthpcm=1392271, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.384034.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D50AEDA2A8
-[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 000001D3CA1F08E8 : node = 000001D3C7469FF0
-[LOG] SystemI::createSound                     : add node to async list : head = 000001D3C8A59BB8.  list count = 0
-[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D3CA1F08E8
-[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSound                     :     setdata soundi = 000001D3CA1F0A98 : node = 000001D3C746A130
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9166688
-[LOG] SystemI::createSound                     :     add node to async list : head = 000001D3C8A59BB8.  list count = 0
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 87520
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D3C746A100
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 35500
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 03 SND64093', format=5, channels=2, frequency=48000, lengthbytes=553888, lengthpcm=1967159, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.260030.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D3CA1F08E8
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001D3CA1F0A98
-[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
-[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9166688
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 87520
-[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001D3C746A240
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 22000
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 01 SND64095', format=5, channels=2, frequency=48000, lengthbytes=390048, lengthpcm=1392271, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.384034.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001D3CA1F0A98
-[LOG] SoundI::release                          : Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 01 SND64095 (000001D50AEDA2A8)
-[LOG] SoundI::release                          :     Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 01 SND64095 (000001D4D8E35488)
-[LOG] SoundI::release                          :     Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 01 SND64095 (000001D3B87CB3D8)
-[LOG] SoundI::release                          : Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 01 SND64095 (000001D3C841AC58)
-[LOG] SoundI::release                          :     Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 01 SND64095 (000001D51468DF68)
-[LOG] SoundI::release                          :     Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 01 SND64095 (000001D3DE9E3758)
-[LOG] SoundI::release                          : Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 03 SND64093 (000001D50AED8E68)
-[LOG] SoundI::release                          :     Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 03 SND64093 (000001D514690CE8)
-[LOG] SoundI::release                          :     Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 03 SND64093 (000001D3DE9E35A8)
-[LOG] SoundI::release                          : Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 01 SND64095 (000001D3CA1F0A98)
-[LOG] SoundI::release                          :     Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 01 SND64095 (000001D4D8E34E08)
-[LOG] SoundI::release                          :     Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 01 SND64095 (000001D3CA4AC5A8)
-[LOG] SoundI::release                          : Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 03 SND64093 (000001D3CA1F08E8)
-[LOG] SoundI::release                          :     Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 03 SND64093 (000001D4D8E34C68)
-[LOG] SoundI::release                          :     Crowds, Battle, Designed, Battle Screams, Medieval, Battlefield, Random Screams 03 SND64093 (000001D3CA4ACE18)
-[LOG] SoundI::release                          : desenvolvimento prep (000001D50AED2418)
-[LOG] SoundI::release                          :     desenvolvimento prep (000001D50B8C53D8)
-[LOG] SoundI::release                          :     desenvolvimento prep (000001D3C841B318)
-[LOG] SoundI::release                          : combat phase part_Shakuhachi (000001D3DE9E3C68)
-[LOG] SoundI::release                          :     combat phase part_Shakuhachi (000001D4D8E35148)
-[LOG] SoundI::release                          :     combat phase part_Shakuhachi (000001D50ABDDB18)
-[LOG] SoundI::release                          : Wind, Vegetation, Forest, Smooth Rustle SND1332 (000001D50AED8298)
-[LOG] SoundI::release                          :     Wind, Vegetation, Forest, Smooth Rustle SND1332 (000001D51468E108)
-[LOG] SoundI::release                          :     Wind, Vegetation, Forest, Smooth Rustle SND1332 (000001D3DE9E3098)
-[LOG] SoundI::release                          :  (000001D3BCEFDA98)
-[LOG] SoundI::release                          :     combat phase_TAIKO BASE (000001D35D1BFF68)
-[LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
 [LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
 [LOG] SystemI::close                           : Closed.

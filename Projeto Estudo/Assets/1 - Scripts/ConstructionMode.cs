@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Audio;
+using TMPro;
 
 public class ConstructionMode : MonoBehaviour {
 
+
+    [SerializeField] Animator settingsPanel;
+    [SerializeField] GameObject paused;
     GameObject[] ArcherStands;
     GameObject[] TowerStands;
     GameObject[] ConstructionStands;
@@ -13,6 +20,12 @@ public class ConstructionMode : MonoBehaviour {
     bool AC = false;
     bool TC = false;
     bool FC = false;
+
+
+    [SerializeField] AudioMixer AudioMixer;
+    Resolution[] resolutions;
+    [SerializeField] TMP_Dropdown ResolutionDropdown;
+
     void Awake() {
         ArcherStands = GameObject.FindGameObjectsWithTag("Archer");
         ConstructionStands = GameObject.FindGameObjectsWithTag("Construction");
@@ -20,9 +33,61 @@ public class ConstructionMode : MonoBehaviour {
         FighterStands = GameObject.FindGameObjectsWithTag("Fighter");
     }
 
+
+    public void SetResolution(int ResolutionIndex) {
+        Resolution resolution = resolutions[ResolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void SetVolume(float volume) {
+        AudioMixer.SetFloat("volume", volume);
+    }
+
+    public void SetFullscreen(bool isFullscreen) {
+        Screen.fullScreen = isFullscreen;
+    }
+    private void Start() {
+        #region settings
+
+        int CurrentResolutionIndex = 0;
+        resolutions = Screen.resolutions;
+
+        ResolutionDropdown.ClearOptions();
+
+        List<string> options = new List<string>();
+
+        for (int i = 0; i < resolutions.Length; i++) {
+            string Option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(Option);
+
+            if (resolutions[i].width == Screen.currentResolution.width &&
+                resolutions[i].height == Screen.currentResolution.height) {
+                CurrentResolutionIndex = i;
+            }
+        }
+
+        ResolutionDropdown.AddOptions(options);
+        ResolutionDropdown.value = CurrentResolutionIndex;
+        ResolutionDropdown.RefreshShownValue();
+        #endregion
+    }
+    public void Settings() {
+        settingsPanel.SetTrigger("popin");
+    }
+    public void SettingsBack() {
+        settingsPanel.SetTrigger("popout");
+    }
     void Update() {
         if (Input.GetKeyDown(KeyCode.F)) {
             ToggleFastForward();
+        }
+        if (Input.GetKeyDown(KeyCode.D)) {
+            TogglePause();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if(!settingsPanel.gameObject.transform.GetChild(0).gameObject.activeSelf) Settings();
+
+            else SettingsBack();
         }
         if (EnemySpawner.currentGamePhase == GamePhase.SETUP_PHASE) {
             if (Input.GetKeyDown(KeyCode.Q)) FighterButton();
@@ -46,6 +111,10 @@ public class ConstructionMode : MonoBehaviour {
 
     public void ToggleFastForward() {
         Time.timeScale = Time.timeScale == 1 ? 2.5f : 1f;
+    }
+    public void TogglePause() {
+        paused.SetActive(!paused.activeSelf);
+        Time.timeScale = Time.timeScale > 0 ? 0 : 1f; ;
     }
 
     void TurnObj(GameObject[] array, bool state){
