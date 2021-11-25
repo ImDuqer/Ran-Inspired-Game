@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{c9e56bf0-443c-4281-9d9f-6998387beb50}">
+		<property name="name">
+			<value>SkipToCombat</value>
+		</property>
+		<relationship name="folder">
+			<destination>{41d356af-27d9-4889-bf27-5c6c2d84bea6}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{d918a109-bf62-4d7f-96d2-a82c75762058}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{d918a109-bf62-4d7f-96d2-a82c75762058}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

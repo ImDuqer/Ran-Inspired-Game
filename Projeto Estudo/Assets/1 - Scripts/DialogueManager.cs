@@ -127,11 +127,12 @@ public class DialogueManager : MonoBehaviour {
         foreach(GameObject character in characters) {
             character.SetActive(false);
         }
+        FMODManager.DialogueMusicEnd();
         optionPanel.SetActive(false);
         gameCanvas.SetActive(true);
         gameObject.SetActive(false);
         CameraPanning.shouldPanCamera = true;
-        myWC.text = "Week " + (EnemySpawner.currentWeek+1);
+        myWC.text = "Semana " + (EnemySpawner.currentWeek+1);
         //myWC.transform.parent.GetComponent<Animator>().SetTrigger("showup");
 
     }

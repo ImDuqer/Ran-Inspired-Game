@@ -30,16 +30,17 @@ public class CardsButton : MonoBehaviour {
     public static bool PRICEBUFF = false;
     #endregion
     void Awake() {
+        displayCard = null;
         cards = new Transform[8];
         cardsAmmount = new int[8];
         for (int j = 0; j < cardsHolder.childCount; j++) {
-            playerCards.Add(cardsHolder.GetChild(j).gameObject);
+            playerCards.Add(null);
         }
         int i = 0;
         foreach (Transform card in cardsHolder) {
             //Debug.Log(cardsAmmount.Length);
             cards[i] = card;
-            cardsAmmount[i] = 1;
+            cardsAmmount[i] = 0;
             i++;
         }
     }
@@ -51,26 +52,34 @@ public class CardsButton : MonoBehaviour {
     }
 
     public void ShowCards() {
-        if (RemaingCard()) {
-            firstCard.SetActive(true);
-            displayCard = firstCard;
-        }
-        firstCard = null;
+        if (displayCard == null) {
+            if (RemaingCard()) {
+                firstCard.SetActive(true);
+                displayCard = firstCard;
+            }
+            firstCard = null;
 
 
-        foreach (GameObject card in playerCards) {
-            Debug.Log("card: " + card);
-            if (card != null && displayCard != card) multipleCards = true;
-            else multipleCards = false;
-        }
-        if (multipleCards) {
-            buttonRight.SetActive(true);
-            buttonLeft.SetActive(true);
+            foreach (GameObject card in playerCards) {
+                Debug.Log("card: " + card);
+                if (card != null && displayCard != card) multipleCards = true;
+                else multipleCards = false;
+            }
+            if (multipleCards) {
+                buttonRight.SetActive(true);
+                buttonLeft.SetActive(true);
+            }
+            else {
+                buttonRight.SetActive(false);
+                buttonLeft.SetActive(false);
+
+            }
         }
         else {
+            displayCard.SetActive(false);
+            displayCard = null;
             buttonRight.SetActive(false);
             buttonLeft.SetActive(false);
-
         }
     }
 
@@ -141,35 +150,35 @@ public class CardsButton : MonoBehaviour {
     public void ActivateEffect(int index) {
         switch (index) {
             case 0:
-                GLOBALDAMAGE = UseEffect(0);
+                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) GLOBALDAMAGE = UseEffect(0);
                 break;
 
             case 1:
-                ATTACKSPEEDBUFF = UseEffect(1);
+                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) ATTACKSPEEDBUFF = UseEffect(1);
                 break;
 
             case 2:
-                DAMAGEDEBUFF = UseEffect(2);
+                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) DAMAGEDEBUFF = UseEffect(2);
                 break;
 
             case 3:
-                ATTACKSPEEDDEBUFF = UseEffect(3);
+                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) ATTACKSPEEDDEBUFF = UseEffect(3);
                 break;
 
             case 4:
-                PRICEBUFF = UseEffect(4);
+                if(EnemySpawner.currentGamePhase == GamePhase.SETUP_PHASE) PRICEBUFF = UseEffect(4);
                 break;
 
             case 5:
-                MOVSPEEDDEBUFF = UseEffect(5);
+                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) MOVSPEEDDEBUFF = UseEffect(5);
                 break;
 
             case 6:
-                MOVSPEEDBUFF = UseEffect(6);
+                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) MOVSPEEDBUFF = UseEffect(6);
                 break;
 
             case 7:
-                DAMAGEBUFF = UseEffect(7);
+                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) DAMAGEBUFF = UseEffect(7);
                 break;
         }
         UpdateAmmount();

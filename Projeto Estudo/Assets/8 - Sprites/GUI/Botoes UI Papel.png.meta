@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: 957792badbc0fa944a97b7cffcc7a89b
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -3691262459932505321
+    second: Botoes UI Papel_0
+  - first:
+      213: -4644399592218681490
+    second: Botoes UI Papel_1
+  - first:
+      213: 2404828490588154445
+    second: Botoes UI Papel_2
+  - first:
+      213: -1744553722041674939
+    second: Botoes UI Papel_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +53,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -101,7 +113,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Botoes UI Papel_0
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 767
+        width: 684
+        height: 203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b0dfe895006ccc0800000000000000
+      internalID: -3691262459932505321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Botoes UI Papel_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 572
+        width: 957
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6f16de8d27cb8fb0800000000000000
+      internalID: -4644399592218681490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Botoes UI Papel_2
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 322
+        width: 737
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4aee3755caaf5120800000000000000
+      internalID: 2404828490588154445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Botoes UI Papel_3
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 61
+        width: 1026
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 543de1202a91ac7e0800000000000000
+      internalID: -1744553722041674939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

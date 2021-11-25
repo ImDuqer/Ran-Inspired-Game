@@ -14,8 +14,10 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField] TextMeshProUGUI buttonPhase;
     [SerializeField] GameObject waitPhase;
     [SerializeField] Transform startPosition;
-    [SerializeField] int[] WaveAmmount;
-    [SerializeField] float timeBetweenSpawns = .5f;
+    [SerializeField] Transform weekHolder;
+    List<Week> weeks = new List<Week>();
+    int[] WaveAmmount;
+    float timeBetweenSpawns = .5f;
     [SerializeField] GameObject rewardPanel;
     [SerializeField] Animator weekText;
 
@@ -36,6 +38,11 @@ public class EnemySpawner : MonoBehaviour {
 
 
     void Awake() {
+        foreach (Transform week in weekHolder) {
+            weeks.Add(week.gameObject.GetComponent<Week>());
+        }
+        timeBetweenSpawns = weeks[currentWeek].timeBetweenSpawns;
+        WaveAmmount = weeks[currentWeek].waveAmmount; 
         EnemiesPool = GameObject.Find("EnemiesPool").transform;
         currentGamePhase = GamePhase.SETUP_PHASE;
         foreach (Transform enemy in EnemiesPool) {
@@ -74,6 +81,16 @@ public class EnemySpawner : MonoBehaviour {
             }
             aboutToEnd = true;
         }
+
+        if (CardsButton.GLOBALDAMAGE) {
+            foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy")) {
+                enemy.GetComponent<EnemyBase>().GlobalDamage();
+            }
+            CardsButton.GLOBALDAMAGE = false;
+            
+        }
+
+
         if (aboutToEnd && EnemiesPool.childCount >= enemiesPoolSize) {
             currentWave++;
             currentGamePhase = GamePhase.REWARD_PHASE;
@@ -88,7 +105,7 @@ public class EnemySpawner : MonoBehaviour {
             
             
             countdown -= Time.deltaTime;
-            buttonPhase.text = "Start Next Wave (" + ((int)countdown).ToString() + "s)";
+            buttonPhase.text = "Começar Onda de Inimigos: " + ((int)countdown).ToString() + " segundos";
             if (countdown <= 0) {
                 ActivateActionPhase();
                 countdown = 61f;
@@ -113,6 +130,8 @@ public class EnemySpawner : MonoBehaviour {
 
     public void StartSetupPhase() {
 
+        timeBetweenSpawns = weeks[currentWeek].timeBetweenSpawns;
+        WaveAmmount = weeks[currentWeek].waveAmmount;
         currentGamePhase = GamePhase.SETUP_PHASE;
         CameraPanning.inDialogue = false;
         if (waitPhase.activeSelf) {
@@ -123,6 +142,7 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     void StartDialogue() {
+        FMODManager.DialogueMusicStart();
         CameraPanning.shouldPanCamera = false;
         GameplayCanvas.SetActive(false);
         DialogueCanvas.SetActive(true);
@@ -142,6 +162,8 @@ public class EnemySpawner : MonoBehaviour {
     } 
 
     public static void ActivateActionPhase() {
+        CardsButton.PRICEBUFF = false;
+        FMODManager.PrepPhaseEnd();
         currentGamePhase = GamePhase.ACTION_PHASE;
     }
 }

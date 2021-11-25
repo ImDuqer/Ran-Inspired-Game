@@ -424,7 +424,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.17058754, y: -0.059433937}
-  m_SizeDelta: {x: 11.5888, y: 4.2677}
+  m_SizeDelta: {x: 12.6459, y: 4.6047}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &9015415679402691025
 MeshRenderer:
@@ -446,7 +446,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1265483262846259718, guid: 2db41541899324b478e6d901a9ecc48f, type: 2}
+  - {fileID: -3907581977802277205, guid: 9935ddda7095ade47be96147923d07ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -490,8 +490,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 2 pontos\nLocal de arqueiro
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2db41541899324b478e6d901a9ecc48f, type: 2}
-  m_sharedMaterial: {fileID: 1265483262846259718, guid: 2db41541899324b478e6d901a9ecc48f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9935ddda7095ade47be96147923d07ee, type: 2}
+  m_sharedMaterial: {fileID: -3907581977802277205, guid: 9935ddda7095ade47be96147923d07ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -685,7 +685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8649375041950381298
 Transform:
   m_ObjectHideFlags: 0
@@ -758,14 +758,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8649375041950381298}
     m_Modifications:
+    - target: {fileID: 2374445864957773479, guid: 23dac79424186874d826714b6f85d97b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2576108840942806241, guid: 23dac79424186874d826714b6f85d97b, type: 3}
       propertyPath: m_Name
       value: ArcherCylinder
       objectReference: {fileID: 0}
     - target: {fileID: 2576108840942806241, guid: 23dac79424186874d826714b6f85d97b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7182037253469116139, guid: 23dac79424186874d826714b6f85d97b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4a54b4e8fd6f715498221cb0a50d1a65, type: 2}
+    - target: {fileID: 7182037253469116139, guid: 23dac79424186874d826714b6f85d97b, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4a54b4e8fd6f715498221cb0a50d1a65, type: 2}
     - target: {fileID: 8344348817943271040, guid: 23dac79424186874d826714b6f85d97b, type: 3}
       propertyPath: m_RootOrder
       value: 0
