@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
+using UnityEngine.UI;
 public enum GamePhase{SETUP_PHASE, ACTION_PHASE, REWARD_PHASE}
 public class EnemySpawner : MonoBehaviour {
 
     public static GamePhase currentGamePhase;
     public static int currentWave = 0;
 
-    public static int currentWeek = 0;
+    public static int currentWeek;
 
     [SerializeField] TextMeshProUGUI buttonPhase;
     [SerializeField] GameObject waitPhase;
@@ -20,7 +21,8 @@ public class EnemySpawner : MonoBehaviour {
     float timeBetweenSpawns = .5f;
     [SerializeField] GameObject rewardPanel;
     [SerializeField] Animator weekText;
-
+    [SerializeField] GameObject defeat;
+    [SerializeField] Slider health;
     public GameObject GameplayCanvas;
     public GameObject DialogueCanvas;
 
@@ -28,7 +30,7 @@ public class EnemySpawner : MonoBehaviour {
 
     bool startedSpawning;
     bool aboutToEnd;
-
+    [SerializeField] GameObject byobu2Panel;
     List<GameObject> EnemyPool = new List<GameObject>();
 
     Transform EnemiesPool;
@@ -38,6 +40,7 @@ public class EnemySpawner : MonoBehaviour {
 
 
     void Awake() {
+        currentWeek = PlayerPrefs.GetInt("CurrentWeek");
         foreach (Transform week in weekHolder) {
             weeks.Add(week.gameObject.GetComponent<Week>());
         }
@@ -56,6 +59,13 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     void Update() {
+        if (Input.GetKeyDown(KeyCode.F3) || (health.value <= 0)) {
+
+            PlayerPrefs.SetInt("CurrentWeek", 0);
+            GameplayCanvas.SetActive(false);
+            defeat.SetActive(true);
+
+        }
         //Debug.Log("Wait Phase:" + waitPhase);
         //Debug.Log("currentwave" + currentWave);
         //Debug.Log("waveammount length" +  WaveAmmount.Length);
@@ -75,6 +85,7 @@ public class EnemySpawner : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.F10) && currentGamePhase == GamePhase.ACTION_PHASE) {
             StopAllCoroutines();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            //Debug.Log("enemies: " + enemies[0]);
             currentWave = WaveAmmount.Length;
             foreach (GameObject enemy in enemies) {
                 enemy.GetComponent<EnemyBase>().EnemyReset(false);
@@ -94,7 +105,8 @@ public class EnemySpawner : MonoBehaviour {
         if (aboutToEnd && EnemiesPool.childCount >= enemiesPoolSize) {
             currentWave++;
             currentGamePhase = GamePhase.REWARD_PHASE;
-            rewardPanel.SetActive(true);
+            if (currentWeek != 8) rewardPanel.SetActive(true);
+            else byobu2Panel.SetActive(true);
             aboutToEnd = false;
         }
         if(currentGamePhase == GamePhase.REWARD_PHASE) {
@@ -102,15 +114,12 @@ public class EnemySpawner : MonoBehaviour {
             EndReward();
         }
         if(currentGamePhase == GamePhase.SETUP_PHASE) {
-            
-            
             countdown -= Time.deltaTime;
             buttonPhase.text = "Começar Onda de Inimigos: " + ((int)countdown).ToString() + " segundos";
             if (countdown <= 0) {
                 ActivateActionPhase();
                 countdown = 61f;
             }
-
         }
     }
 
@@ -119,6 +128,8 @@ public class EnemySpawner : MonoBehaviour {
             currentWave = 0;
             StartDialogue();
             currentWeek++;
+            PlayerPrefs.SetInt("CurrentWeek", currentWeek);
+            if (currentWeek > PlayerPrefs.GetInt("HighWeek")) PlayerPrefs.SetInt("HighWeek", currentWeek);
             CameraPanning.inDialogue = true;
             
         }

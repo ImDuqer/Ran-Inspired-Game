@@ -18,7 +18,8 @@ public class TowerStand : MonoBehaviour
 
     void Start() {
         originalCost = TowerCost;
-        tmp = transform.GetChild(0).GetChild(transform.GetChild(0).childCount - 1).GetComponent<TextMeshPro>();
+
+        tmp = transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshPro>();
         myMR = GetComponent<MeshRenderer>();
         myC = GetComponent<Collider>();
         myRT = GameObject.Find("ResourcesBox").GetComponent<ResourceTracker>();

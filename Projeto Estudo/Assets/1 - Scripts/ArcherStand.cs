@@ -18,7 +18,7 @@ public class ArcherStand : MonoBehaviour {
 
     void Start() {
         originalCost = archerCost;
-        tmp = transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshPro>();
+        tmp = transform.GetChild(0).GetChild(transform.GetChild(0).childCount - 1).GetComponent<TextMeshPro>();
         myMR = GetComponent<MeshRenderer>();
         myC = GetComponent<Collider>();
         myRT = GameObject.Find("ResourcesBox").GetComponent<ResourceTracker>();
@@ -36,6 +36,9 @@ public class ArcherStand : MonoBehaviour {
         transform.GetChild(0).transform.gameObject.SetActive(true);
         if (CardsButton.PRICEBUFF) archerCost = originalCost - 1;
         else archerCost = originalCost;
+        Debug.Log(tmp);
+        Debug.Log(archerCost.ToString());
+        //Debug.Log(tmp.text);
         tmp.text = archerCost.ToString() + " pontos\n1 população";
         if (Input.GetMouseButtonDown(0)) {
             if (ResourceTracker.MAX_POPULATION >= ResourceTracker.CURRENT_POPULATION + 1) {

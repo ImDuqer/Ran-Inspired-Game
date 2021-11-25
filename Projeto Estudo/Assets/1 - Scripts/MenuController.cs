@@ -25,7 +25,7 @@ public class MenuController : MonoBehaviour {
         if (ResourceTracker.WEEK == 1 && ResourceTracker.WAVE == 1) {
             if(ContinueButton != null) ContinueButton.blocked = true;
         }
-        if (MenuImage != null && PlayerPrefs.GetInt("HighWeek") >= 11) MenuImage.sprite = AlterMenu;
+        if (MenuImage != null && PlayerPrefs.GetInt("HighWeek") >= 9) MenuImage.sprite = AlterMenu;
     }
 
     private void Start() {

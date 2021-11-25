@@ -17,7 +17,7 @@ public class DialogueManager : MonoBehaviour {
     public GameObject optionPanel;
     public bool isTalking = false;
     bool typing = false;
-    StudioEventEmitter mySEE;
+    [SerializeField] StudioEventEmitter mySEE;
 
     static Story story;
     TextMeshProUGUI nametag;
@@ -37,7 +37,7 @@ public class DialogueManager : MonoBehaviour {
 
 
     void OnEnable() {
-        mySEE = GetComponent<StudioEventEmitter>();
+        //mySEE = GetComponent<StudioEventEmitter>();
         //Debug.Log(EnemySpawner.currentWeek);
         for (int i = 0; i < Shown.Length; i++) {
             Shown[i] = false;
