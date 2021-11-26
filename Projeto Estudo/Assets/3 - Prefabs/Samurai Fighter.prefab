@@ -2176,6 +2176,8 @@ GameObject:
   - component: {fileID: 6226495884801053768}
   - component: {fileID: 5402010192926997828}
   - component: {fileID: 6976601591093697740}
+  - component: {fileID: 4046675545764465792}
+  - component: {fileID: 5532325863060812508}
   m_Layer: 0
   m_Name: Samurai Fighter
   m_TagString: Fighter
@@ -2216,6 +2218,7 @@ MonoBehaviour:
   attackSpeed: 2
   speed: 3.5
   gizmos: 0
+  originalParent: {fileID: 0}
 --- !u!195 &5402010192926997828
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2254,6 +2257,43 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4046675545764465792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4039274730235270737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Ingame Events/Combat/Sword Fight 3d
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!136 &5532325863060812508
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4039274730235270737}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.33
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.39, z: 0}
 --- !u!1 &4141654546014439816
 GameObject:
   m_ObjectHideFlags: 0
