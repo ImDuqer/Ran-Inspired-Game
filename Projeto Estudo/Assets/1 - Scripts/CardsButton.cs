@@ -169,7 +169,11 @@ public class CardsButton : MonoBehaviour {
                 break;
 
             case 3:
-                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) ATTACKSPEEDDEBUFF = UseEffect(3);
+                if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) {
+
+                    ATTACKSPEEDDEBUFF = UseEffect(3);
+                    StartCoroutine(EffectTimer(ATTACKSPEEDDEBUFF, 10));
+                }
                 break;
 
             case 4:

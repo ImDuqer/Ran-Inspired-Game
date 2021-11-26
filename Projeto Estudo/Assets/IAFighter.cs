@@ -53,8 +53,22 @@ public class IAFighter : MonoBehaviour {
         }
     }
 
-    void Update() {
 
+    void SpeedBuff() {
+        if (speedCoroutine == null) speedCoroutine = StartCoroutine(SpeedBuffCoroutine());
+    }
+
+    IEnumerator SpeedBuffCoroutine() {
+        myNMA.speed = speed * 1.2f;
+        yield return new WaitForSeconds(5);
+
+        myNMA.speed = speed;
+        speedCoroutine = null;
+        CardsButton.MOVSPEEDBUFF = false;
+    }
+
+    void Update() {
+        if (CardsButton.MOVSPEEDBUFF) SpeedBuff();
         if (!walking) {
             foreach (GameObject life in lifes) {
                 life.GetComponent<Animator>().SetTrigger("Idle");
@@ -122,7 +136,8 @@ public class IAFighter : MonoBehaviour {
         attackSpeedTimer -= Time.deltaTime;
         if (attackSpeedTimer <= 0) {
 
-            attackSpeedTimer = attackSpeed;
+            if (CardsButton.ATTACKSPEEDBUFF) attackSpeedTimer = attackSpeed * 0.8F;
+            else attackSpeedTimer = attackSpeed;
             foreach (GameObject life in lifes) {
                 life.GetComponent<Animator>().SetTrigger("Attack");
                 mySEE.Play();

@@ -146,9 +146,10 @@ public class EnemyBase : MonoBehaviour {
         myNMA.isStopped = true;
         attackSpeedTimer -= Time.deltaTime;
         if(attackSpeedTimer <= 0) {
-            
-            attackSpeedTimer = attackSpeed;
-            foreach(GameObject life in lifes) {
+
+            if (CardsButton.ATTACKSPEEDDEBUFF) attackSpeedTimer = attackSpeed * 1.2F;
+            else attackSpeedTimer = attackSpeed;
+            foreach (GameObject life in lifes) {
                 life.GetComponent<Animator>().SetTrigger("Attack");
                 mySEE.Play();
                 if (sideDestination.GetComponent<IAArqueiroTeste>() != null) sideDestination.GetComponent<IAArqueiroTeste>().TakeDamage();

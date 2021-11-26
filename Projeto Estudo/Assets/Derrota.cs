@@ -21,6 +21,7 @@ public class Derrota : MonoBehaviour {
     }
 
     public void Byobu2() {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Byobu2");
     }
 
