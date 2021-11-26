@@ -7,7 +7,9 @@ using UnityEngine.UI;
 
 public class EnemyBase : MonoBehaviour {
 
-    float range;
+    [SerializeField] float range;
+    [SerializeField] float attackSpeed;
+    float attackSpeedTimer;
     Transform target = null;
     byte i;
     Transform destination;
@@ -22,7 +24,10 @@ public class EnemyBase : MonoBehaviour {
     NavMeshAgent myNMA;
     Coroutine speedCoroutine;
     float targetDistance;
+    bool walking = true;
+    GameObject sideDestination = null;
     void Start() {
+        attackSpeedTimer = attackSpeed;
         myES = GameObject.Find("Dynamic Objects").GetComponent<EnemySpawner>();
         speedCoroutine = null;
         myNMA = GetComponent<NavMeshAgent>();
@@ -38,35 +43,33 @@ public class EnemyBase : MonoBehaviour {
 
 
         if (CheckFighters() != null) {
+            Debug.Log("Check a fighter!");
             if(targetDistance < range && targetDistance > range / 4) RunTowards(target);
-            else if(targetDistance < range) {
+            else if(targetDistance < range ) {
                 Attack();
             }
 
         }
 
         else if (CheckArchers() != null) {
-
+            Debug.Log("Check an archer!");
+            if (targetDistance < range && targetDistance > range / 4) RunTowards(target);
+            else if (targetDistance < range) {
+                Attack();
+            }
         }
 
         else {
-
+            Debug.Log("Followed the path!");
+            FollowPath();
+            myNMA.SetDestination(destination.position);
         }
 
 
     }
 
-    void Attack() {
-
-    }
-
-    void RunTowards(Transform t) {
-
+    void FollowPath() {
         destination = Path.PATH[i];
-
-
-        myNMA.SetDestination(destination.position);
-
         if (myNMA.hasPath) {
             foundPath = true;
         }
@@ -75,11 +78,39 @@ public class EnemyBase : MonoBehaviour {
             i++;
             destination = null;
             foundPath = false;
-            //destination = Path.PATH[i];
+            destination = Path.PATH[i];
         }
 
         if (myNMA.isPathStale) {
         }
+    }
+
+
+    void Attack() {
+        walking = false;
+        myNMA.isStopped = true;
+        attackSpeedTimer -= Time.deltaTime;
+        if(attackSpeedTimer <= 0) {
+            attackSpeedTimer = attackSpeed;
+            foreach(GameObject life in lifes) {
+                life.GetComponent<Animator>().SetTrigger("Attack");
+            }
+        }
+    }
+
+    void RunTowards(Transform t) {
+        if (!walking) {
+            foreach (GameObject life in lifes) {
+                life.GetComponent<Animator>().SetTrigger("Walk");
+            }
+            walking = true;
+            myNMA.isStopped = false;
+        }
+        destination = t;
+
+        myNMA.SetDestination(destination.position);
+
+        
 
     }
 
@@ -87,28 +118,33 @@ public class EnemyBase : MonoBehaviour {
     GameObject CheckArchers() {
 
 
-        GameObject sideDestination = null;
+        sideDestination = null;
 
         Collider[] hits = Physics.OverlapSphere(transform.position, range);
         foreach (Collider hitted in hits) {
             if (hitted.transform.CompareTag("Archer")) {
-                sideDestination = hitted.gameObject;
-                target = sideDestination.transform;
-                break;
+                if (!hitted.gameObject.GetComponent<IAArqueiroTeste>().inCombat) {
+                    sideDestination = hitted.gameObject;
+                    sideDestination.GetComponent<IAArqueiroTeste>().inCombat = true;
+                    target = sideDestination.transform;
+                    break;
+                }
             }
         }
 
         return sideDestination;
     }
     GameObject CheckFighters() {
-        GameObject sideDestination = null;
-
+        sideDestination = null;
         Collider[] hits = Physics.OverlapSphere(transform.position, range);
         foreach (Collider hitted in hits) {
             if (hitted.transform.CompareTag("Fighter")) {
-                sideDestination = hitted.gameObject;
-                target = sideDestination.transform;
-                break;
+                if (!hitted.gameObject.GetComponent<IAFighter>().inCombat) {
+                    sideDestination = hitted.gameObject;
+                    sideDestination.GetComponent<IAFighter>().inCombat = true;
+                    target = sideDestination.transform;
+                    break;
+                }
             }
         }
         return sideDestination;
@@ -166,6 +202,10 @@ public class EnemyBase : MonoBehaviour {
         }
     }
     public void EnemyReset(bool points) {
+        if (sideDestination != null) {
+            if (sideDestination.GetComponent<IAArqueiroTeste>() != null) sideDestination.GetComponent<IAArqueiroTeste>().inCombat = false;
+            else sideDestination.GetComponent<IAFighter>().inCombat = false;
+        }
         foreach (Transform child in transform) {
             if(!lifes.Contains(child.gameObject)) lifes.Add(child.gameObject);
             child.gameObject.SetActive(true);

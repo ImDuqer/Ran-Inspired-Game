@@ -25,6 +25,8 @@ public class IAArqueiroTeste : MonoBehaviour
     Animator myAnim;
     bool enemyCheck;
 
+    [HideInInspector] public bool inCombat;
+
     Transform dynamicObjects;
 
     public GameObject originalParent;

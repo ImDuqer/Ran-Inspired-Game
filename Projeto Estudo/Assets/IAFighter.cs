@@ -6,6 +6,10 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class IAFighter : MonoBehaviour {
+    
+
+    [HideInInspector] public bool inCombat;
+
     FSMWalkPath myFP;
 
     [SerializeField] float speed = 3.5f;
@@ -19,7 +23,7 @@ public class IAFighter : MonoBehaviour {
     EnemySpawner myES;
     NavMeshAgent myNMA;
     Coroutine speedCoroutine;
-    void Start() {
+    void Start() {/*
         myES = GameObject.Find("Dynamic Objects").GetComponent<EnemySpawner>();
         speedCoroutine = null;
         myNMA = GetComponent<NavMeshAgent>();
@@ -35,7 +39,7 @@ public class IAFighter : MonoBehaviour {
         FSM fsm = GetComponent<FSM>();
         fsm.root = myPath;
 
-        StartCoroutine(fsm.Begin());
+        StartCoroutine(fsm.Begin());*/
     }
 
     void Update() {
@@ -56,7 +60,7 @@ public class IAFighter : MonoBehaviour {
         if (CardsButton.MOVSPEEDDEBUFF) SpeedDebuff();
     }
 
-    void OnCollisionEnter(Collision other) {
+    void OnCollisionEnter(Collision other) {/*
         if (other.transform.CompareTag("Arrow")) {
 
             if (!CardsButton.DAMAGEBUFF) HP -= 1;
@@ -66,7 +70,7 @@ public class IAFighter : MonoBehaviour {
             lifes.Remove(lifes[lifes.Count - 1]);
             if (HP <= 0) EnemyReset(true);
             //other.gameObject;
-        }
+        }*/
     }
 
 
@@ -83,23 +87,23 @@ public class IAFighter : MonoBehaviour {
         CardsButton.MOVSPEEDDEBUFF = false;
     }
 
-    public void GlobalDamage() {
+    public void GlobalDamage() {/*
         HP -= 1;
 
         lifes[lifes.Count - 1].SetActive(false);
 
         lifes.Remove(lifes[lifes.Count - 1]);
-        if (HP <= 0) EnemyReset(true);
+        if (HP <= 0) EnemyReset(true);*/
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other) {/*
         if (other.transform.CompareTag("Castle")) {
             EnemyReset(false);
             //Adicionei
             vidaCastelo.value -= 2;
-        }
+        }*/
     }
-    public void EnemyReset(bool points) {
+    public void EnemyReset(bool points) {/*
         foreach (Transform child in transform) {
             if (!lifes.Contains(child.gameObject)) lifes.Add(child.gameObject);
         }
@@ -107,6 +111,6 @@ public class IAFighter : MonoBehaviour {
         myES.EnemyPool.Add(this.gameObject);
         transform.SetParent(GameObject.Find("EnemiesPool").transform);
         HP = originalHP;
-        gameObject.SetActive(false);
+        gameObject.SetActive(false);*/
     }
 }
