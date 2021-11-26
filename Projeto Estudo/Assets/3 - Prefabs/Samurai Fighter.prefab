@@ -2211,9 +2211,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa500d6b50789a24ebcbcea87581385c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inCombat: 0
+  range: 9
+  attackSpeed: 2
   speed: 3.5
-  range: 5
+  gizmos: 0
 --- !u!195 &5402010192926997828
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2232,8 +2233,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
+  m_Height: 2.41
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &4141654546014439816

@@ -21,7 +21,7 @@ public class IAArqueiroTeste : MonoBehaviour
     public static List<GameObject> ArrowPool = new List<GameObject>();
     public static bool filledPool;
     GameObject shotStart;
-    int HP = 2;
+    int HP = 3;
     Animator myAnim;
     bool enemyCheck;
 
