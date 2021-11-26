@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3078951557473334521}
   - component: {fileID: 3078951557473334527}
   - component: {fileID: 8977459832887795516}
+  - component: {fileID: 323844339423108181}
   m_Layer: 8
   m_Name: EnemyTest
   m_TagString: Enemy
@@ -125,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9174f7f9701f84d9b532e5d14cc096, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 5
+  range: 9
   attackSpeed: 3
   speed: 3.5
   gizmos: 0
@@ -159,6 +160,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 110
   m_CollisionDetection: 0
+--- !u!114 &323844339423108181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078951557473334468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Ingame Events/Combat/Sword Fight 3d
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &687597084751954339
 PrefabInstance:
   m_ObjectHideFlags: 0

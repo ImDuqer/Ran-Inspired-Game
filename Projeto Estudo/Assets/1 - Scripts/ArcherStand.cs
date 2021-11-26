@@ -29,15 +29,15 @@ public class ArcherStand : MonoBehaviour {
 
     void OnEnable() {
 
-        if(!bought) transform.GetChild(0).transform.gameObject.SetActive(false);
+        if (transform.GetChild(2) != null) transform.GetChild(2).gameObject.SetActive(false);
+        if (!bought) transform.GetChild(0).gameObject.SetActive(false);
         else gameObject.SetActive(false);
     }
     void OnMouseOver() {
-        transform.GetChild(0).transform.gameObject.SetActive(true);
+        transform.GetChild(0).gameObject.SetActive(true);
+        //Debug.Log("Child: " + transform.GetChild(0));
         if (CardsButton.PRICEBUFF) archerCost = originalCost - 1;
         else archerCost = originalCost;
-        Debug.Log(tmp);
-        Debug.Log(archerCost.ToString());
         //Debug.Log(tmp.text);
         tmp.text = archerCost.ToString() + " pontos\n1 população";
         if (Input.GetMouseButtonDown(0)) {

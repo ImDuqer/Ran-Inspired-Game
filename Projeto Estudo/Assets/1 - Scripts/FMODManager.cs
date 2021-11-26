@@ -30,12 +30,12 @@ public class FMODManager : MonoBehaviour {
         soundtrack.SetParameter("Restart Loop", 1);
     }
     static public void SetDangerLevel(int x) {
-        Debug.Log("Intensity: " + x);
+        //Debug.Log("Intensity: " + x);
         currentIntensity = x;
         soundtrack.SetParameter("Intensity", x);
     }
     static public void PrepPhaseEnd() {
-        Debug.Log("Intensity: 0");
+        //Debug.Log("Intensity: 0");
         currentIntensity = 0;
         soundtrack.SetParameter("SkipToCombat", 1);
         soundtrack.SetParameter("Intensity", 0);
@@ -54,6 +54,6 @@ public class FMODManager : MonoBehaviour {
     }
 
     public void Update() {
-        Debug.Log("currentIntensity: " + currentIntensity);
+        //Debug.Log("currentIntensity: " + currentIntensity);
     }
 }

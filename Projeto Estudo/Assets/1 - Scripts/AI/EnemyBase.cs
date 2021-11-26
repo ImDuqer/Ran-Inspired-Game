@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 //Adicionei
 using UnityEngine.UI;
+using FMODUnity;
 
 public class EnemyBase : MonoBehaviour {
 
@@ -26,8 +27,16 @@ public class EnemyBase : MonoBehaviour {
     float targetDistance;
     bool walking = true;
     GameObject sideDestination = null;
+    bool foundArcher = false;
+    bool foundFighter = false;
+    StudioEventEmitter mySEE;
+
+
+
+
     void Start() {
-        attackSpeedTimer = attackSpeed;
+        mySEE = GetComponent<StudioEventEmitter>();
+        attackSpeedTimer = 0;
         myES = GameObject.Find("Dynamic Objects").GetComponent<EnemySpawner>();
         speedCoroutine = null;
         myNMA = GetComponent<NavMeshAgent>();
@@ -44,7 +53,8 @@ public class EnemyBase : MonoBehaviour {
 
         if (CheckFighters() != null) {
             Debug.Log("Check a fighter!");
-            if(targetDistance < range && targetDistance > range / 4) RunTowards(target);
+            if (targetDistance < 5) Debug.Log("yay?");
+            if(targetDistance < range && targetDistance > 3) RunTowards(target);
             else if(targetDistance < range ) {
                 Attack();
             }
@@ -53,7 +63,7 @@ public class EnemyBase : MonoBehaviour {
 
         else if (CheckArchers() != null) {
             Debug.Log("Check an archer!");
-            if (targetDistance < range && targetDistance > range / 4) RunTowards(target);
+            if (targetDistance < range && targetDistance > 3) RunTowards(target);
             else if (targetDistance < range) {
                 Attack();
             }
@@ -68,8 +78,51 @@ public class EnemyBase : MonoBehaviour {
 
     }
 
+
+    bool PathTooLong(Vector3 targetPosition, float maxDistance) {
+
+
+
+        NavMeshPath path = new NavMeshPath();
+        if (myNMA.enabled)
+            myNMA.CalculatePath(targetPosition, path);
+
+        Vector3[] allWayPoints = new Vector3[path.corners.Length + 2];
+
+        allWayPoints[0] = transform.position;
+
+        allWayPoints[allWayPoints.Length - 1] = targetPosition;
+
+        for (int i = 0; i < path.corners.Length; i++) {
+            allWayPoints[i + 1] = path.corners[i];
+        }
+
+        float pathLength = 0;
+
+        for (int i = 0; i < allWayPoints.Length - 1; i++) {
+            pathLength += Vector3.Distance(allWayPoints[i], allWayPoints[i + 1]);
+        }
+
+
+        //Debug.Log("pathLenght" + pathLength);
+        if (pathLength > maxDistance) return true;
+        else return false;
+
+    }
+
     void FollowPath() {
         destination = Path.PATH[i];
+
+
+        if (!walking) {
+            foreach (GameObject life in lifes) {
+                life.GetComponent<Animator>().SetTrigger("Walk");
+            }
+            walking = true;
+            myNMA.isStopped = false;
+        }
+
+
         if (myNMA.hasPath) {
             foundPath = true;
         }
@@ -87,14 +140,23 @@ public class EnemyBase : MonoBehaviour {
 
 
     void Attack() {
+        Debug.Log("ATTACKING");
+        destination = null;
         walking = false;
         myNMA.isStopped = true;
         attackSpeedTimer -= Time.deltaTime;
         if(attackSpeedTimer <= 0) {
+            
             attackSpeedTimer = attackSpeed;
             foreach(GameObject life in lifes) {
                 life.GetComponent<Animator>().SetTrigger("Attack");
+                mySEE.Play();
+                if (sideDestination.GetComponent<IAArqueiroTeste>() != null) sideDestination.GetComponent<IAArqueiroTeste>().TakeDamage();
+                //else sideDestination.GetComponent<IAFighter>().TakeDamage();
             }
+        }
+        if (sideDestination == null) {
+            targetDistance = Mathf.Infinity;
         }
     }
 
@@ -118,15 +180,19 @@ public class EnemyBase : MonoBehaviour {
     GameObject CheckArchers() {
 
 
+        //Debug.Log("Tried to check an archer!");
         sideDestination = null;
 
         Collider[] hits = Physics.OverlapSphere(transform.position, range);
         foreach (Collider hitted in hits) {
             if (hitted.transform.CompareTag("Archer")) {
-                if (!hitted.gameObject.GetComponent<IAArqueiroTeste>().inCombat) {
+                if (/*!hitted.gameObject.GetComponent<IAArqueiroTeste>().inCombat &&*/ !PathTooLong(hitted.transform.position, 9)) {
                     sideDestination = hitted.gameObject;
-                    sideDestination.GetComponent<IAArqueiroTeste>().inCombat = true;
+                    //sideDestination.GetComponent<IAArqueiroTeste>().inCombat = true;
                     target = sideDestination.transform;
+                    foundArcher = true;
+                    targetDistance = Vector3.Distance(hitted.transform.position, transform.position);
+                    //Debug.Log("targetDistance" + targetDistance);
                     break;
                 }
             }
@@ -139,18 +205,17 @@ public class EnemyBase : MonoBehaviour {
         Collider[] hits = Physics.OverlapSphere(transform.position, range);
         foreach (Collider hitted in hits) {
             if (hitted.transform.CompareTag("Fighter")) {
-                if (!hitted.gameObject.GetComponent<IAFighter>().inCombat) {
+                if (/*!hitted.gameObject.GetComponent<IAFighter>().inCombat &&*/ !PathTooLong(hitted.transform.position, 9)) {
                     sideDestination = hitted.gameObject;
-                    sideDestination.GetComponent<IAFighter>().inCombat = true;
+                    //sideDestination.GetComponent<IAFighter>().inCombat = true;
                     target = sideDestination.transform;
+                    foundFighter = true;
+                    targetDistance = Vector3.Distance(hitted.transform.position, transform.position);
                     break;
                 }
             }
         }
         return sideDestination;
-    }
-    void WalkToCastle() {
-
     }
 
     private void OnDrawGizmos() {
@@ -161,17 +226,18 @@ public class EnemyBase : MonoBehaviour {
     void OnCollisionEnter(Collision other) {
         if (other.transform.CompareTag("Arrow")) {
 
-            if (!CardsButton.DAMAGEBUFF) HP -= 1;
-            else HP -= 2;
-            lifes[lifes.Count - 1].SetActive(false);
-
-            lifes.Remove(lifes[lifes.Count - 1]);
-            if (HP <= 0) EnemyReset(true);
-            //other.gameObject;
+            TakeDamage(1);
         }
     }
 
+    public void TakeDamage(int damage) {
+        if (!CardsButton.DAMAGEBUFF) HP -= damage;
+        else HP -= damage+1;
+        lifes[lifes.Count - 1].SetActive(false);
 
+        lifes.Remove(lifes[lifes.Count - 1]);
+        if (HP <= 0) EnemyReset(true);
+    }
     void SpeedDebuff() {
         if(speedCoroutine == null) speedCoroutine = StartCoroutine(SpeedDebuffCoroutine());
     }
@@ -202,9 +268,11 @@ public class EnemyBase : MonoBehaviour {
         }
     }
     public void EnemyReset(bool points) {
+        foundFighter = false;
+        foundArcher = false;
         if (sideDestination != null) {
             if (sideDestination.GetComponent<IAArqueiroTeste>() != null) sideDestination.GetComponent<IAArqueiroTeste>().inCombat = false;
-            else sideDestination.GetComponent<IAFighter>().inCombat = false;
+            //else sideDestination.GetComponent<IAFighter>().inCombat = false;
         }
         foreach (Transform child in transform) {
             if(!lifes.Contains(child.gameObject)) lifes.Add(child.gameObject);
