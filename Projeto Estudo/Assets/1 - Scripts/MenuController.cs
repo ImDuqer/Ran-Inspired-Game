@@ -72,6 +72,7 @@ public class MenuController : MonoBehaviour {
     }
     public void NewGame() {
         StartCoroutine(LoadSceneMethod(1));
+        PlayerPrefs.SetInt("CurrentWeek", 0);
         ResourceTracker.WEEK = 1;
         ResourceTracker.WAVE = 1;
         desicionMade = true;

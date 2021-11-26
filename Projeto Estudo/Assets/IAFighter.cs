@@ -9,7 +9,8 @@ public class IAFighter : MonoBehaviour {
     FSMWalkPath myFP;
 
     [SerializeField] float speed = 3.5f;
-
+    public float range = 5f;
+    Transform target = null;
     //Adicionei
     Slider vidaCastelo;
     int HP = 5;
@@ -38,6 +39,20 @@ public class IAFighter : MonoBehaviour {
     }
 
     void Update() {
+        /*
+        if () ;
+
+        Collider[] hits = Physics.OverlapSphere(transform.position, range);
+        foreach (Collider hitted in hits) {
+            if (hitted.transform.CompareTag("Enemy")) {
+                target = hitted.transform;
+                break;
+            }
+        }
+        */
+
+
+
         if (CardsButton.MOVSPEEDDEBUFF) SpeedDebuff();
     }
 

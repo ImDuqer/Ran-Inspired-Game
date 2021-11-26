@@ -1708,8 +1708,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669127705}
-  m_LocalRotation: {x: 0.024888963, y: 0.005945616, z: -0.0005044829, w: 0.9996725}
-  m_LocalPosition: {x: -20.570179, y: -14.911227, z: 33.68935}
+  m_LocalRotation: {x: -0.009890501, y: -0.0013938452, z: -0.00046867027, w: -0.99995}
+  m_LocalPosition: {x: -20.491077, y: -14.959743, z: 40.05833}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 979638643}
@@ -2815,7 +2815,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1072247837}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: cc5e129f9465c944386e8f71cea72a4b, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: c295e3ef523f2f549981826048fbf086, type: 2}
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -2841,21 +2841,63 @@ PlayableDirector:
     value: {fileID: 1105841725}
   - key: {fileID: 6283999976753255052, guid: cc5e129f9465c944386e8f71cea72a4b, type: 2}
     value: {fileID: 114248671}
+  - key: {fileID: -8613737469122660320, guid: cc5e129f9465c944386e8f71cea72a4b, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -2289911600521230195, guid: cc5e129f9465c944386e8f71cea72a4b, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7273845895931696478, guid: cc5e129f9465c944386e8f71cea72a4b, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 4384780114078887566, guid: cc5e129f9465c944386e8f71cea72a4b, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 4643622988282964498, guid: cc5e129f9465c944386e8f71cea72a4b, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 8520937793364811099, guid: cc5e129f9465c944386e8f71cea72a4b, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7312302368782972137, guid: cc5e129f9465c944386e8f71cea72a4b, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -4782023625235086281, guid: cc5e129f9465c944386e8f71cea72a4b, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 5215212748336819500, guid: c295e3ef523f2f549981826048fbf086, type: 2}
+    value: {fileID: 1033168975}
+  - key: {fileID: 2123908993512135504, guid: c295e3ef523f2f549981826048fbf086, type: 2}
+    value: {fileID: 1642465148}
+  - key: {fileID: 5513303292877468242, guid: c295e3ef523f2f549981826048fbf086, type: 2}
+    value: {fileID: 1574159226}
+  - key: {fileID: -614673740672637513, guid: c295e3ef523f2f549981826048fbf086, type: 2}
+    value: {fileID: 1156791956}
+  - key: {fileID: -2479458169901555069, guid: c295e3ef523f2f549981826048fbf086, type: 2}
+    value: {fileID: 68619512}
+  - key: {fileID: -5372416589754734589, guid: c295e3ef523f2f549981826048fbf086, type: 2}
+    value: {fileID: 249182118}
+  - key: {fileID: -6868116070302053580, guid: c295e3ef523f2f549981826048fbf086, type: 2}
+    value: {fileID: 550431762}
+  - key: {fileID: 3313786739557955550, guid: c295e3ef523f2f549981826048fbf086, type: 2}
+    value: {fileID: 2037102704}
+  - key: {fileID: -398256766243239380, guid: c295e3ef523f2f549981826048fbf086, type: 2}
+    value: {fileID: 1105841725}
+  - key: {fileID: 1615245314199894812, guid: c295e3ef523f2f549981826048fbf086, type: 2}
+    value: {fileID: 114248671}
   m_ExposedReferences:
     m_References:
     - 73d908bfe83d5d3478ae19ef734b8b76: {fileID: 677776575}
     - 89e44d17b7d97ae429f50c6c4bb7601f: {fileID: 1530262564}
-    - 449d614d496380649b45e23c3237af1e: {fileID: 574059067}
+    - 449d614d496380649b45e23c3237af1e: {fileID: 1294985597}
     - a98aa9d542655c84f9df90db91ea155d: {fileID: 582803674}
     - 2b378e73ad61a6346ace537030708a04: {fileID: 2124488545}
+    - a619d46b53a1a794d845d45be3e576e9: {fileID: 2124488545}
     - 2f6b99943485f994dbfb0475d2713da7: {fileID: 1534726328}
-    - dcb19416155482d409c68c47bb4407e3: {fileID: 1294985597}
+    - b1a6e903c07c8ea4bb9a26079abb8b28: {fileID: 1544865494}
+    - dcb19416155482d409c68c47bb4407e3: {fileID: 2122788110}
+    - c40499e948fd8b244b2f647e4a9547ce: {fileID: 1530262564}
     - d82743f9d1fa4874e8852266061e2e25: {fileID: 1544865494}
+    - 36b76a4c34cf49e47bdadaf41f14028a: {fileID: 1534726328}
     - 9ba2def2242ef6444a0eb6217c7060e2: {fileID: 1136120453}
     - 4a02b193aafddcd4ca9b91da22b0f1a4: {fileID: 226645415}
-    - 964b9570cc6722642b9c7e8bd426f68e: {fileID: 246078385}
+    - f262e56e298d97549a3e7e8ed3a6fafa: {fileID: 1617374970}
+    - 9bf255ee45b10914c972cf4e4a354f76: {fileID: 1136120453}
+    - 964b9570cc6722642b9c7e8bd426f68e: {fileID: 574059067}
     - b316c25306298d74eb1c03d987d9da24: {fileID: 1617374970}
-    - 83e5b7ddafc4f29409dc5b0332a9cd5c: {fileID: 2122788110}
+    - 83e5b7ddafc4f29409dc5b0332a9cd5c: {fileID: 246078385}
     - e15edfd84e2047a49858fdaf85d46ac4: {fileID: 669127706}
 --- !u!4 &1072247839
 Transform:

@@ -7,11 +7,13 @@ using UnityEngine.UI;
 
 public class EnemyBase : MonoBehaviour {
 
-    FSMWalkPath myFP;
-
+    float range;
+    Transform target = null;
+    byte i;
+    Transform destination;
+    bool foundPath = false;
     [SerializeField] float speed = 3.5f;
-
-    //Adicionei
+    [SerializeField] bool gizmos = false;
     Slider vidaCastelo;
     int HP = 5;
     int originalHP = 5;
@@ -19,6 +21,7 @@ public class EnemyBase : MonoBehaviour {
     EnemySpawner myES;
     NavMeshAgent myNMA;
     Coroutine speedCoroutine;
+    float targetDistance;
     void Start() {
         myES = GameObject.Find("Dynamic Objects").GetComponent<EnemySpawner>();
         speedCoroutine = null;
@@ -28,18 +31,95 @@ public class EnemyBase : MonoBehaviour {
             lifes.Add(child.gameObject);
         }
         vidaCastelo = GameObject.Find("VidadoCastelo").GetComponent<Slider>();
-        FSMSequence myPath = new FSMSequence();
-        myFP = new FSMWalkPath();
-        myPath.sequence.Add(myFP);
-
-        FSM fsm = GetComponent<FSM>();
-        fsm.root = myPath;
-
-        StartCoroutine(fsm.Begin());
     }
 
     void Update() {
         if (CardsButton.MOVSPEEDDEBUFF) SpeedDebuff();
+
+
+        if (CheckFighters() != null) {
+            if(targetDistance < range && targetDistance > range / 4) RunTowards(target);
+            else if(targetDistance < range) {
+                Attack();
+            }
+
+        }
+
+        else if (CheckArchers() != null) {
+
+        }
+
+        else {
+
+        }
+
+
+    }
+
+    void Attack() {
+
+    }
+
+    void RunTowards(Transform t) {
+
+        destination = Path.PATH[i];
+
+
+        myNMA.SetDestination(destination.position);
+
+        if (myNMA.hasPath) {
+            foundPath = true;
+        }
+
+        if (!myNMA.hasPath && foundPath) {
+            i++;
+            destination = null;
+            foundPath = false;
+            //destination = Path.PATH[i];
+        }
+
+        if (myNMA.isPathStale) {
+        }
+
+    }
+
+
+    GameObject CheckArchers() {
+
+
+        GameObject sideDestination = null;
+
+        Collider[] hits = Physics.OverlapSphere(transform.position, range);
+        foreach (Collider hitted in hits) {
+            if (hitted.transform.CompareTag("Archer")) {
+                sideDestination = hitted.gameObject;
+                target = sideDestination.transform;
+                break;
+            }
+        }
+
+        return sideDestination;
+    }
+    GameObject CheckFighters() {
+        GameObject sideDestination = null;
+
+        Collider[] hits = Physics.OverlapSphere(transform.position, range);
+        foreach (Collider hitted in hits) {
+            if (hitted.transform.CompareTag("Fighter")) {
+                sideDestination = hitted.gameObject;
+                target = sideDestination.transform;
+                break;
+            }
+        }
+        return sideDestination;
+    }
+    void WalkToCastle() {
+
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.yellow;
+        if (gizmos) Gizmos.DrawWireSphere(transform.position, range);
     }
 
     void OnCollisionEnter(Collision other) {
