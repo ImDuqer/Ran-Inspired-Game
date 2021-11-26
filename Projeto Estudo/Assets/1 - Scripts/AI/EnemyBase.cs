@@ -36,7 +36,7 @@ public class EnemyBase : MonoBehaviour {
 
     void Start() {
         mySEE = GetComponent<StudioEventEmitter>();
-        attackSpeedTimer = 0;
+        attackSpeedTimer = 1;
         myES = GameObject.Find("Dynamic Objects").GetComponent<EnemySpawner>();
         speedCoroutine = null;
         myNMA = GetComponent<NavMeshAgent>();
@@ -152,7 +152,7 @@ public class EnemyBase : MonoBehaviour {
                 life.GetComponent<Animator>().SetTrigger("Attack");
                 mySEE.Play();
                 if (sideDestination.GetComponent<IAArqueiroTeste>() != null) sideDestination.GetComponent<IAArqueiroTeste>().TakeDamage();
-                //else sideDestination.GetComponent<IAFighter>().TakeDamage();
+                else sideDestination.GetComponent<IAFighter>().TakeDamage();
             }
         }
         if (sideDestination == null) {

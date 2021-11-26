@@ -38,20 +38,29 @@ public class ScrollButtonController : MonoBehaviour {
     }
 
 
-    
+
 
     public void Hover() {
-        som2.Play();
-        if (!blocked && !MenuController.desicionMade) myAnim.SetTrigger("hover");
+
+        if (!blocked && !MenuController.desicionMade) {
+            myAnim.SetTrigger("hover");
+            som1.Play();
+        }
     }
 
     public void Unhover() {
-        if (!blocked && !MenuController.desicionMade) myAnim.SetTrigger("unhover");
+        if (!blocked && !MenuController.desicionMade) {
+            myAnim.SetTrigger("unhover");
+            som1.Play();
+        }
     }
 
     public void Click() {
         som1.Play();
-        if (!blocked && !MenuController.desicionMade) myAnim.SetTrigger("click");
-    }
+        if (!blocked && !MenuController.desicionMade) { 
+            myAnim.SetTrigger("click");
+            som2.Play();
+        }
+}
 
 }

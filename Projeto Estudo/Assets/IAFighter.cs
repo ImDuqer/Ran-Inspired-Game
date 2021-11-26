@@ -12,6 +12,8 @@ public class IAFighter : MonoBehaviour {
 
     [SerializeField] float range;
     [SerializeField] float attackSpeed;
+    Transform initialPos;
+    bool returned = false;
     float attackSpeedTimer;
     Transform target = null;
     byte i;
@@ -20,8 +22,8 @@ public class IAFighter : MonoBehaviour {
     [SerializeField] float speed = 3.5f;
     [SerializeField] bool gizmos = false;
     Slider vidaCastelo;
-    int HP = 5;
-    int originalHP = 5;
+    int HP = 3;
+    int originalHP = 3;
     List<GameObject> lifes = new List<GameObject>();
     EnemySpawner myES;
     NavMeshAgent myNMA;
@@ -33,6 +35,7 @@ public class IAFighter : MonoBehaviour {
     bool foundFighter = false;
     StudioEventEmitter mySEE;
 
+    public GameObject originalParent;
 
 
 
@@ -49,8 +52,12 @@ public class IAFighter : MonoBehaviour {
     }
 
     void Update() {
-        
 
+        if (!walking) {
+            foreach (GameObject life in lifes) {
+                life.GetComponent<Animator>().SetTrigger("Idle");
+            }
+        }
 
         if (CheckEnemies() != null) {
             //Debug.Log("Check a fighter!");
@@ -61,8 +68,12 @@ public class IAFighter : MonoBehaviour {
             }
 
         }
+        if(EnemySpawner.currentGamePhase == GamePhase.SETUP_PHASE && !returned) {
+            returned = true;
+            myNMA.Warp(initialPos.position);
 
-       
+        }
+
 
 
     }
@@ -169,14 +180,21 @@ public class IAFighter : MonoBehaviour {
     }
 
 
-    void OnTriggerEnter(Collider other) {
-        if (other.transform.CompareTag("Castle")) {
-            EnemyReset(false);
-            //Adicionei
-            vidaCastelo.value -= 2;
+    
+    public void TakeDamage() {
+        if (CardsButton.DAMAGEDEBUFF) {
+            HP -= 1;
         }
-    }
-    public void EnemyReset(bool points) {
+        else HP -= 2;
 
+        if (HP <= 0) EnemyReset();
+    }
+
+
+    public void EnemyReset() {
+        originalParent.GetComponent<ArcherStand>().bought = false;
+        transform.SetParent(originalParent.transform);
+        gameObject.SetActive(false);
+        HP = 3;
     }
 }
