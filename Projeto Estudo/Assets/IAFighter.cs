@@ -40,6 +40,7 @@ public class IAFighter : MonoBehaviour {
 
 
     void Start() {
+        initialPos = transform;
         mySEE = GetComponent<StudioEventEmitter>();
         attackSpeedTimer = 0;
         myES = GameObject.Find("Dynamic Objects").GetComponent<EnemySpawner>();
