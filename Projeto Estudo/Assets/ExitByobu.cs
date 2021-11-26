@@ -7,6 +7,6 @@ public class ExitByobu : MonoBehaviour {
     [SerializeField] bool menu = false;
     void OnEnable() {
         if(!menu) SceneManager.LoadScene("gameplay");
-        else SceneManager.LoadScene(0);
+        else SceneManager.LoadScene("creditos");
     }
 }

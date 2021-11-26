@@ -213,4 +213,8 @@ public class ConstructionMode : MonoBehaviour {
         onConstruction = true;
     }
 
+    public void Menu(){
+        SceneManager.LoadScene(0);
+    }
+
 }
