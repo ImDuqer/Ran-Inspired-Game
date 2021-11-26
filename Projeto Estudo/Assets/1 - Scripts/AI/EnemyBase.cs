@@ -122,7 +122,7 @@ public class EnemyBase : MonoBehaviour {
             myNMA.isStopped = false;
         }
 
-
+        
         if (myNMA.hasPath) {
             foundPath = true;
         }

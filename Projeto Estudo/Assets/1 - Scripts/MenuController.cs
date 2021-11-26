@@ -20,6 +20,7 @@ public class MenuController : MonoBehaviour {
 
 
     private void Awake() {
+        Time.timeScale = 1;
         ResourceTracker.WEEK = 1;
         ResourceTracker.WAVE = 1;
         if (ResourceTracker.WEEK == 1 && ResourceTracker.WAVE == 1) {

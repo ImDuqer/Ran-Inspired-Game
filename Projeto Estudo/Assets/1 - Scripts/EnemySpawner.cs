@@ -161,7 +161,7 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     public void StartSetupPhase() {
-
+        Time.timeScale = 1;
         timeBetweenSpawns = weeks[currentWeek].timeBetweenSpawns;
         WaveAmmount = weeks[currentWeek].waveAmmount;
         currentGamePhase = GamePhase.SETUP_PHASE;

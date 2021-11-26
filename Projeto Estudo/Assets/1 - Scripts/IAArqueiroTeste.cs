@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class IAArqueiroTeste : MonoBehaviour
-{
+public class IAArqueiroTeste : MonoBehaviour {
     public float range = 5f;
     public GameObject flechaPrefab;
-    private GameObject arrow; 
+    private GameObject arrow;
     Transform target = null;
     public Transform arco;
     public float arcoCD;
@@ -35,7 +34,7 @@ public class IAArqueiroTeste : MonoBehaviour
         myAnim = GetComponent<Animator>();
         arcoCDBuff = arcoCD * 0.8f;
         originalCD = arcoCD;
-        shotStart = transform.GetChild(transform.childCount-1).gameObject;
+        shotStart = transform.GetChild(transform.childCount - 1).gameObject;
         dynamicObjects = GameObject.Find("Dynamic Objects").transform;
         if (!filledPool) {
             filledPool = true;
@@ -48,7 +47,7 @@ public class IAArqueiroTeste : MonoBehaviour
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        if(gizmos)Gizmos.DrawWireSphere(transform.position, range);
+        if (gizmos) Gizmos.DrawWireSphere(transform.position, range);
     }
 
     void Update() {
@@ -73,7 +72,7 @@ public class IAArqueiroTeste : MonoBehaviour
     void FoundTargetCheck() {
         if (target != null) {
 
-            
+
 
 
             if (Vector3.Distance(target.position, transform.position) > range) target = null;

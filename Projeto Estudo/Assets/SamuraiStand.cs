@@ -28,7 +28,7 @@ public class SamuraiStand : MonoBehaviour {
     }
 
     void OnEnable() {
-        if (transform.childCount >= 2) transform.GetChild(2).gameObject.SetActive(false);
+        if (transform.childCount > 2) transform.GetChild(2).gameObject.SetActive(false);
         if (!bought) transform.GetChild(0).transform.gameObject.SetActive(false);
         else gameObject.SetActive(false);
     }
@@ -46,10 +46,11 @@ public class SamuraiStand : MonoBehaviour {
                     ResourceTracker.POINTS -= SamuraiCost;
                     myMR.enabled = false;
                     myC.enabled = false;
-                    transform.GetChild(2).gameObject.SetActive(true);
+                    GameObject obj = transform.GetChild(2).gameObject;
+                    obj.SetActive(true);
                     transform.GetChild(0).gameObject.SetActive(false);
-                    transform.GetChild(2).GetComponent<IAFighter>().originalParent = gameObject;
-                    transform.GetChild(2).SetParent(spawnParent);
+                    obj.GetComponent<IAFighter>().originalParent = gameObject;
+                    obj.transform.SetParent(spawnParent);
                     ResourceTracker.CURRENT_POPULATION++;
                     bought = true;
                     gameObject.SetActive(false);

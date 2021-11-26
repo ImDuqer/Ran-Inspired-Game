@@ -29,7 +29,7 @@ public class ArcherStand : MonoBehaviour {
 
     void OnEnable() {
 
-        if (transform.childCount >= 2) transform.GetChild(2).gameObject.SetActive(false);
+        if (transform.childCount > 2) transform.GetChild(2).gameObject.SetActive(false);
         if (!bought) transform.GetChild(0).gameObject.SetActive(false);
         else gameObject.SetActive(false);
     }
@@ -61,7 +61,7 @@ public class ArcherStand : MonoBehaviour {
             else myRT.NotEnoughSpace();
         }
     }
-    
+
     void OnMouseExit() {
         transform.GetChild(0).transform.gameObject.SetActive(false);
     }

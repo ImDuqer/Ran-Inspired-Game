@@ -27,10 +27,10 @@ public class ConstructionMode : MonoBehaviour {
     [SerializeField] TMP_Dropdown ResolutionDropdown;
 
     void Awake() {
-        ArcherStands = GameObject.FindGameObjectsWithTag("Archer");
+        ArcherStands = GameObject.FindGameObjectsWithTag("ArcherStand");
         ConstructionStands = GameObject.FindGameObjectsWithTag("Construction");
         TowerStands = GameObject.FindGameObjectsWithTag("Tower");
-        FighterStands = GameObject.FindGameObjectsWithTag("Fighter");
+        FighterStands = GameObject.FindGameObjectsWithTag("FighterStand");
     }
 
 
@@ -116,13 +116,22 @@ public class ConstructionMode : MonoBehaviour {
         paused.SetActive(!paused.activeSelf);
         Time.timeScale = Time.timeScale > 0 ? 0 : 1f; ;
     }
-
+    //vsf gustavo
     void TurnObj(GameObject[] array, bool state){
         foreach (GameObject obj in array) {
             obj.SetActive(state);
         }
     }
-
+    /*
+    void TurnActivate(GameObject[] array, bool state, int x) {
+        foreach (GameObject obj in array) {
+            switch (x) {
+                case 0:
+                    obj.GetComponent<ArcherStand>().activate = true;
+                    break;
+            }
+        }
+    }*/
 
     public void ArcherButton() {
         if (CC || TC || FC) {
@@ -134,12 +143,14 @@ public class ConstructionMode : MonoBehaviour {
             TC = false;
             FC = false;
             TurnObj(ArcherStands, true);
+            //TurnActivate(ArcherStands, true, 0);
             onConstruction = true;
             return;
         }
         if (onConstruction) {
             onConstruction = false;
             TurnObj(ArcherStands, false);
+            //TurnActivate(ArcherStands, false, 0);
             return;
         }
         AC = true;
