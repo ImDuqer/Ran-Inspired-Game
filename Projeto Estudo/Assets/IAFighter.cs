@@ -29,7 +29,7 @@ public class IAFighter : MonoBehaviour {
     NavMeshAgent myNMA;
     Coroutine speedCoroutine;
     float targetDistance;
-    bool walking = true;
+    bool walking = false;
     GameObject sideDestination = null;
     bool foundArcher = false;
     bool foundFighter = false;
@@ -48,6 +48,7 @@ public class IAFighter : MonoBehaviour {
         myNMA.speed = speed;
         foreach (Transform child in transform) {
             lifes.Add(child.gameObject);
+            child.GetComponent<Animator>().SetTrigger("Idle");
         }
     }
 

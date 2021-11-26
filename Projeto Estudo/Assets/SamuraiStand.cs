@@ -28,7 +28,7 @@ public class SamuraiStand : MonoBehaviour {
     }
 
     void OnEnable() {
-
+        if (transform.childCount >= 2) transform.GetChild(2).gameObject.SetActive(false);
         if (!bought) transform.GetChild(0).transform.gameObject.SetActive(false);
         else gameObject.SetActive(false);
     }
@@ -49,6 +49,7 @@ public class SamuraiStand : MonoBehaviour {
                     transform.GetChild(2).gameObject.SetActive(true);
                     transform.GetChild(0).gameObject.SetActive(false);
                     transform.GetChild(2).SetParent(spawnParent);
+                    transform.GetChild(2).GetComponent<IAFighter>().originalParent = gameObject;
                     ResourceTracker.CURRENT_POPULATION++;
                     bought = true;
                     gameObject.SetActive(false);

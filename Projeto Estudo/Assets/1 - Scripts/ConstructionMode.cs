@@ -78,10 +78,10 @@ public class ConstructionMode : MonoBehaviour {
         settingsPanel.SetTrigger("popout");
     }
     void Update() {
-        if (Input.GetKeyDown(KeyCode.F)) {
+        if (Input.GetKeyDown(KeyCode.F) && EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) {
             ToggleFastForward();
         }
-        if (Input.GetKeyDown(KeyCode.D)) {
+        if (Input.GetKeyDown(KeyCode.D) && EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) {
             TogglePause();
         }
         if (Input.GetKeyDown(KeyCode.Escape)) {
