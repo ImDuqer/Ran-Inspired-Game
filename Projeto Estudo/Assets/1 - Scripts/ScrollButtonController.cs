@@ -17,12 +17,15 @@ public class ScrollButtonController : MonoBehaviour {
 
     StudioEventEmitter som1;
     StudioEventEmitter som2;
+    StudioEventEmitter som3;
 
 
     void Start() {
 
         som1 = Camera.main.transform.GetChild(0).GetComponent<StudioEventEmitter>();
         som2 = Camera.main.transform.GetChild(1).GetComponent<StudioEventEmitter>();
+        som3 = Camera.main.transform.GetChild(2).GetComponent<StudioEventEmitter>();
+
         myAnim = GetComponent<Animator>();
         
         if (blocked) myAnim.SetTrigger("blocked");
@@ -56,11 +59,14 @@ public class ScrollButtonController : MonoBehaviour {
     }
 
     public void Click() {
-        som1.Play();
+        //som1.Play();
         if (!blocked && !MenuController.desicionMade) { 
             myAnim.SetTrigger("click");
             som2.Play();
         }
-}
-
+    }
+    public void Button() {
+        //som1.Play();
+        som3.Play();
+    }
 }
