@@ -59,12 +59,12 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.F1)) {
+        /* if (Input.GetKeyDown(KeyCode.F1)) {
 
             PlayerPrefs.SetInt("CurrentWeek", 0);
             currentWeek = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.F3) || (health.value <= 0)) {
+        } */
+        if (/* Input.GetKeyDown(KeyCode.F3) || */ (health.value <= 0)) {
 
             PlayerPrefs.SetInt("CurrentWeek", 0);
             GameplayCanvas.SetActive(false);
@@ -79,7 +79,7 @@ public class EnemySpawner : MonoBehaviour {
             startedSpawning = true;
             StartCoroutine(Spawning());
         }
-        if (Input.GetKeyDown(KeyCode.F9) && currentGamePhase == GamePhase.ACTION_PHASE) {
+        /* if (Input.GetKeyDown(KeyCode.F9) && currentGamePhase == GamePhase.ACTION_PHASE) {
             StopAllCoroutines();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach(GameObject enemy in enemies) {
@@ -96,7 +96,7 @@ public class EnemySpawner : MonoBehaviour {
                 enemy.GetComponent<EnemyBase>().EnemyReset(false);
             }
             aboutToEnd = true;
-        }
+        } */
 
         if (CardsButton.GLOBALDAMAGE) {
             foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy")) {
@@ -120,7 +120,7 @@ public class EnemySpawner : MonoBehaviour {
         }
         if(currentGamePhase == GamePhase.SETUP_PHASE) {
             countdown -= Time.deltaTime;
-            buttonPhase.text = "Começar Onda de Inimigos: " + ((int)countdown).ToString() + " segundos";
+            buttonPhase.text = "Comeï¿½ar Onda de Inimigos: " + ((int)countdown).ToString() + " segundos";
             if (countdown <= 0) {
                 ActivateActionPhase();
                 countdown = 61f;

@@ -77,7 +77,7 @@ public class DialogueManager : MonoBehaviour {
         //Debug.Log("waiting? " + waitingForContinue);
 
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+        /* if (Input.GetKeyDown(KeyCode.Alpha1)) {
             EnemySpawner.currentWeek = 1;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
@@ -100,7 +100,7 @@ public class DialogueManager : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Alpha8)) {
             EnemySpawner.currentWeek = 8;
-        }
+        } */
 
         //Debug.Log("current text: " + story.currentText);
     }
@@ -327,7 +327,7 @@ public class DialogueManager : MonoBehaviour {
                 break;
 
             case "soldadoInimigo":
-                _nameTag = "Soldado do clã Ichimonji";
+                _nameTag = "Soldado do clï¿½ Ichimonji";
                 mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
