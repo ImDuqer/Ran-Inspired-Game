@@ -39,9 +39,7 @@ public class MenuController : MonoBehaviour {
 
     private void Awake() {
         Time.timeScale = 1;
-        ResourceTracker.WEEK = 1;
-        ResourceTracker.WAVE = 1;
-        if (ResourceTracker.WEEK == 1 && ResourceTracker.WAVE == 1) {
+        if (SaveSystem.LoadState() == null) {
             if(ContinueButton != null) ContinueButton.blocked = true;
         }
         if (MenuImage != null && PlayerPrefs.GetInt("HighWeek") >= 9) MenuImage.sprite = AlterMenu;
@@ -100,6 +98,15 @@ public class MenuController : MonoBehaviour {
         ResolutionDropdown.RefreshShownValue();
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
         #endregion
+
+
+
+        Debug.Log("WEEK: " + PlayerPrefs.GetInt("CurrentWeek"));
+
+
+
+
+
     }
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return)) CreditsBack();
@@ -129,10 +136,11 @@ public class MenuController : MonoBehaviour {
         PlayerPrefs.SetInt("CurrentWeek", 0);
         ResourceTracker.WEEK = 1;
         ResourceTracker.WAVE = 1;
+        SaveSystem.ClearState();
         desicionMade = true;
     }
     public void Continue() {
-        if (!desicionMade) StartCoroutine(LoadSceneMethod("Gameplay"));
+        if (!desicionMade) StartCoroutine(LoadSceneMethod("gameplay"));
         desicionMade = true;
     }
     public void Settings() {

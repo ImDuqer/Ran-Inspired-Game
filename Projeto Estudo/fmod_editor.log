@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x8000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000022CEF8FC3B8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000001FF789E9618 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,50 +18,247 @@
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
-[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             : exinfo->length             = 9442752
-[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 90048
-[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000084353FF2A8
-[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
-[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF8A2A360E0
-[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF8A2A360B0
-[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF8A2A361B0
-[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF8A2A36270
-[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000022C41B495D8
-[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
-[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
-[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Games, MIsc, Poker Chips, Single, Slide From Table Into Hand Holding Others SND38538', format=5, channels=2, frequency=48000, lengthbytes=6976, lengthpcm=20823, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707946.
+[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
+[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
 [LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 0000022D168067B8 : node = 0000022C57611100
-[LOG] SystemI::createSound                     : add node to async list : head = 0000022BD62C2E78.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000022D168067B8
+[LOG] SystemI::createSound                     : setdata soundi = 000001FED36B4A08 : node = 000001FEC752F180
+[LOG] SystemI::createSound                     : add node to async list : head = 000001FFA324E008.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001FED36B4A08
 [LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
 [LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
 [LOG] SystemI::createSoundInternal             :     exinfo->length             = 9442752
 [LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 90048
 [LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000022C57611210
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001FEC752F290
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='combat phase part_Shakuhachi', format=5, channels=2, frequency=48000, lengthbytes=378688, lengthpcm=1545600, pcmblocksize=0, loopstart=0, loopend=1228799, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.024719.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001FED36B4A08
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001FED36B35C8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001FED36B35C8
+[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSound                     : setdata soundi = 000001FED36B3AD8 : node = 000001FEC77BC970
+[LOG] SystemI::createSound                     : add node to async list : head = 000001FFA324E008.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001FED36B3AD8
+[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9442752
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 90048
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001FEC77BCA80
 [LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
 [LOG] SystemI::createSoundInternal             :     Stream 0/1: name='desenvolvimento prep', format=5, channels=2, frequency=48000, lengthbytes=682016, lengthpcm=2813600, pcmblocksize=0, loopstart=0, loopend=2614399, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.063751.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000022D168067B8
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000022D16806968
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000022D16806968
-[LOG] SoundI::release                          : desenvolvimento prep (0000022D168067B8)
-[LOG] SoundI::release                          :     desenvolvimento prep (0000022C4BAE4D48)
-[LOG] SoundI::release                          :     desenvolvimento prep (0000022D16806968)
-[LOG] SoundI::release                          : Wind, Vegetation, Forest, Smooth Rustle SND1332 (0000022D167F9828)
-[LOG] SoundI::release                          :     Wind, Vegetation, Forest, Smooth Rustle SND1332 (0000022C47E90298)
-[LOG] SoundI::release                          :     Wind, Vegetation, Forest, Smooth Rustle SND1332 (0000022D167FB178)
-[LOG] SoundI::release                          :  (0000022CEF8688E8)
-[LOG] SoundI::release                          :     Games, MIsc, Poker Chips, Single, Slide From Table Into Hand Holding Others SND38538 (0000022C47E90C58)
-[LOG] SoundI::release                          :  (0000022C43353AF8)
-[LOG] SoundI::release                          :     combat phase_TAIKO BASE (0000022C47E917B8)
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001FED36B3AD8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001FED36B10A8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001FED36B10A8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001FED36B35C8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001FED36B35C8
+[LOG] SoundI::release                          : desenvolvimento prep (000001FED36B3AD8)
+[LOG] SoundI::release                          :     desenvolvimento prep (000001FEC6A686E8)
+[LOG] SoundI::release                          :     desenvolvimento prep (000001FED36B10A8)
+[LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSound                     : setdata soundi = 000001FF78B726F8 : node = 000001FEEC40AD00
+[LOG] SystemI::createSound                     : add node to async list : head = 000001FFA324E008.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001FF78B726F8
+[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSound                     :     filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9442752
+[LOG] SystemI::createSound                     :     FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 90048
+[LOG] SystemI::createSound                     :     setdata soundi = 000001FF78B74048 : node = 000001FEEC40A300
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSound                     :     add node to async list : head = 000001FFA324E008.  list count = 0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001FEEC40AE10
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='combat phase part_Shakuhachi', format=5, channels=2, frequency=48000, lengthbytes=378688, lengthpcm=1545600, pcmblocksize=0, loopstart=0, loopend=1228799, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.024719.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001FF78B726F8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001FF78B74048
+[LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9442752
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 90048
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001FEEC40A410
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='combat phase part_Shakuhachi', format=5, channels=2, frequency=48000, lengthbytes=378688, lengthpcm=1545600, pcmblocksize=0, loopstart=0, loopend=1228799, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.024719.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001FF78B74048
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001FF78B76C28
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001FF78B76C28
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001FF78B717C8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001FF78B717C8
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9442752
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 90048
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000054975FF138
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF8B76060E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF8B76060B0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF8B76061B0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF8B7606270
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001FEEB609778
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='SFX Sword Slash Soundly-09', format=5, channels=2, frequency=48000, lengthbytes=3904, lengthpcm=16708, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.360352.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9442752
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 90048
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000054975FF138
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF8B76060E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF8B76060B0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF8B76061B0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF8B7606270
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001FEEB609778
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='SFX Sword Slash Soundly-03', format=5, channels=2, frequency=48000, lengthbytes=3968, lengthpcm=16708, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.604156.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9442752
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 90048
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000054975FF138
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF8B76060E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF8B76060B0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF8B76061B0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF8B7606270
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001FEEB609778
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='SFX Sword Slash Soundly-01', format=5, channels=2, frequency=48000, lengthbytes=3584, lengthpcm=15437, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.497559.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9442752
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 90048
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000054975FF138
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF8B76060E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF8B76060B0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF8B76061B0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF8B7606270
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001FEEB609778
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='SFX Sword Slash Soundly-04', format=5, channels=2, frequency=48000, lengthbytes=4416, lengthpcm=17980, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.651459.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9442752
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 90048
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000054975FF138
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF8B76060E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF8B76060B0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF8B76061B0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF8B7606270
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001FEEB609778
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='SFX Sword Slash Soundly-06', format=5, channels=2, frequency=48000, lengthbytes=6368, lengthpcm=22750, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.999969.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9442752
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 90048
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000054975FF138
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF8B76060E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF8B76060B0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF8B76061B0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF8B7606270
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001FEEB609778
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='SFX Sword Slash Soundly-08', format=5, channels=2, frequency=48000, lengthbytes=5472, lengthpcm=24699, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.345306.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9442752
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 90048
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000054975FF138
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF8B76060E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF8B76060B0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF8B76061B0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF8B7606270
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001FEEB609778
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='SFX Sword Meat Hit', format=5, channels=2, frequency=48000, lengthbytes=8352, lengthpcm=28380, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.714996.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9442752
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 90048
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000054975FF138
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF8B76060E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF8B76060B0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF8B76061B0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF8B7606270
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 000001FEEB609778
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='SFX Sword Slash Soundly-02', format=5, channels=2, frequency=48000, lengthbytes=3872, lengthpcm=15437, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.591064.
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001FF78B717C8
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001FF78B717C8
+[LOG] SoundI::release                          : combat phase part_Shakuhachi (000001FED36B4A08)
+[LOG] SoundI::release                          :     combat phase part_Shakuhachi (000001FEEBE22488)
+[LOG] SoundI::release                          :     combat phase part_Shakuhachi (000001FED36B35C8)
+[LOG] SoundI::release                          : combat phase part_Shakuhachi (000001FF78B726F8)
+[LOG] SoundI::release                          :     combat phase part_Shakuhachi (000001FEC6A68208)
+[LOG] SoundI::release                          :     combat phase part_Shakuhachi (000001FF78B76C28)
+[LOG] SoundI::release                          : combat phase part_Shakuhachi (000001FF78B74048)
+[LOG] SoundI::release                          :     combat phase part_Shakuhachi (000001FEC6A686E8)
+[LOG] SoundI::release                          :     combat phase part_Shakuhachi (000001FF78B717C8)
+[LOG] SoundI::release                          : Wind, Vegetation, Forest, Smooth Rustle SND1332 (000001FED36C6588)
+[LOG] SoundI::release                          :     Wind, Vegetation, Forest, Smooth Rustle SND1332 (000001FFAB75FB28)
+[LOG] SoundI::release                          :     Wind, Vegetation, Forest, Smooth Rustle SND1332 (000001FED36C5148)
+[LOG] SoundI::release                          :  (000001FEEBD90FD8)
+[LOG] SoundI::release                          :     SFX Sword Meat Hit (000001FC83711E88)
+[LOG] SoundI::release                          :  (000001FED357E078)
+[LOG] SoundI::release                          :     SFX Sword Slash Soundly-01 (000001FC83712028)
+[LOG] SoundI::release                          :  (000001FEEB6BF468)
+[LOG] SoundI::release                          :     SFX Sword Slash Soundly-02 (000001FC837121C8)
+[LOG] SoundI::release                          :  (000001FED357EA88)
+[LOG] SoundI::release                          :     SFX Sword Slash Soundly-03 (000001FC83711668)
+[LOG] SoundI::release                          :  (000001FED357DF08)
+[LOG] SoundI::release                          :     SFX Sword Slash Soundly-04 (000001FC83711808)
+[LOG] SoundI::release                          :  (000001FED357E1E8)
+[LOG] SoundI::release                          :     SFX Sword Slash Soundly-06 (000001FC83711B48)
+[LOG] SoundI::release                          :  (000001FEEBD91148)
+[LOG] SoundI::release                          :     SFX Sword Slash Soundly-08 (000001FC83711CE8)
+[LOG] SoundI::release                          :  (000001FED357E918)
+[LOG] SoundI::release                          :     SFX Sword Slash Soundly-09 (000001FC837119A8)
+[LOG] SoundI::release                          :  (000001FFAA585378)
+[LOG] SoundI::release                          :     combat phase_TAIKO BASE (000001FFA3FDD3B8)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients

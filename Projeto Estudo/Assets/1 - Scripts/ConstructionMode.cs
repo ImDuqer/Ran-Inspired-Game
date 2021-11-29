@@ -20,12 +20,12 @@ public class ConstructionMode : MonoBehaviour {
     bool TC = false;
     bool FC = false;
 
-
     Resolution[] resolutions;
     [SerializeField] TMP_Dropdown ResolutionDropdown;
     [SerializeField] Toggle fullscreen;
 
 
+    List<bool> boughtUnits = new List<bool>();
 
 
     [SerializeField] Slider musicSlider;
@@ -38,8 +38,96 @@ public class ConstructionMode : MonoBehaviour {
     FMOD.Studio.VCA uIVCA;
     FMOD.Studio.VCA sFXVCA;
     FMOD.Studio.VCA musicVCA;
+    bool saveTime = true;
 
 
+    void UpdateBought() {
+        boughtUnits.Clear();
+        foreach (GameObject stand in ArcherStands) {
+            boughtUnits.Add(stand.GetComponent<ArcherStand>().bought);
+        }
+        foreach (GameObject stand in TowerStands) {
+            //Debug.Log(TowerStands);
+            //Debug.Log(stand);
+            //Debug.Log(stand.GetComponent<TowerStand>());
+            //Debug.Log(stand.GetComponent<TowerStand>().bought);
+            boughtUnits.Add(stand.GetComponent<TowerStand>().bought);
+        }
+        foreach (GameObject stand in ConstructionStands) {
+            boughtUnits.Add(stand.GetComponent<ConstructionStand>().bought);
+        }
+        foreach (GameObject stand in FighterStands) {
+            boughtUnits.Add(stand.GetComponent<SamuraiStand>().bought);
+        }
+    }
+
+
+    public bool[] GetUnitsForSave() {
+        UpdateBought();
+        bool[] returning = new bool[boughtUnits.Count];
+
+        for(int i = 0; i < boughtUnits.Count; i++) {
+            returning[i] = boughtUnits[i];
+        }
+
+        return returning;
+    }
+
+    void SetUnits(bool[] loadedArray) {
+        UpdateBought();
+
+        int n = 0;
+        foreach (GameObject stand in ArcherStands) {
+            stand.GetComponent<ArcherStand>().bought = loadedArray[n];
+            if(loadedArray[n]) stand.SetActive(true);
+            n++;
+        }
+        foreach (GameObject stand in TowerStands) {
+            stand.GetComponent<TowerStand>().bought = loadedArray[n];
+            if (loadedArray[n]) stand.SetActive(true);
+            n++;
+        }
+        foreach (GameObject stand in ConstructionStands) {
+            stand.GetComponent<ConstructionStand>().bought = loadedArray[n];
+            if (loadedArray[n]) stand.SetActive(true);
+            n++;
+        }
+        foreach (GameObject stand in FighterStands) {
+            stand.GetComponent<SamuraiStand>().bought = loadedArray[n];
+            if (loadedArray[n]) stand.SetActive(true);
+            n++;
+        }
+
+
+
+        for (int i = 0; i < loadedArray.Length; i++) {
+            boughtUnits[i] = loadedArray[i];
+        }
+    }
+
+
+
+    public void SaveGame() {
+        Slider slider = GameObject.Find("VidadoCastelo").GetComponent<Slider>();
+        CardsButton cb = GameObject.Find("CardsObject").GetComponent<CardsButton>();
+        SaveSystem.SaveState((int)slider.value, ResourceTracker.POINTS, ResourceTracker.CURRENT_POPULATION, ResourceTracker.MAX_POPULATION, GetUnitsForSave(), EnemySpawner.currentWeek, cb.cardsAmmount);
+        //int health, int points, int pop, int maxPop, bool[] unitsList, int week, int[] cards
+    }
+
+    void LoadGame() {
+        PlayerData data = SaveSystem.LoadState();
+        GameObject.Find("VidadoCastelo").GetComponent<Slider>().value = data.health;
+        ResourceTracker.POINTS = data.points;
+        ResourceTracker.CURRENT_POPULATION = data.pop;
+        ResourceTracker.MAX_POPULATION = data.maxPop;
+        SetUnits(data.unitsList);
+        EnemySpawner.currentWeek = data.week;
+        PlayerPrefs.SetInt("CurrentWeek", data.week);
+        ResourceTracker.WEEK = data.week;
+        CardsButton cb = GameObject.Find("CardsObject").GetComponent<CardsButton>();
+        cb.cardsAmmount = data.cards;
+        cb.UpdateCards();
+    }
 
     void Awake() {
 
@@ -50,6 +138,14 @@ public class ConstructionMode : MonoBehaviour {
         ConstructionStands = GameObject.FindGameObjectsWithTag("Construction");
         TowerStands = GameObject.FindGameObjectsWithTag("Tower");
         FighterStands = GameObject.FindGameObjectsWithTag("FighterStand");
+
+
+
+
+
+
+
+
     }
 
 
@@ -72,7 +168,7 @@ public class ConstructionMode : MonoBehaviour {
         Screen.fullScreen = isFullscreen;
     }
     private void Start() {
-
+        if (SaveSystem.LoadState() != null) LoadGame();
         #region audio
 
         uIVCA = FMODUnity.RuntimeManager.GetVCA(uIPath);
@@ -145,6 +241,13 @@ public class ConstructionMode : MonoBehaviour {
             else SettingsBack();
         }
         if (EnemySpawner.currentGamePhase == GamePhase.SETUP_PHASE) {
+
+            if (saveTime) {
+                SaveGame();
+                saveTime = false;
+            }
+
+
             if (Input.GetKeyDown(KeyCode.Q)) FighterButton();
             if (Input.GetKeyDown(KeyCode.W)) ArcherButton();
             if (Input.GetKeyDown(KeyCode.E)) ConstructionButton();
@@ -152,6 +255,8 @@ public class ConstructionMode : MonoBehaviour {
 
         }
         else {
+
+            saveTime = true;
             AC = false;
             CC = false;
             TC = false;

@@ -12,9 +12,10 @@ public class TowerStand : MonoBehaviour
     MeshRenderer myMR;
     Collider myC;
     Transform spawnParent;
-    bool bought = false;
+    [HideInInspector] public bool bought = false;
     TextMeshPro tmp;
     int originalCost;
+    bool loaded = false;
 
     void Start() {
         originalCost = TowerCost;
@@ -25,7 +26,23 @@ public class TowerStand : MonoBehaviour
         myRT = GameObject.Find("ResourcesBox").GetComponent<ResourceTracker>();
         spawnParent = GameObject.Find("Dynamic Objects").transform;
         transform.GetChild(2).gameObject.SetActive(false);
-        gameObject.SetActive(false);
+        if (!bought) gameObject.SetActive(false);
+    }
+
+
+    private void Update() {
+
+        if (bought && !loaded) {
+            loaded = true;
+            myMR.enabled = false;
+            myC.enabled = false;
+            transform.GetChild(2).gameObject.SetActive(true);
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(2).SetParent(spawnParent);
+            gameObject.SetActive(false);
+        }
+
+        loaded = true;
     }
 
     void OnEnable() {

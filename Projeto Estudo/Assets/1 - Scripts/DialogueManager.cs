@@ -77,30 +77,38 @@ public class DialogueManager : MonoBehaviour {
         //Debug.Log("waiting? " + waitingForContinue);
 
 
-        /* if (Input.GetKeyDown(KeyCode.Alpha1)) {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
             EnemySpawner.currentWeek = 1;
+            ResourceTracker.WEEK = 1;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             EnemySpawner.currentWeek = 2;
+            ResourceTracker.WEEK = 2;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
             EnemySpawner.currentWeek = 3;
+            ResourceTracker.WEEK = 3;
         }
         if (Input.GetKeyDown(KeyCode.Alpha4)) {
             EnemySpawner.currentWeek = 4;
+            ResourceTracker.WEEK = 4;
         }
         if (Input.GetKeyDown(KeyCode.Alpha5)) {
             EnemySpawner.currentWeek = 5;
+            ResourceTracker.WEEK = 5;
         }
         if (Input.GetKeyDown(KeyCode.Alpha6)) {
             EnemySpawner.currentWeek = 6;
+            ResourceTracker.WEEK = 6;
         }
         if (Input.GetKeyDown(KeyCode.Alpha7)) {
             EnemySpawner.currentWeek = 7;
+            ResourceTracker.WEEK = 7;
         }
         if (Input.GetKeyDown(KeyCode.Alpha8)) {
             EnemySpawner.currentWeek = 8;
-        } */
+            ResourceTracker.WEEK = 8;
+        }
 
         //Debug.Log("current text: " + story.currentText);
     }

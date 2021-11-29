@@ -41,6 +41,9 @@ public class EnemySpawner : MonoBehaviour {
 
     void Awake() {
         currentWeek = PlayerPrefs.GetInt("CurrentWeek");
+
+        ResourceTracker.WEEK = currentWeek;
+        weekText.text = "Semana " + (EnemySpawner.currentWeek + 1);
         foreach (Transform week in weekHolder) {
             weeks.Add(week.gameObject.GetComponent<Week>());
         }
@@ -59,27 +62,22 @@ public class EnemySpawner : MonoBehaviour {
     }
 
     void Update() {
-        /* if (Input.GetKeyDown(KeyCode.F1)) {
+        #region cheats
+        if (Input.GetKeyDown(KeyCode.F1)) {
 
             PlayerPrefs.SetInt("CurrentWeek", 0);
+
+            ResourceTracker.WEEK = 0;
             currentWeek = 0;
-        } */
-        if (/* Input.GetKeyDown(KeyCode.F3) || */ (health.value <= 0)) {
+        }
+        if ( Input.GetKeyDown(KeyCode.F3) ) {
 
             PlayerPrefs.SetInt("CurrentWeek", 0);
             GameplayCanvas.SetActive(false);
             defeat.SetActive(true);
 
         }
-        //Debug.Log("Wait Phase:" + waitPhase);
-        //Debug.Log("currentwave" + currentWave);
-        //Debug.Log("waveammount length" +  WaveAmmount.Length);
-        if (!startedSpawning && currentGamePhase == GamePhase.ACTION_PHASE) {
-            countdown = 61f;
-            startedSpawning = true;
-            StartCoroutine(Spawning());
-        }
-        /* if (Input.GetKeyDown(KeyCode.F9) && currentGamePhase == GamePhase.ACTION_PHASE) {
+        if (Input.GetKeyDown(KeyCode.F9) && currentGamePhase == GamePhase.ACTION_PHASE) {
             StopAllCoroutines();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach(GameObject enemy in enemies) {
@@ -96,7 +94,25 @@ public class EnemySpawner : MonoBehaviour {
                 enemy.GetComponent<EnemyBase>().EnemyReset(false);
             }
             aboutToEnd = true;
-        } */
+        }
+
+        #endregion
+
+        if (/* Input.GetKeyDown(KeyCode.F3) || */ (health.value <= 0)) {
+
+            PlayerPrefs.SetInt("CurrentWeek", 0);
+            GameplayCanvas.SetActive(false);
+            defeat.SetActive(true);
+
+        }
+        //Debug.Log("Wait Phase:" + waitPhase);
+        //Debug.Log("currentwave" + currentWave);
+        //Debug.Log("waveammount length" +  WaveAmmount.Length);
+        if (!startedSpawning && currentGamePhase == GamePhase.ACTION_PHASE) {
+            countdown = 61f;
+            startedSpawning = true;
+            StartCoroutine(Spawning());
+        }
 
         if (CardsButton.GLOBALDAMAGE) {
             foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy")) {
@@ -149,6 +165,8 @@ public class EnemySpawner : MonoBehaviour {
                 CameraPanning.shouldPanCamera = true;
             }
             currentWeek++;
+
+            ResourceTracker.WEEK = currentWeek;
             PlayerPrefs.SetInt("CurrentWeek", currentWeek);
             if (currentWeek > PlayerPrefs.GetInt("HighWeek")) PlayerPrefs.SetInt("HighWeek", currentWeek);
             

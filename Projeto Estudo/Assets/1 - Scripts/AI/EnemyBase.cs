@@ -52,8 +52,8 @@ public class EnemyBase : MonoBehaviour {
 
 
         if (CheckFighters() != null) {
-            Debug.Log("Check a fighter!");
-            if (targetDistance < 5) Debug.Log("yay?");
+            //Debug.Log("Check a fighter!");
+            //if (targetDistance < 5) Debug.Log("yay?");
             if(targetDistance < range && targetDistance > 3) RunTowards(target);
             else if(targetDistance < range ) {
                 Attack();
@@ -62,7 +62,7 @@ public class EnemyBase : MonoBehaviour {
         }
 
         else if (CheckArchers() != null) {
-            Debug.Log("Check an archer!");
+            //Debug.Log("Check an archer!");
             if (targetDistance < range && targetDistance > 3) RunTowards(target);
             else if (targetDistance < range) {
                 Attack();
@@ -70,7 +70,7 @@ public class EnemyBase : MonoBehaviour {
         }
 
         else {
-            Debug.Log("Followed the path!");
+            //Debug.Log("Followed the path!");
             FollowPath();
             myNMA.SetDestination(destination.position);
         }
@@ -110,6 +110,35 @@ public class EnemyBase : MonoBehaviour {
 
     }
 
+    float PathLength(Vector3 targetPosition) {
+
+
+
+        NavMeshPath path = new NavMeshPath();
+        if (myNMA.enabled)
+            myNMA.CalculatePath(targetPosition, path);
+
+        Vector3[] allWayPoints = new Vector3[path.corners.Length + 2];
+
+        allWayPoints[0] = transform.position;
+
+        allWayPoints[allWayPoints.Length - 1] = targetPosition;
+
+        for (int i = 0; i < path.corners.Length; i++) {
+            allWayPoints[i + 1] = path.corners[i];
+        }
+
+        float pathLength = 0;
+
+        for (int i = 0; i < allWayPoints.Length - 1; i++) {
+            pathLength += Vector3.Distance(allWayPoints[i], allWayPoints[i + 1]);
+        }
+
+
+        return pathLength;
+
+    }
+
     void FollowPath() {
         destination = Path.PATH[i];
 
@@ -125,6 +154,17 @@ public class EnemyBase : MonoBehaviour {
         
         if (myNMA.hasPath) {
             foundPath = true;
+            //Debug.Log("PathLength(Path.PATH[i].gameObject.transform.position): " + PathLength(Path.PATH[i].gameObject.transform.position));
+            if(PathLength(Path.PATH[i].gameObject.transform.position) < 3f) {
+
+                i++;
+                destination = null;
+                foundPath = false;
+                destination = Path.PATH[i];
+            }
+
+
+
         }
 
         if (!myNMA.hasPath && foundPath) {
@@ -135,12 +175,16 @@ public class EnemyBase : MonoBehaviour {
         }
 
         if (myNMA.isPathStale) {
+            i++;
+            destination = null;
+            foundPath = false;
+            destination = Path.PATH[i];
         }
     }
 
 
     void Attack() {
-        Debug.Log("ATTACKING");
+        //Debug.Log("ATTACKING");
         destination = null;
         walking = false;
         myNMA.isStopped = true;
@@ -152,9 +196,9 @@ public class EnemyBase : MonoBehaviour {
             foreach (GameObject life in lifes) {
                 life.GetComponent<Animator>().SetTrigger("Attack");
                 mySEE.Play();
-                if (sideDestination.GetComponent<IAArqueiroTeste>() != null) sideDestination.GetComponent<IAArqueiroTeste>().TakeDamage();
-                else sideDestination.GetComponent<IAFighter>().TakeDamage();
             }
+            if (sideDestination.GetComponent<IAArqueiroTeste>() != null) sideDestination.GetComponent<IAArqueiroTeste>().TakeDamage();
+            else sideDestination.GetComponent<IAFighter>().TakeDamage();
         }
         if (sideDestination == null) {
             targetDistance = Mathf.Infinity;
@@ -265,7 +309,7 @@ public class EnemyBase : MonoBehaviour {
         if (other.transform.CompareTag("Castle")) {
             EnemyReset(false);
             //Adicionei
-            vidaCastelo.value -= 2;
+            vidaCastelo.value -= 1;
         }
     }
     public void EnemyReset(bool points) {

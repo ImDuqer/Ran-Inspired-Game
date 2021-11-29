@@ -12,9 +12,10 @@ public class ArcherStand : MonoBehaviour {
     [SerializeField] MeshRenderer myMR;
     [SerializeField] Collider myC;
     Transform spawnParent;
-    [HideInInspector] public bool bought = false;
+    public bool bought = false;
     TextMeshPro tmp;
     int originalCost;
+    bool loaded = false;
 
     void Start() {
         originalCost = archerCost;
@@ -24,14 +25,31 @@ public class ArcherStand : MonoBehaviour {
         myRT = GameObject.Find("ResourcesBox").GetComponent<ResourceTracker>();
         spawnParent = GameObject.Find("Dynamic Objects").transform;
         transform.GetChild(2).gameObject.SetActive(false);
-        gameObject.SetActive(false);
+        if(!bought) gameObject.SetActive(false);
+    }
+
+
+    private void Update() {
+
+        if (bought && !loaded) {
+            loaded = true;
+            myMR.enabled = false;
+            myC.enabled = false;
+            transform.GetChild(2).gameObject.SetActive(true);
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(2).GetComponent<IAArqueiroTeste>().originalParent = gameObject;
+            transform.GetChild(2).SetParent(spawnParent);
+            gameObject.SetActive(false);
+        }
+
+        loaded = true;
     }
 
     void OnEnable() {
 
         if (transform.childCount > 2) transform.GetChild(2).gameObject.SetActive(false);
         if (!bought) transform.GetChild(0).gameObject.SetActive(false);
-        else gameObject.SetActive(false);
+        else if(loaded) gameObject.SetActive(false);
     }
     void OnMouseOver() {
         transform.GetChild(0).gameObject.SetActive(true);

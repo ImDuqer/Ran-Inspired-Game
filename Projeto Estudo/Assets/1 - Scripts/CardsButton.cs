@@ -14,7 +14,7 @@ public class CardsButton : MonoBehaviour {
     GameObject displayCard;
 
     [HideInInspector] public Transform[] cards = new Transform[8];
-    [SerializeField] int[] cardsAmmount = new int[8];
+    public int[] cardsAmmount = new int[8];
     GameObject firstCard;
     bool multipleCards = false;
     bool hasCards;
@@ -45,10 +45,15 @@ public class CardsButton : MonoBehaviour {
         }
     }
 
+    public void UpdateCards() {
+        for(int i = 0; i < cardsAmmount.Length; i++) {
+            playerCards[i] = cardsAmmount[i] > 0 ? cards[i].gameObject : null;
+        }
+
+        UpdateAmmount();
+    }
+
     void Update() {
-        //foreach (GameObject card in playerCards) {
-        //    Debug.Log("card: " + card);
-        //}
     }
 
     public void ShowCards() {
