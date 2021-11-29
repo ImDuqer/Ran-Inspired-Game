@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.Audio;
 using TMPro;
 
 public class ConstructionMode : MonoBehaviour {
@@ -22,11 +21,31 @@ public class ConstructionMode : MonoBehaviour {
     bool FC = false;
 
 
-    [SerializeField] AudioMixer AudioMixer;
     Resolution[] resolutions;
     [SerializeField] TMP_Dropdown ResolutionDropdown;
+    [SerializeField] Toggle fullscreen;
+
+
+
+
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider sFXSlider;
+
+    float volume;
+    string uIPath = "vca:/UI";
+    string sFXPath = "vca:/SFX";
+    string musicPath = "vca:/Music";
+    FMOD.Studio.VCA uIVCA;
+    FMOD.Studio.VCA sFXVCA;
+    FMOD.Studio.VCA musicVCA;
+
+
 
     void Awake() {
+
+
+
+
         ArcherStands = GameObject.FindGameObjectsWithTag("ArcherStand");
         ConstructionStands = GameObject.FindGameObjectsWithTag("Construction");
         TowerStands = GameObject.FindGameObjectsWithTag("Tower");
@@ -35,18 +54,42 @@ public class ConstructionMode : MonoBehaviour {
 
 
     public void SetResolution(int ResolutionIndex) {
+        PlayerPrefs.SetInt("ResolutionPreference", ResolutionIndex);
         Resolution resolution = resolutions[ResolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
-
-    public void SetVolume(float volume) {
-        AudioMixer.SetFloat("volume", volume);
+    public void SetSFXVolume(float volume) {
+        PlayerPrefs.SetFloat("SFXVolumePreference", volume);
+        uIVCA.setVolume(volume);
+        sFXVCA.setVolume(volume);
+    }
+    public void SetMusicVolume(float volume) {
+        PlayerPrefs.SetFloat("MusicVolumePreference", volume);
+        musicVCA.setVolume(volume);
     }
 
     public void SetFullscreen(bool isFullscreen) {
         Screen.fullScreen = isFullscreen;
     }
     private void Start() {
+
+        #region audio
+
+        uIVCA = FMODUnity.RuntimeManager.GetVCA(uIPath);
+        sFXVCA = FMODUnity.RuntimeManager.GetVCA(sFXPath);
+        musicVCA = FMODUnity.RuntimeManager.GetVCA(musicPath);
+
+
+        sFXSlider.value = PlayerPrefs.GetFloat("SFXVolumePreference");
+        musicSlider.value = PlayerPrefs.GetFloat("MusicVolumePreference");
+
+        musicVCA.setVolume(musicSlider.value);
+        sFXVCA.setVolume(sFXSlider.value);
+        uIVCA.setVolume(sFXSlider.value);
+
+        #endregion
+
+
         #region settings
 
         int CurrentResolutionIndex = 0;
@@ -67,8 +110,20 @@ public class ConstructionMode : MonoBehaviour {
         }
 
         ResolutionDropdown.AddOptions(options);
-        ResolutionDropdown.value = CurrentResolutionIndex;
+        //ResolutionDropdown.value = CurrentResolutionIndex;
+        //ResolutionDropdown.RefreshShownValue();
+
+
+
+        Screen.fullScreen = PlayerPrefs.GetInt("fullscreen") == 1 ? true : false;
+        fullscreen.isOn = Screen.fullScreen;
+
+
+        Resolution resolution = resolutions[PlayerPrefs.GetInt("ResolutionPreference")];
+
+        ResolutionDropdown.value = PlayerPrefs.GetInt("ResolutionPreference");
         ResolutionDropdown.RefreshShownValue();
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
         #endregion
     }
     public void Settings() {

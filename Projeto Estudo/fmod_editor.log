@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x8000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001EDB76D64A8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000022CEF8FC3B8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x8000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -18,33 +18,50 @@
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] Manager::readBank                        : fileversion = 135, compatVersion = 132 (oldest = 44, newest = 135)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 9442752
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 90048
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 00000084353FF2A8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FF8A2A360E0
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FF8A2A360B0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FF8A2A361B0
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FF8A2A36270
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000022C41B495D8
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 5
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='Games, MIsc, Poker Chips, Single, Slide From Table Into Hand Holding Others SND38538', format=5, channels=2, frequency=48000, lengthbytes=6976, lengthpcm=20823, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.707946.
 [LOG] SystemI::createSound                     : filename = Taeru FMOD/Build/Desktop/Master.bank : mode 02010082
 [LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
-[LOG] SystemI::createSound                     : setdata soundi = 000001EDB18D69E8 : node = 000001ED47729AA0
-[LOG] SystemI::createSound                     : add node to async list : head = 000001EE8D1C19A8.  list count = 0
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001EDB18D69E8
+[LOG] SystemI::createSound                     : setdata soundi = 0000022D168067B8 : node = 0000022C57611100
+[LOG] SystemI::createSound                     : add node to async list : head = 0000022BD62C2E78.  list count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000022D168067B8
 [LOG] SystemI::createSoundInternal             :     Create name='Taeru FMOD/Build/Desktop/Master.bank', mode=0x02010082
 [LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
-[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9166688
-[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 87520
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 9442752
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 90048
 [LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
-[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 000001ED47729BB0
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000022C57611210
 [LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
 [LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
-[LOG] SystemI::createSoundInternal             :     exinfo->initialseekposition = 5000
 [LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
-[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Kaede-Cena-2', format=5, channels=1, frequency=48000, lengthbytes=317024, lengthpcm=3018418, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.000000.
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001EDB18D69E8
-[LOG] SoundI::release                          : Kaede-Cena-2 (000001EDB18D69E8)
-[LOG] SoundI::release                          :     Kaede-Cena-2 (000001ED497735B8)
-[LOG] SoundI::release                          :     Kaede-Cena-2 (000001EDB18D6178)
-[LOG] SoundI::release                          : Trilha Cena 2 (000001EDB18E4A58)
-[LOG] SoundI::release                          :     Trilha Cena 2 (000001EDC754D908)
-[LOG] SoundI::release                          :     Trilha Cena 2 (000001EDB18E7488)
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='desenvolvimento prep', format=5, channels=2, frequency=48000, lengthbytes=682016, lengthpcm=2813600, pcmblocksize=0, loopstart=0, loopend=2614399, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.063751.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000022D168067B8
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000022D16806968
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000022D16806968
+[LOG] SoundI::release                          : desenvolvimento prep (0000022D168067B8)
+[LOG] SoundI::release                          :     desenvolvimento prep (0000022C4BAE4D48)
+[LOG] SoundI::release                          :     desenvolvimento prep (0000022D16806968)
+[LOG] SoundI::release                          : Wind, Vegetation, Forest, Smooth Rustle SND1332 (0000022D167F9828)
+[LOG] SoundI::release                          :     Wind, Vegetation, Forest, Smooth Rustle SND1332 (0000022C47E90298)
+[LOG] SoundI::release                          :     Wind, Vegetation, Forest, Smooth Rustle SND1332 (0000022D167FB178)
+[LOG] SoundI::release                          :  (0000022CEF8688E8)
+[LOG] SoundI::release                          :     Games, MIsc, Poker Chips, Single, Slide From Table Into Hand Holding Others SND38538 (0000022C47E90C58)
+[LOG] SoundI::release                          :  (0000022C43353AF8)
+[LOG] SoundI::release                          :     combat phase_TAIKO BASE (0000022C47E917B8)
 [LOG] Thread::callback                         : FMOD Studio update thread finished.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
