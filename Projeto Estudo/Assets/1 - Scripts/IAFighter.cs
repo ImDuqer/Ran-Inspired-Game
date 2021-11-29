@@ -234,5 +234,6 @@ public class IAFighter : MonoBehaviour {
         transform.SetParent(originalParent.transform);
         HP = 3;
         gameObject.SetActive(false);
+        ResourceTracker.CURRENT_POPULATION--;
     }
 }

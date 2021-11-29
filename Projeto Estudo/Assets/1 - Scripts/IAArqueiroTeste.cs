@@ -142,6 +142,7 @@ public class IAArqueiroTeste : MonoBehaviour {
         originalParent.GetComponent<ArcherStand>().bought = false;
         transform.SetParent(originalParent.transform);
         gameObject.SetActive(false);
+        ResourceTracker.CURRENT_POPULATION--;
         HP = 2;
     }
 

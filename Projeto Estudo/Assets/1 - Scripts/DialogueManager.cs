@@ -151,10 +151,10 @@ public class DialogueManager : MonoBehaviour {
     
     void AdvanceDialogue() {
         choiceSelected = null;
-        Debug.Log("Can story continue? " + story.canContinue);
+        //Debug.Log("Can story continue? " + story.canContinue);
         if (story.canContinue) {
             currentSentence = story.Continue();
-            Debug.Log("Current Sentence Held (Advance Dialogue): " + currentSentence);
+            //Debug.Log("Current Sentence Held (Advance Dialogue): " + currentSentence);
             if (story.currentTags.Count != 0) ParseTags();
             StopAllCoroutines();
             writingCoroutine = StartCoroutine(TypeSentence(currentSentence));
@@ -168,10 +168,10 @@ public class DialogueManager : MonoBehaviour {
 
 
     void SkipAnwser() {
-        Debug.Log("Can story continue? " + story.canContinue);
+        //Debug.Log("Can story continue? " + story.canContinue);
         if (story.canContinue) {
             currentSentence = story.Continue();
-            Debug.Log("Current Sentence Held (Skip Dialogue): " + currentSentence);
+            //Debug.Log("Current Sentence Held (Skip Dialogue): " + currentSentence);
         }
         AdvanceDialogue();
         if (story.currentChoices.Count != 0) {
@@ -210,7 +210,7 @@ public class DialogueManager : MonoBehaviour {
 
             //Debug.Log("Should have showed options");
 
-            Debug.Log("CCC-");
+            //Debug.Log("CCC-");
             List<Choice> _choices = story.currentChoices;
 
             optionPanel.SetActive(true);
@@ -225,7 +225,7 @@ public class DialogueManager : MonoBehaviour {
         else {
             //Debug.Log("Should have updated bool");
 
-            Debug.Log("Ddd-");
+            //Debug.Log("Ddd-");
             waitingForContinue = true;
         }
         yield return new WaitUntil(() => { return choiceSelected != null; });

@@ -54,12 +54,12 @@ public class MenuController : MonoBehaviour {
         musicVCA = FMODUnity.RuntimeManager.GetVCA(musicPath);
 
 
-        sFXSlider.value = PlayerPrefs.GetFloat("SFXVolumePreference");
-        musicSlider.value = PlayerPrefs.GetFloat("MusicVolumePreference");
+        if(sFXSlider != null) sFXSlider.value = PlayerPrefs.GetFloat("SFXVolumePreference");
+        if (musicSlider != null) musicSlider.value = PlayerPrefs.GetFloat("MusicVolumePreference");
 
-        musicVCA.setVolume(musicSlider.value);
-        sFXVCA.setVolume(sFXSlider.value);
-        uIVCA.setVolume(sFXSlider.value);
+        if (musicSlider != null) musicVCA.setVolume(musicSlider.value);
+        if (sFXSlider != null) sFXVCA.setVolume(sFXSlider.value);
+        if (sFXSlider != null) uIVCA.setVolume(sFXSlider.value);
 
         #endregion
 
@@ -68,7 +68,7 @@ public class MenuController : MonoBehaviour {
         int CurrentResolutionIndex = 0;
         resolutions = Screen.resolutions;
 
-        ResolutionDropdown.ClearOptions();
+        if(ResolutionDropdown != null) ResolutionDropdown.ClearOptions();
 
         List<string> options = new List<string>();
 
@@ -82,26 +82,26 @@ public class MenuController : MonoBehaviour {
             }
         }
 
-        ResolutionDropdown.AddOptions(options);
+        if (ResolutionDropdown != null) ResolutionDropdown.AddOptions(options);
         //ResolutionDropdown.value = CurrentResolutionIndex;
         //ResolutionDropdown.RefreshShownValue();
 
 
 
         Screen.fullScreen = PlayerPrefs.GetInt("fullscreen") == 1 ? true : false;
-        fullscreen.isOn = Screen.fullScreen;
+        if(fullscreen != null) fullscreen.isOn = Screen.fullScreen;
 
 
         Resolution resolution = resolutions[PlayerPrefs.GetInt("ResolutionPreference")];
 
-        ResolutionDropdown.value = PlayerPrefs.GetInt("ResolutionPreference");
-        ResolutionDropdown.RefreshShownValue();
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        if (ResolutionDropdown != null) ResolutionDropdown.value = PlayerPrefs.GetInt("ResolutionPreference");
+        if (ResolutionDropdown != null) ResolutionDropdown.RefreshShownValue();
+        if (ResolutionDropdown != null) Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
         #endregion
 
 
 
-        Debug.Log("WEEK: " + PlayerPrefs.GetInt("CurrentWeek"));
+        //Debug.Log("WEEK: " + PlayerPrefs.GetInt("CurrentWeek"));
 
 
 

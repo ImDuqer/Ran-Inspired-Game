@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 using UnityEngine.SceneManagement;
 
 public class Derrota : MonoBehaviour {
 
 
-
     float timer;
 
     void OnEnable() {
-
+        Camera.main.GetComponent<StudioEventEmitter>().Stop();
+        Camera.main.transform.GetChild(3).GetComponent<StudioEventEmitter>().Play();
         Time.timeScale = 0;
     }
 

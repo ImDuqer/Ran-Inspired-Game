@@ -167,19 +167,19 @@ public class EnemyBase : MonoBehaviour {
 
         }
 
-        if (!myNMA.hasPath && foundPath) {
-            i++;
-            destination = null;
-            foundPath = false;
-            destination = Path.PATH[i];
-        }
+        //if (!myNMA.hasPath && foundPath) {
+        //    i++;
+        //    destination = null;
+        //    foundPath = false;
+        //    destination = Path.PATH[i];
+        //}
 
-        if (myNMA.isPathStale) {
-            i++;
-            destination = null;
-            foundPath = false;
-            destination = Path.PATH[i];
-        }
+        //if (myNMA.isPathStale) {
+        //    i++;
+        //    destination = null;
+        //    foundPath = false;
+        //    destination = Path.PATH[i];
+        //}
     }
 
 
