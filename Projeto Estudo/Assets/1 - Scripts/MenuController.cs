@@ -83,8 +83,8 @@ public class MenuController : MonoBehaviour {
         }
 
         if (ResolutionDropdown != null) ResolutionDropdown.AddOptions(options);
-        //ResolutionDropdown.value = CurrentResolutionIndex;
-        //ResolutionDropdown.RefreshShownValue();
+        ResolutionDropdown.value = CurrentResolutionIndex;
+        ResolutionDropdown.RefreshShownValue();
 
 
 
