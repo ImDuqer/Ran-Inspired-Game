@@ -28,7 +28,7 @@ public class MenuController : MonoBehaviour {
     [SerializeField] Slider musicSlider;
     [SerializeField] Slider sFXSlider;
 
-    float volume;
+    //float volume;
     string uIPath = "vca:/UI";
     string sFXPath = "vca:/SFX";
     string musicPath = "vca:/Music";
@@ -53,8 +53,10 @@ public class MenuController : MonoBehaviour {
         sFXVCA = FMODUnity.RuntimeManager.GetVCA(sFXPath);
         musicVCA = FMODUnity.RuntimeManager.GetVCA(musicPath);
 
+        if(!PlayerPrefs.HasKey("SFXVolumePreference")) PlayerPrefs.SetFloat("SFXVolumePreference" , 1);
+        if (!PlayerPrefs.HasKey("MusicVolumePreference")) PlayerPrefs.SetFloat("MusicVolumePreference", 1);
 
-        if(sFXSlider != null) sFXSlider.value = PlayerPrefs.GetFloat("SFXVolumePreference");
+        if (sFXSlider != null) sFXSlider.value = PlayerPrefs.GetFloat("SFXVolumePreference");
         if (musicSlider != null) musicSlider.value = PlayerPrefs.GetFloat("MusicVolumePreference");
 
         if (musicSlider != null) musicVCA.setVolume(musicSlider.value);

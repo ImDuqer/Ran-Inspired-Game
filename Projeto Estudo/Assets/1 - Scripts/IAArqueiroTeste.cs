@@ -140,6 +140,7 @@ public class IAArqueiroTeste : MonoBehaviour {
 
     public void EnemyReset() {
         originalParent.GetComponent<ArcherStand>().bought = false;
+        originalParent.GetComponent<Collider>().enabled = true;
         transform.SetParent(originalParent.transform);
         gameObject.SetActive(false);
         ResourceTracker.CURRENT_POPULATION--;

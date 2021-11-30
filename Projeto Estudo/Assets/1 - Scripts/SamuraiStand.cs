@@ -55,7 +55,8 @@ public class SamuraiStand : MonoBehaviour {
 
 
     void OnMouseOver() {
-        transform.GetChild(0).transform.gameObject.SetActive(true);
+        Debug.Log("aaaaaaaaaaaaaaaaaaah");
+        transform.GetChild(0).gameObject.SetActive(true);
         if (CardsButton.PRICEBUFF) SamuraiCost = originalCost - 1;
         else SamuraiCost = originalCost;
         tmp.text = SamuraiCost.ToString() + " pontos\n1 população";

@@ -2179,7 +2179,7 @@ GameObject:
   - component: {fileID: 4046675545764465792}
   - component: {fileID: 5532325863060812508}
   m_Layer: 0
-  m_Name: Samurai Fighter
+  m_Name: Samurai_Fighter
   m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2215,7 +2215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 9
-  attackSpeed: 2
+  attackSpeed: 1.1
   speed: 3.5
   gizmos: 0
   originalParent: {fileID: 0}

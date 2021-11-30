@@ -136,7 +136,7 @@ public class EnemySpawner : MonoBehaviour {
         }
         if(currentGamePhase == GamePhase.SETUP_PHASE) {
             countdown -= Time.deltaTime;
-            buttonPhase.text = "Come�ar Onda de Inimigos: " + ((int)countdown).ToString() + " segundos";
+            buttonPhase.text = "Começar Onda de Inimigos: " + ((int)countdown).ToString() + " segundos";
             if (countdown <= 0) {
                 ActivateActionPhase();
                 countdown = 61f;

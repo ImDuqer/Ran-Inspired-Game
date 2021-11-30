@@ -22,8 +22,8 @@ public class IAFighter : MonoBehaviour {
     [SerializeField] float speed = 3.5f;
     [SerializeField] bool gizmos = false;
     Slider vidaCastelo;
-    int HP = 3;
-    int originalHP = 3;
+    int HP = 6;
+    int originalHP = 6;
     List<GameObject> lifes = new List<GameObject>();
     EnemySpawner myES;
     NavMeshAgent myNMA;
@@ -218,9 +218,13 @@ public class IAFighter : MonoBehaviour {
         }
         else HP -= 2;
 
-        lifes[lifes.Count - 1].SetActive(false);
 
-        lifes.Remove(lifes[lifes.Count - 1]);
+
+        if (HP % 2 == 0) {
+            lifes[lifes.Count - 1].SetActive(false);
+
+            lifes.Remove(lifes[lifes.Count - 1]);
+        }
 
 
 
@@ -231,8 +235,10 @@ public class IAFighter : MonoBehaviour {
 
     public void EnemyReset() {
         originalParent.GetComponent<SamuraiStand>().bought = false;
+        originalParent.GetComponent<Collider>().enabled = true;
         transform.SetParent(originalParent.transform);
-        HP = 3;
+        myNMA.Warp(initialPos.position);
+        HP = 6;
         gameObject.SetActive(false);
         ResourceTracker.CURRENT_POPULATION--;
     }

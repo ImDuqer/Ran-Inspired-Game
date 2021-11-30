@@ -19,9 +19,9 @@ public class ResourceTracker : MonoBehaviour {
 
     void Start() {
         MenuMessageAnimator = MenuMessage.gameObject.GetComponent<Animator>();
-        MAX_POPULATION = 4;
+        MAX_POPULATION = 5;
         CURRENT_POPULATION = 0;
-        POINTS = 3;
+        POINTS = 10;
     }
 
     void Update() {

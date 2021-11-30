@@ -289,7 +289,7 @@ public class DialogueManager : MonoBehaviour {
                 break;
 
             case "conselheiro":
-                _nameTag = "Conselheiro";
+                _nameTag = "Conselheiro do clã Minsei";
                 mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
@@ -299,22 +299,22 @@ public class DialogueManager : MonoBehaviour {
                 break;
 
             case "soldado":
-                _nameTag = "Soldado Minsei";
+                _nameTag = "Soldado do clã Minsei";
                 mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
             case "soldado1":
-                _nameTag = "Soldado Minsei 1";
+                _nameTag = "Soldado do clã Minsei 1";
                 mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
             case "soldado2":
-                _nameTag = "Soldado Minsei 2";
+                _nameTag = "Soldado do clã Minsei 2";
                 mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
             case "soldado3":
-                _nameTag = "Soldado Minsei 3";
+                _nameTag = "Soldado do clã Minsei 3";
                 mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
@@ -335,7 +335,7 @@ public class DialogueManager : MonoBehaviour {
                 break;
 
             case "soldadoInimigo":
-                _nameTag = "Soldado do cl� Ichimonji";
+                _nameTag = "Soldado do clã Ichimonji";
                 mySEE.SetParameter("StopWarScreams", 1);
                 break;
 
