@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
 using UnityEngine.UI;
-public enum GamePhase{SETUP_PHASE, ACTION_PHASE, REWARD_PHASE}
+public enum GamePhase{SETUP_PHASE, ACTION_PHASE, REWARD_PHASE, TUTORIAL_PHASE}
 public class EnemySpawner : MonoBehaviour {
 
     public static GamePhase currentGamePhase;
@@ -25,6 +25,7 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField] Slider health;
     public GameObject GameplayCanvas;
     public GameObject DialogueCanvas;
+    public GameObject TutorialCanvas;
 
     float countdown = 61;
 
@@ -40,6 +41,12 @@ public class EnemySpawner : MonoBehaviour {
 
 
     void Awake() {
+        if (SaveSystem.LoadState() != null) currentGamePhase = GamePhase.SETUP_PHASE;
+        else {
+            CameraPanning.shouldPanCamera = false;
+            currentGamePhase = GamePhase.TUTORIAL_PHASE;
+            TutorialCanvas.SetActive(true);
+        }
         currentWeek = PlayerPrefs.GetInt("CurrentWeek");
 
         ResourceTracker.WEEK = currentWeek;
@@ -50,15 +57,17 @@ public class EnemySpawner : MonoBehaviour {
         timeBetweenSpawns = weeks[currentWeek].timeBetweenSpawns;
         WaveAmmount = weeks[currentWeek].waveAmmount; 
         EnemiesPool = GameObject.Find("EnemiesPool").transform;
-        currentGamePhase = GamePhase.SETUP_PHASE;
         foreach (Transform enemy in EnemiesPool) {
             EnemyPool.Add(enemy.gameObject);
         }
         enemiesPoolSize = EnemyPool.Count;
     }
 
-    void EndTutorial() {
+    public void EndTutorial() {
+        currentGamePhase = GamePhase.SETUP_PHASE;
 
+        CameraPanning.shouldPanCamera = true;
+        TutorialCanvas.SetActive(false);
     }
 
     void Update() {
@@ -136,7 +145,7 @@ public class EnemySpawner : MonoBehaviour {
         }
         if(currentGamePhase == GamePhase.SETUP_PHASE) {
             countdown -= Time.deltaTime;
-            buttonPhase.text = "Começar Onda de Inimigos: " + ((int)countdown).ToString() + " segundos";
+            buttonPhase.text = "Começar Onda de Inimigos:\n" + ((int)countdown).ToString() + " segundos";
             if (countdown <= 0) {
                 ActivateActionPhase();
                 countdown = 61f;
