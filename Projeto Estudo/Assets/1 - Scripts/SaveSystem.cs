@@ -44,7 +44,7 @@ public static class SaveSystem {
 
         }
         else {
-            Debug.LogError("No file to clear at " + path);
+            //Debug.LogError("No file to clear at " + path);
         }
     }
 }
