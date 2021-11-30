@@ -22,7 +22,7 @@ public class MenuController : MonoBehaviour {
     [SerializeField] TMP_Dropdown ResolutionDropdown;
     [SerializeField] Toggle fullscreen;
 
-
+    [SerializeField] TextMeshProUGUI high;
 
 
     [SerializeField] Slider musicSlider;
@@ -106,7 +106,7 @@ public class MenuController : MonoBehaviour {
         //Debug.Log("WEEK: " + PlayerPrefs.GetInt("CurrentWeek"));
 
 
-
+        if (high != null) high.text = "Semana mais alta:  " + PlayerPrefs.GetInt("HighWeek");
 
 
     }
