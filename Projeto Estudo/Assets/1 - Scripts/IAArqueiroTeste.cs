@@ -32,6 +32,7 @@ public class IAArqueiroTeste : MonoBehaviour {
 
     void OnEnable() {
         myAnim = GetComponent<Animator>();
+        tempoPassado = arcoCD;
         arcoCDBuff = arcoCD * 0.8f;
         originalCD = arcoCD;
         shotStart = transform.GetChild(transform.childCount - 1).gameObject;
@@ -117,7 +118,8 @@ public class IAArqueiroTeste : MonoBehaviour {
             #endregion
 
 
-
+            Debug.Log("tempoPassado: " + tempoPassado);
+            Debug.Log("arcoCD: " + arcoCD);
             tempoPassado += Time.deltaTime;
         }
     }

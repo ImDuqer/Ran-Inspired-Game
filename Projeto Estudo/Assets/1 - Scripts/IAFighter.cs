@@ -12,7 +12,7 @@ public class IAFighter : MonoBehaviour {
 
     [SerializeField] float range;
     [SerializeField] float attackSpeed;
-    Transform initialPos;
+    Vector3 initialPos;
     bool returned = false;
     float attackSpeedTimer;
     Transform target = null;
@@ -40,7 +40,7 @@ public class IAFighter : MonoBehaviour {
 
 
     void Start() {
-        initialPos = transform;
+        initialPos = transform.position;
         mySEE = GetComponent<StudioEventEmitter>();
         attackSpeedTimer = 0;
         myES = GameObject.Find("Dynamic Objects").GetComponent<EnemySpawner>();
@@ -87,7 +87,10 @@ public class IAFighter : MonoBehaviour {
         if(EnemySpawner.currentGamePhase == GamePhase.SETUP_PHASE) {
             if (!returned) {
                 returned = true;
-                myNMA.Warp(initialPos.position);
+                Debug.Log("Fucking shit");
+                //myNMA.SetDestination(initialPos.position);
+                myNMA.Warp(initialPos);
+                //ResetPos();
             }
         }
         else {
@@ -237,9 +240,24 @@ public class IAFighter : MonoBehaviour {
         originalParent.GetComponent<SamuraiStand>().bought = false;
         originalParent.GetComponent<Collider>().enabled = true;
         transform.SetParent(originalParent.transform);
-        myNMA.Warp(initialPos.position);
+        myNMA.Warp(initialPos);
+        //ResetPos();
+        foreach (Transform child in transform) {
+            if (!lifes.Contains(child.gameObject)) lifes.Add(child.gameObject);
+            child.gameObject.SetActive(true);
+        }
+
+        //myNMA.SetDestination(initialPos.position);
         HP = 6;
         gameObject.SetActive(false);
         ResourceTracker.CURRENT_POPULATION--;
+    }
+
+
+    void ResetPos() {
+
+        myNMA.enabled = false;
+        transform.position = initialPos;
+        myNMA.enabled = true;
     }
 }

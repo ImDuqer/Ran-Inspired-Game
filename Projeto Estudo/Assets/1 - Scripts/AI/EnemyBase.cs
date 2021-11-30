@@ -276,11 +276,21 @@ public class EnemyBase : MonoBehaviour {
     }
 
     public void TakeDamage(int damage) {
+        int start = HP;
+
         if (!CardsButton.DAMAGEBUFF) HP -= damage;
         else HP -= damage+1;
-        lifes[lifes.Count - 1].SetActive(false);
 
-        lifes.Remove(lifes[lifes.Count - 1]);
+
+        while (start-HP != 0 && lifes.Count > 0) {
+            lifes[lifes.Count - 1].SetActive(false);
+            lifes.Remove(lifes[lifes.Count - 1]);
+            start--;
+        }
+        
+        
+        
+        
         if (HP <= 0) EnemyReset(true);
     }
     void SpeedDebuff() {
