@@ -270,11 +270,13 @@ public class ConstructionMode : MonoBehaviour {
     }
 
     public void ToggleFastForward() {
-        Time.timeScale = Time.timeScale == 1 ? 2.5f : 1f;
+        if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) Time.timeScale = Time.timeScale == 1 ? 2.5f : 1f;
     }
     public void TogglePause() {
-        paused.SetActive(!paused.activeSelf);
-        Time.timeScale = Time.timeScale > 0 ? 0 : 1f; ;
+        if (EnemySpawner.currentGamePhase == GamePhase.ACTION_PHASE) {
+            paused.SetActive(!paused.activeSelf);
+            Time.timeScale = Time.timeScale > 0 ? 0 : 1f;
+        }
     }
     //vsf gustavo
     void TurnObj(GameObject[] array, bool state){

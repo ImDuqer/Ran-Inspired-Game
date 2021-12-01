@@ -245,6 +245,7 @@ public class IAFighter : MonoBehaviour {
         foreach (Transform child in transform) {
             if (!lifes.Contains(child.gameObject)) lifes.Add(child.gameObject);
             child.gameObject.SetActive(true);
+            child.GetComponent<Animator>().SetTrigger("Idle");
         }
 
         //myNMA.SetDestination(initialPos.position);
